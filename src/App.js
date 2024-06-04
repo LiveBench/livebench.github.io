@@ -22,10 +22,10 @@ function App() {
                                         <a href="http://spamueldooley.com" target="_blank" rel="noreferrer">Samuel Dooley*</a><sup>1</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts*</a><sup>1</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Arka Pal</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Arka Pal*</a><sup>1</sup>,
                                     </span>
                                     <br></br>
                                     <span class="author-block">
@@ -60,7 +60,7 @@ function App() {
                                         <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>,
+                                        <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>
                                     </span>
                                 </div>
 

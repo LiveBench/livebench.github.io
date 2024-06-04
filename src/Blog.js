@@ -2,6 +2,8 @@ import React from 'react';
 import './Blog.css';
 import 'bulma/css/bulma.css'
 import { bibtexEntry, tagline } from './constants';
+import livebench_chatbot_bar from './images/scaled_livebench_chatbot.png';
+import livebench_chatbot_scatter from './images/scatter_livebench_chatbot.png';
 
 
 function Blog() {
@@ -21,10 +23,10 @@ function Blog() {
                                         <a href="http://spamueldooley.com" target="_blank" rel="noreferrer">Samuel Dooley*</a><sup>1</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts*</a><sup>1</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Arka Pal</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Arka Pal*</a><sup>1</sup>,
                                     </span>
                                     <br></br>
                                     <span class="author-block">
@@ -59,7 +61,7 @@ function Blog() {
                                         <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>,
                                     </span>
                                     <span class="author-block">
-                                        <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>,
+                                        <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>
                                     </span>
                                 </div>
 
@@ -214,19 +216,85 @@ function Blog() {
                                 Comparing the output of the LLM to a predetermined ground-truth answer (using exact-string matching and other techniques) comes with a number of strengths: it is trivial to score the outputs in terms of time and cost. Furthermore, it avoids the above weaknesses on having biases, errors, and variability in judging.
                                 On the other hand, a weakness is that some types of questions do not have ground-truth answers, such as "write a travel guide to Hawaii."
 
-                            </div>
+                                <br></br><br></br>
+
+                                <div className="table-container">
+                                    <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                                    <caption className="has-text-weight-bold">Correlation of objective ground truth scoring vs. LLM-as-a-judge scoring, on challenging math and logic tasks. On all tasks, the correlation is surprisingly low, showing that LLMs are not reliable judges for these tasks.</caption>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>AMC12 2024</th>
+                                                <th>AIME 2024</th>
+                                                <th>SMC 2023</th>
+                                                <th>Zebra Puzzles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>GPT-4-Turbo</td>
+                                                <td>0.227</td>
+                                                <td>0.548</td>
+                                                <td>0.247</td>
+                                                <td>0.272</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Claude-3-Opus</td>
+                                                <td>0.25</td>
+                                                <td>0.596</td>
+                                                <td>0.408</td>
+                                                <td>0.098</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                Here, we run an ablation study by taking three math tasks and one reasoning task, and scoring them by either matching with the ground truth answer, or by asking an LLM judge to score the answer as either correct or incorrect. We use a judge prompt similar to MT-Bench and Arena Hard.
+                                We find that the correlations for all tasks are far below a reasonable value, indicating that LLM judges are not appropriate for challenging math and logic tasks.
+                                </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <section className="section">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Comparison to ChatBot Arena</h2>
+                            <div class="content has-text-justified">
+                            We compare our benchmark to a current prominent benchmark, ChatBot Arena. We see that while there are generally similar trends (a correlation coefficient of 0.89), yet some models are noticeably stronger on one benchmark vs. the other. For example, XXX.
+                            </div>
+                            <div className="columns is-centered is-vcentered">
+                                    <div className="column">
+                                        <figure className="image">
+                                            <img src={livebench_chatbot_bar} alt="Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
+                                            <figcaption className="has-text-centered">Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models.</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div className="column">
+                                        <figure className="image">
+                                            <img src={livebench_chatbot_scatter} alt="Scatterplot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
+                                            <figcaption className="has-text-centered">Scatterplot comparing (scaled) ChatBot Arena and LiveBench scores across the same models.</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
             <section class="section" id="BibTeX">
                 <div class="container is-max-desktop content">
                     <h2 class="title">BibTeX</h2>
                     <pre class="bibtex"><code>{bibtexEntry}</code></pre>
                 </div>
             </section>
-
-
             <footer class="footer">
                 <div class="container">
                     <div class="content has-text-centered">
