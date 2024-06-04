@@ -1,0 +1,34 @@
+{
+    "Reasoning": [
+        "house_traversal",
+        "web_of_lies_v2",
+        "zebra_puzzle"
+    ],
+    "Coding": [
+        "livecodebench_lite_generation",
+        "livecodebench_plus_completion",
+        "livecodebench_plus_selection"
+    ],
+    "Mathematics": [
+        "aime_i_2024",
+        "aime_ii_2024",
+        "amc_12a_2023",
+        "amc_12b_2023",
+        "math_characteristic_polynomial",
+        "math_complete_square",
+        "math_derivatives",
+        "math_determinant",
+        "math_factor_polynomials",
+        "math_gcd",
+        "math_geometric_mean",
+        "math_integral",
+        "math_std",
+        "math_variance",
+        "smc"
+    ],
+    "Data Analysis": [
+        "DataBench_CTA",
+        "DataBench_JoinMap",
+        "DataBench_TableReformat"
+    ]
+}
