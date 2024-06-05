@@ -9,12 +9,9 @@
         "livecodebench_plus_completion"
     ],
     "Mathematics": [
-        "AIME",
-        "AMC",
         "AMPS_Hard",
-        "smc",
-        "imo",
-        "usamo"
+        "math_comp",
+        "math_proof_comp"
     ],
     "Data Analysis": [
         "DataBench_CTA",
