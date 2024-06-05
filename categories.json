@@ -6,8 +6,7 @@
     ],
     "Coding": [
         "livecodebench_lite_generation",
-        "livecodebench_plus_completion",
-        "livecodebench_plus_selection"
+        "livecodebench_plus_completion"
     ],
     "Mathematics": [
         "aime_i_2024",
@@ -24,11 +23,24 @@
         "math_integral",
         "math_std",
         "math_variance",
-        "smc"
+        "smc",
+        "imo",
+        "usamo"
     ],
     "Data Analysis": [
         "DataBench_CTA",
         "DataBench_JoinMap",
         "DataBench_TableReformat"
+    ],
+    "Writing": [
+        "connections",
+        "movie_unscrambling",
+        "typos"
+    ],
+    "IF": [
+        "paraphrase",
+        "simpler",
+        "story_generation",
+        "summarize"
     ]
 }
