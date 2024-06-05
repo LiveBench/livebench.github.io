@@ -9,20 +9,9 @@
         "livecodebench_plus_completion"
     ],
     "Mathematics": [
-        "aime_i_2024",
-        "aime_ii_2024",
-        "amc_12a_2023",
-        "amc_12b_2023",
-        "math_characteristic_polynomial",
-        "math_complete_square",
-        "math_derivatives",
-        "math_determinant",
-        "math_factor_polynomials",
-        "math_gcd",
-        "math_geometric_mean",
-        "math_integral",
-        "math_std",
-        "math_variance",
+        "AIME",
+        "AMC",
+        "AMPS_Hard",
         "smc",
         "imo",
         "usamo"
