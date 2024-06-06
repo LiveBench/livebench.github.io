@@ -5,18 +5,7 @@ import { bibtexEntry, tagline } from './constants';
 import livebench_chatbot_bar from './images/scaled_livebench_chatbot.png';
 import livebench_chatbot_scatter from './images/scatter_livebench_chatbot.png';
 
-
-import TagManager from 'react-gtm-module'
-const tagManagerArgs = {
-    dataLayer: {
-        userProject: 'livebench.ai',
-        page: 'blog'
-    },
-    dataLayerName: 'PageDataLayer'
-}
-
 function Blog() {
-    TagManager.dataLayer(tagManagerArgs)
     return (
         <div className="Blog">
             <section className="hero">

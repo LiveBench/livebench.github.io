@@ -5,17 +5,7 @@ import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { bibtexEntry, tagline } from './constants';
 
-import TagManager from 'react-gtm-module'
-const tagManagerArgs = {
-    dataLayer: {
-        userProject: 'livebench.ai',
-        page: 'home'
-    },
-    dataLayerName: 'PageDataLayer'
-}
-
 function App() {
-    TagManager.dataLayer(tagManagerArgs)
     return (
         <div className="App">
             <section className="hero">
