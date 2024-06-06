@@ -64,7 +64,7 @@ function App() {
                                         <a href="http://yann.lecun.com">Yann LeCun</a><sup>2,5</sup>,
                                     </span>
                                     <span className="author-block">
-                                        <a href="https://www.cs.umd.edu/~tomg/">Tom Goldstein</a><sup>4</sup>
+                                        <a href="https://www.cs.umd.edu/~tomg/">Tom Goldstein</a><sup>4</sup>,
                                     </span>
                                     <span className="author-block">
                                         <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>,

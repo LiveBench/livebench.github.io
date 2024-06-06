@@ -27,48 +27,48 @@ function Blog() {
                                 <h1 className="title is-1 publication-title">LiveBench: A Framework for Future-Proof LLM Benchmarks</h1>
                                 <div className="is-size-5 publication-authors">
                                     <span className="author-block">
-                                        <a href="https://crwhite.ml" target="_blank" rel="noreferrer">Colin White*</a><sup>1</sup>,
+                                        <a href="https://crwhite.ml" target="_blank" rel="noreferrer">Colin White*</a><sup>1</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="http://spamueldooley.com" target="_blank" rel="noreferrer">Samuel Dooley*</a><sup>1</sup>,
+                                        <a href="http://spamueldooley.com" target="_blank" rel="noreferrer">Samuel Dooley*</a><sup>1</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts*</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Manley Roberts*</a><sup>1</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Arka Pal*</a><sup>1</sup>,
-                                    </span>
-                                    <br></br>
-                                    <span className="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Ben Feuer</a><sup>2</sup>,
-                                    </span>
-                                    <span className="author-block">
-                                        <a href="https://tmfs10.github.io/" target="_blank" rel="noreferrer">Siddhartha Jain</a><sup>3</sup>,
-                                    </span>
-                                    <span className="author-block">
-                                        <a href="https://www.ravid-shwartz-ziv.com" target="_blank" rel="noreferrer">Ravid Shwartz-Ziv</a><sup>2</sup>,
-                                    </span>
-                                    <span className="author-block">
-                                        <a href="https://neelsjain.github.io/" target="_blank" rel="noreferrer">Neel Jain</a><sup>4</sup>,
-                                    </span>
-                                    <span className="author-block">
-                                        <a href="https://khalidsaifullaah.github.io/" target="_blank" rel="noreferrer">Khalid Saifullah</a><sup>4</sup>,
-                                    </span>
-                                    <span className="author-block">
-                                        <a href="." target="_blank" rel="noreferrer">Siddartha Naidu</a><sup>1</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Arka Pal*</a><sup>1</sup>, 
                                     </span>
                                     <br></br>
                                     <span className="author-block">
-                                        <a href="https://chinmayhegde.github.io">Chinmay Hegde</a><sup>2</sup>,
+                                        <a href="." target="_blank" rel="noreferrer">Ben Feuer</a><sup>2</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="http://yann.lecun.com">Yann LeCun</a><sup>2,5</sup>,
+                                        <a href="https://tmfs10.github.io/" target="_blank" rel="noreferrer">Siddhartha Jain</a><sup>3</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="https://www.cs.umd.edu/~tomg/">Tom Goldstein</a><sup>4</sup>
+                                        <a href="https://www.ravid-shwartz-ziv.com" target="_blank" rel="noreferrer">Ravid Shwartz-Ziv</a><sup>2</sup>, 
                                     </span>
                                     <span className="author-block">
-                                        <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>,
+                                        <a href="https://neelsjain.github.io/" target="_blank" rel="noreferrer">Neel Jain</a><sup>4</sup>, 
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="https://khalidsaifullaah.github.io/" target="_blank" rel="noreferrer">Khalid Saifullah</a><sup>4</sup>, 
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="." target="_blank" rel="noreferrer">Siddartha Naidu</a><sup>1</sup>, 
+                                    </span>
+                                    <br></br>
+                                    <span className="author-block">
+                                        <a href="https://chinmayhegde.github.io">Chinmay Hegde</a><sup>2</sup>, 
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="http://yann.lecun.com">Yann LeCun</a><sup>2,5</sup>, 
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="https://www.cs.umd.edu/~tomg/">Tom Goldstein</a><sup>4</sup>, 
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>, 
                                     </span>
                                     <span className="author-block">
                                         <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>
