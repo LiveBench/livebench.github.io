@@ -13,7 +13,7 @@ function App() {
                     <div className="container is-max-desktop">
                         <div className="columns is-centered">
                             <div className="column has-text-centered">
-                                <h1 className="title is-1 publication-title">LiveBench: A Framework for Future-Proof LLM Benchmarks</h1>
+                                <h1 className="title is-1 publication-title">LiveBench: A Challenging, Contamination-Free LLM Benchmark</h1>
                                 <div className="is-size-5 publication-authors">
                                     <span className="author-block">
                                         <a href="https://crwhite.ml" target="_blank" rel="noreferrer">Colin White*</a><sup>1</sup>,
