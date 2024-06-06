@@ -2,8 +2,8 @@ import React from 'react';
 import './Blog.css';
 import 'bulma/css/bulma.css'
 import { bibtexEntry, tagline } from './constants';
-import livebench_chatbot_bar from './images/scaled_livebench_chatbot.png';
-import livebench_chatbot_scatter from './images/scatter_livebench_chatbot.png';
+import livebench_results from './images/livebench_results.png';
+import livebench_comparison from './images/livebench_comparison.png';
 
 function Blog() {
     return (
@@ -92,7 +92,8 @@ function Blog() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./"
+                                            <a href="https://github.com/livebench/livebench"
+                                                target="_blank"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-brands fa-github"></i>
@@ -123,7 +124,7 @@ function Blog() {
                             {tagline}
                         </h2>
                         <div className="has-text-centered">
-                            <img src="livebench_radar.png" alt="Radial Plot Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
+                            <img src={livebench_results} alt="Radial Plot Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
                         </div>
                     </div>
                 </div>
@@ -260,19 +261,13 @@ function Blog() {
                         <div className="column is-four-fifths">
                             <h2 className="title is-3">Comparison to ChatBot Arena</h2>
                             <div className="content has-text-justified">
-                            We compare our benchmark to a current prominent benchmark, ChatBot Arena. We see that while there are generally similar trends (a correlation coefficient of 0.89), yet some models are noticeably stronger on one benchmark vs. the other. For example, XXX.
-                            </div>
+                            We compare our benchmark to current prominent LLM benchmarks: <a href="https://chat.lmsys.org/?leaderboard" target="_blank">ChatBot Arena</a> and <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank">Arena-Hard</a>. We see that while there are generally similar trends, some models are noticeably stronger on one benchmark vs. the other, indicating some of the potential downsides of LLM judging.
+                                </div>
                             <div className="columns is-centered is-vcentered">
                                     <div className="column">
                                         <figure className="image">
-                                            <img src={livebench_chatbot_bar} alt="Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
+                                            <img src={livebench_comparison} alt="Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
                                             <figcaption className="has-text-centered">Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models.</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div className="column">
-                                        <figure className="image">
-                                            <img src={livebench_chatbot_scatter} alt="Scatterplot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
-                                            <figcaption className="has-text-centered">Scatterplot comparing (scaled) ChatBot Arena and LiveBench scores across the same models.</figcaption>
                                         </figure>
                                     </div>
                                 </div>
@@ -309,14 +304,14 @@ function Blog() {
                         <div className="column is-8">
                             <div className="content">
                                 <p>
-                                    Lorem Ipsum
                                 </p>
                                 <p>
                                     This website is licensed under a <a rel="license"
                                         href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
                                         Commons Attribution-ShareAlike 4.0 International License</a>.
                                     <br></br>The site was inspired by the <a
-                                        href="https://github.com/nerfies/nerfies.github.io">Nerfies project</a>.
+                                        href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies project</a> and by <a
+                                        href="https://livecodebench.github.io/" target="_blank">LiveCodeBench</a>.
                                 </p>
                             </div>
                         </div>
