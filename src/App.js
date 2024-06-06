@@ -3,6 +3,7 @@ import './App.css';
 import CSVTable from './Table/CSVTable';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import livebench_results from './images/livebench_results.png';
 import { bibtexEntry, tagline } from './constants';
 
 function App() {
@@ -123,6 +124,9 @@ function App() {
                         <h2 className="subtitle has-text-centered">
                             {tagline}
                         </h2>
+                        <div className="has-text-centered">
+                            <img src={livebench_results} alt="Radial Plot Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
+                        </div>
                     </div>
                 </div>
             </section>
