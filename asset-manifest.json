@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "./static/css/main.e750e90a.css",
-    "main.js": "./static/js/main.ebdc016a.js",
+    "main.js": "./static/js/main.59d01e4e.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
+    "static/media/livebench_results.png": "./static/media/livebench_results.02d8142f4c0f24c0dad2.png",
+    "static/media/livebench_comparison.png": "./static/media/livebench_comparison.04b4adf70d90fb92b2af.png",
     "static/media/fa-solid-900.ttf": "./static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "./static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
     "static/media/fa-solid-900.woff2": "./static/media/fa-solid-900.4d986b00ff9ca3828fbd.woff2",
     "static/media/fa-brands-400.woff2": "./static/media/fa-brands-400.455ea818179b4def0c43.woff2",
-    "static/media/scaled_livebench_chatbot.png": "./static/media/scaled_livebench_chatbot.89dbc17e4de5a553c515.png",
     "static/media/fa-regular-400.ttf": "./static/media/fa-regular-400.eb91f7b948a42799f678.ttf",
-    "static/media/scatter_livebench_chatbot.png": "./static/media/scatter_livebench_chatbot.44bd8af7099dc499de26.png",
     "static/media/fa-regular-400.woff2": "./static/media/fa-regular-400.21cb8f55d8e0c5b89751.woff2",
     "static/media/fa-v4compatibility.ttf": "./static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "./index.html",
     "main.e750e90a.css.map": "./static/css/main.e750e90a.css.map",
-    "main.ebdc016a.js.map": "./static/js/main.ebdc016a.js.map",
+    "main.59d01e4e.js.map": "./static/js/main.59d01e4e.js.map",
     "453.c2db30af.chunk.js.map": "./static/js/453.c2db30af.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e750e90a.css",
-    "static/js/main.ebdc016a.js"
+    "static/js/main.59d01e4e.js"
   ]
 }
