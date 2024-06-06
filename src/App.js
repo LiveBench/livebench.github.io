@@ -7,15 +7,15 @@ import { bibtexEntry, tagline } from './constants';
 
 import TagManager from 'react-gtm-module'
 const tagManagerArgs = {
-    gtmId: 'G-G5P09V14X7'
+    dataLayer: {
+        userProject: 'livebench.ai',
+        page: 'home'
+    },
+    dataLayerName: 'PageDataLayer'
 }
-TagManager.initialize(tagManagerArgs)
-
 
 function App() {
-    window.dataLayer.push({
-        event: 'homepageview'
-    });
+    TagManager.dataLayer(tagManagerArgs)
     return (
         <div className="App">
             <section className="hero">
