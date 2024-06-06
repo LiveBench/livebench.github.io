@@ -8,15 +8,15 @@ import livebench_chatbot_scatter from './images/scatter_livebench_chatbot.png';
 
 import TagManager from 'react-gtm-module'
 const tagManagerArgs = {
-    gtmId: 'G-G5P09V14X7'
+    dataLayer: {
+        userProject: 'livebench.ai',
+        page: 'blog'
+    },
+    dataLayerName: 'PageDataLayer'
 }
-TagManager.initialize(tagManagerArgs)
-
 
 function Blog() {
-    window.dataLayer.push({
-        event: 'blogview'
-    });
+    TagManager.dataLayer(tagManagerArgs)
     return (
         <div className="Blog">
             <section className="hero">
