@@ -5,18 +5,7 @@ import { bibtexEntry, tagline } from './constants';
 import livebench_results from './images/livebench_results.png';
 import livebench_comparison from './images/livebench_comparison.png';
 
-
-import TagManager from 'react-gtm-module'
-const tagManagerArgs = {
-    dataLayer: {
-        userProject: 'livebench.ai',
-        page: 'blog'
-    },
-    dataLayerName: 'PageDataLayer'
-}
-
 function Blog() {
-    TagManager.dataLayer(tagManagerArgs)
     return (
         <div className="Blog">
             <section className="hero">
