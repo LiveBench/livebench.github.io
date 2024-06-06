@@ -102,7 +102,7 @@ function Blog() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./"
+                                            <a href="https://huggingface.co/livebench"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-database"></i>
@@ -191,15 +191,10 @@ function Blog() {
                                         LiveBench currently evaluates several prominent closed-source models and dozens of open-source models
                                         ranging from 0.5B to 70B in size. LiveBench questions are difficult; for example, GPT-4-Turbo only achieves
                                         around 50%
-                                        accuracy. &nbsp;We release all
-                                    </span>
-                                    <span class="c12"><a class="c14"
-                                        href="https://huggingface.co/livebench">questions</a></span>
-                                    <span class="c9">, </span>
-                                    <span class="c12"><a class="c14"
-                                        href="http://github.com/liveBench/livebench">code</a></span>
-                                    <span class="c9">, and </span><span class="c9">model answers</span><sup><a href="#cmnt1"
-                                        id="cmnt_ref1">[a]</a></sup><span class="c0">. </span>
+                                        accuracy. &nbsp;We release all <a
+                                        href="https://huggingface.co/livebench">questions</a>, <a
+                                        href="http://github.com/liveBench/livebench">code</a>, and  <a
+                                        href="https://drive.google.com/drive/folders/1swSeFaQaRSa0BOKPy6mDXxgGyhi60Aoy?usp=sharing">model answers</a>. </span>
                                 </p>
                                 <p class="c10"><span class="c0"></span></p>
                                 <p class="c18">
@@ -328,10 +323,7 @@ function Blog() {
                                         &nbsp;shows that LLMs&#39; performance on Codeforces plummets after the training data cutoff date of the
                                         LLM, and before the cutoff date, performance is highly correlated with the number of times the problem
                                         appears on
-                                        GitHub. Similarly, a
-                                    </span>
-                                    <span class="c12">
-                                        <a class="c14"
+                                        GitHub. Similarly, a <a class="c14"
                                             href="https://arxiv.org/pdf/2405.00332">recent
                                             hand-crafted variant</a>
                                     </span>
@@ -449,7 +441,7 @@ function Blog() {
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">
-                            <h2 className="title is-3">Cofmparison to Other Benchmarks</h2>
+                            <h2 className="title is-3">Comparison to Other Benchmarks</h2>
                             <div className="content has-text-justified">
                                 We compare our benchmark to current prominent LLM benchmarks: <a href="https://chat.lmsys.org/?leaderboard" target="_blank">ChatBot Arena</a> and <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank">Arena-Hard</a>. We see that while there are generally similar trends, some models are noticeably stronger on one benchmark vs. the other, indicating some of the potential downsides of LLM judging.
                                 <div className="columns is-centered is-vcentered">
@@ -478,7 +470,7 @@ function Blog() {
                                 <p class="c26">
                                     We are very excited about the future of LiveBench and actively would like to partner with researchers to
                                     expand the questions, task list, categories, and models evaluated. If you&rsquo;d like to contribute or have
-                                    any questions, <a href="mailto:samuel@abacus.ai,colin@abacus.ai">please get in touch</a>
+                                    any questions, <a href="mailto:samuel@abacus.ai,colin@abacus.ai">please get in touch</a>.
                                 </p>
                             </div>                             
                         </div>

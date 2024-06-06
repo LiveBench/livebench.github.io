@@ -103,7 +103,7 @@ function App() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./"
+                                            <a href="https://huggingface.co/livebench"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-database"></i>
