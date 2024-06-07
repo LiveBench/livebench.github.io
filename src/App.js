@@ -52,13 +52,13 @@ function App() {
                                         <a href="https://chinmayhegde.github.io">Chinmay Hegde</a><sup>2</sup>,
                                     </span>
                                     <span className="author-block">
-                                        <a href="http://yann.lecun.com">Yann LeCun</a><sup>2,5</sup>,
+                                        <a href="http://yann.lecun.com">Yann LeCun</a><sup>2</sup>,
                                     </span>
                                     <span className="author-block">
                                         <a href="https://www.cs.umd.edu/~tomg/">Tom Goldstein</a><sup>4</sup>,
                                     </span>
                                     <span className="author-block">
-                                        <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>6</sup>,
+                                        <a href="https://willieneis.github.io" target="_blank" rel="noreferrer">Willie Neiswanger</a><sup>5</sup>,
                                     </span>
                                     <span className="author-block">
                                         <a href="https://goldblum.github.io">Micah Goldblum</a><sup>2</sup>
@@ -70,14 +70,13 @@ function App() {
                                     <span className="author-block"><sup>2</sup>NYU,</span>
                                     <span className="author-block"><sup>3</sup>Nvidia,</span>
                                     <span className="author-block"><sup>4</sup>UMD,</span>
-                                    <span className="author-block"><sup>5</sup>Meta,</span>
-                                    <span className="author-block"><sup>6</sup>USC</span>
+                                    <span className="author-block"><sup>5</sup>USC</span>
                                 </div>
 
                                 <div className="column has-text-centered">
                                     <div className="publication-links">
                                         <span className="link-block">
-                                            <a href="./"
+                                            <a href="./#"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-medal"></i>
@@ -95,6 +94,7 @@ function App() {
                                         <span className="link-block">
                                             <a href="https://github.com/livebench/livebench"
                                                 target="_blank"
+                                                rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-brands fa-github"></i>
@@ -109,6 +109,15 @@ function App() {
                                                     <i className="fa-solid fa-database"></i>
                                                 </span>
                                                 <span>Data</span>
+                                            </a>
+                                        </span>
+                                        <span className="link-block">
+                                            <a href="./livebench.pdf"
+                                                className="external-link button is-normal is-rounded is-dark">
+                                                <span className="icon">
+                                                    <i class="fa-regular fa-newspaper"></i>
+                                                </span>
+                                                <span>Paper</span>
                                             </a>
                                         </span>
                                     </div>
@@ -195,8 +204,8 @@ function App() {
                                         href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
                                         Commons Attribution-ShareAlike 4.0 International License</a>.
                                     <br></br>The site was inspired by the <a
-                                        href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies project</a> and by<a
-                                        href="https://livecodebench.github.io/" target="_blank">LiveCodeBench</a>.
+                                        href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noreferrer">Nerfies project</a> and by<a
+                                        href="https://livecodebench.github.io/" target="_blank" rel="noreferrer">LiveCodeBench</a>.
                                 </p>
                             </div>
                         </div>
