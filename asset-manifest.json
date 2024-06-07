@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.e750e90a.css",
-    "main.js": "./static/js/main.dadcda4a.js",
+    "main.js": "./static/js/main.4a86c740.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
     "static/media/livebench_results.png": "./static/media/livebench_results.02d8142f4c0f24c0dad2.png",
     "static/media/livebench_comparison.png": "./static/media/livebench_comparison.04b4adf70d90fb92b2af.png",
@@ -15,11 +15,11 @@
     "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "./index.html",
     "main.e750e90a.css.map": "./static/css/main.e750e90a.css.map",
-    "main.dadcda4a.js.map": "./static/js/main.dadcda4a.js.map",
+    "main.4a86c740.js.map": "./static/js/main.4a86c740.js.map",
     "453.c2db30af.chunk.js.map": "./static/js/453.c2db30af.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e750e90a.css",
-    "static/js/main.dadcda4a.js"
+    "static/js/main.4a86c740.js"
   ]
 }
