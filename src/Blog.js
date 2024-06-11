@@ -134,7 +134,7 @@ function Blog() {
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">
-                            <h2 className="title is-3">The release of LiveBench</h2>
+                            <h2 className="title is-3">The Release of LiveBench</h2>
                             <h5 className="subtitle is-5">June x, 2024</h5>
                             <div className="content has-text-justified">
 
@@ -449,7 +449,7 @@ function Blog() {
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">
-                            <h2 className="title is-3">Cofmparison to Other Benchmarks</h2>
+                            <h2 className="title is-3">Comparison to Other Benchmarks</h2>
                             <div className="content has-text-justified">
                                 We compare our benchmark to current prominent LLM benchmarks: <a href="https://chat.lmsys.org/?leaderboard" target="_blank" rel="noreferrer">ChatBot Arena</a> and <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank" rel="noreferrer">Arena-Hard</a>. We see that while there are generally similar trends, some models are noticeably stronger on one benchmark vs. the other, indicating some of the potential downsides of LLM judging.
                                 <div className="columns is-centered is-vcentered">

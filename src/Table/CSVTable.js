@@ -9,6 +9,7 @@ const CSVTable = () => {
     const [data, setData] = useState([]);
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     // Use the custom hook for sorting
     const [order, setOrder] = useState("asc");
     const [sortField, setSortField] = useState("");
@@ -67,8 +68,18 @@ const CSVTable = () => {
                 }, {});
                 setCheckedCategories(initialChecked);
             });
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
+    
     const handleCheckboxChange = (clickedCategory, type) => {
         setCheckedCategories(prev => {
             const updatedCategories = Object.keys(prev).reduce((acc, category) => {
@@ -127,33 +138,34 @@ const CSVTable = () => {
 
     return (
         <div className="table-container">
-            <div className="category-checkboxes">
-                {Object.keys(categories).map((category, idx) => (
-                    <div key={idx} className="category-group">
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={checkedCategories[category]?.average}
-                                    onChange={() => handleCheckboxChange(category, 'average')}
-                                />
-
-                                {category} Average
-                            </label>
+            {screenWidth > 1315 && (
+                <div className="category-checkboxes">
+                    {Object.keys(categories).map((category, idx) => (
+                        <div key={idx} className="category-group">
+                            <div>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={checkedCategories[category]?.average}
+                                        onChange={() => handleCheckboxChange(category, 'average')}
+                                    />
+                                    {category} Average
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={checkedCategories[category]?.allSubcategories}
+                                        onChange={() => handleCheckboxChange(category, 'allSubcategories')}
+                                    />
+                                    Show Subcategories
+                                </label>
+                            </div>
                         </div>
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={checkedCategories[category]?.allSubcategories}
-                                    onChange={() => handleCheckboxChange(category, 'allSubcategories')}
-                                />
-                                Show Subcategories
-                            </label>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
             <div className="scrollable-table">
                 <div className="table-wrap">
                     <table className="main-tabl table">

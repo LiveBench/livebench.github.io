@@ -37,18 +37,11 @@
   }
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px;
-}
-
 
 table {
-  /* width: auto; */
+  width: 100%;
+  min-width: 300px;
+  /* Ensure minimum width even if screen is too small */
   border-collapse: collapse;
 }
 
@@ -71,10 +64,14 @@ td {
 .globalAverage-col {
   width: 115px;
 }
+
 .category-checkboxes {
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .category-checkboxes label {
@@ -84,24 +81,6 @@ td {
   cursor: pointer;
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items at the top */
-  flex-direction: column;
-  max-width: 80%;
-  width: 100%; /* Take the full width up to 80% of the parent container */
-  margin: 10px auto; /* Center the table-container horizontally */
-  padding: 10px;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better visibility */
-}
-
-.category-checkboxes {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
 
 .table-container {
   display: flex;
@@ -119,13 +98,6 @@ td {
   /* Enable horizontal scrolling */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   /* Optional: adds shadow for better visibility */
-}
-
-.category-checkboxes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* Center the category-group divs horizontally */
 }
 
 .scrollable-table {
@@ -159,3 +131,63 @@ td {
   margin-right: 8px;
   /* Add space between checkbox and text */
 }
+
+.App-header {
+  font-size: calc(10px + 2vmin);
+}
+
+@media (max-width: 600px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+  }
+
+  .table-container {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .category-checkboxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-group {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .table {
+    min-width: 0;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+}
+
+/* Style adjustments for medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .App-header {
+    font-size: calc(9px + 2vmin);
+  }
+
+  .table-container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .App .title.is-1 {
+    font-size: 2.75rem !important;
+  }
+  .App .is-size-5 {
+    font-size: 1rem !important;
+  }
+}
+
+
+.category-group {
+  margin: 5px 0;
+}
+

@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
 import CSVTable from './Table/CSVTable';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import './App.css';
 import livebench_results from './images/livebench_results.png';
 import { bibtexEntry, tagline } from './constants';
 
