@@ -3,7 +3,9 @@ import './Blog.css';
 import 'bulma/css/bulma.css'
 import { bibtexEntry } from './constants';
 import livebench_results from './images/livebench_results.png';
-import livebench_comparison from './images/livebench_comparison.png';
+import livebench_vs_chatbot_arena from './images/livebench_vs_chatbot_arena.png';
+import livebench_vs_arena_hard from './images/livebench_vs_arena_hard.png';
+
 import { Helmet } from 'react-helmet';
 
 function Blog() {
@@ -415,19 +417,28 @@ function Blog() {
                         <div className="column is-four-fifths">
                             <h2 className="title is-3">Comparison to Other Benchmarks</h2>
                             <div className="content has-text-justified">
-                                We compare our benchmark to current prominent LLM benchmarks: <a href="https://chat.lmsys.org/?leaderboard" target="_blank" rel="noreferrer">ChatBot Arena</a> and <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank" rel="noreferrer">Arena-Hard</a>. We see that while there are generally similar trends, some models are noticeably stronger on one benchmark vs. the other, indicating some of the potential downsides of LLM judging.
+                                We compare our benchmark to current prominent LLM benchmarks: <a href="https://chat.lmsys.org/?leaderboard" target="_blank" rel="noreferrer">ChatBot Arena</a> and <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank" rel="noreferrer">Arena-Hard</a>. We see that while there are generally similar trends, some models are noticeably stronger on one benchmark vs. the other, potentially indicating some downsides of LLM judging.
                                 <div className="columns is-centered is-vcentered">
                                     <div className="column">
                                         <figure className="image">
-                                            <img src={livebench_comparison} alt="Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models." />
-                                            <figcaption className="has-text-centered">Bar plot comparing (scaled) ChatBot Arena and LiveBench scores across the same models.
+                                            <img src={livebench_vs_chatbot_arena} alt="Bar plot comparing LiveBench and ChatBot Arena scores across the same models." />
+                                            <figcaption className="has-text-centered">Bar plot comparing LiveBench and ChatBot Arena scores across the same models.
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div className="columns is-centered is-vcentered">
+                                    <div className="column">
+                                        <figure className="image">
+                                            <img src={livebench_vs_arena_hard} alt="Bar plot comparing LiveBench and Arena-Hard scores across the same models." />
+                                            <figcaption className="has-text-centered">Bar plot comparing LiveBench and Arena-Hard scores across the same models. Surprisingly, GPT-4 models perform substantially better on Arena-Hard relative to LiveBench, potentially due to the <a href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank" rel="noreferrer">known bias</a> from using GPT-4 itself as the judge.
                                             </figcaption>
                                         </figure>
                                     </div>
                                 </div>
                                 <p className="c5">
                                     We find that Pearson&#39;s correlation coefficient of model scores
-                                    between LiveBench and ChatBot Arena is 0.92 and between LiveBench and Arena-Hard is 0.90.
+                                    between LiveBench and ChatBot Arena is 0.90 and between LiveBench and Arena-Hard is 0.89.
                                 </p>
                                 <p className="c5">
                                     Based on the plots and the correlation coefficients, we see that LiveBench
@@ -440,7 +451,7 @@ function Blog() {
                                 <p className="c26">
                                     We are very excited about the future of LiveBench and actively would like to partner with researchers to
                                     expand the questions, task list, categories, and models evaluated. If you&rsquo;d like to contribute or have
-                                    any questions, <a href="mailto:samuel@abacus.ai,colin@abacus.ai">please get in touch</a>
+                                    any questions, <a href="mailto:samuel@abacus.ai,colin@abacus.ai">please get in touch</a>.
                                 </p>
                             </div>                             
                         </div>
