@@ -362,7 +362,8 @@ function Blog() {
                                 </p>
                                 <div className="table-container">
                                     <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                                        <caption className="has-text-weight-bold">Correlation of objective ground truth scoring vs. LLM-as-a-judge scoring, on challenging math and logic tasks. On all tasks, the correlation is surprisingly low, showing that LLMs are not reliable judges for these tasks.</caption>
+                                        <caption className="has-text-weight-bold">Error rate of LLM-as-a-judge scoring on challenging math (AMC, AIME, SMC) and reasoning (Zebra puzzles) tasks. The judge is GPT-4-Turbo, and it judges model outputs from GPT-4-Turbo and Claude-3-Opus. On all tasks, the error rate is surprisingly high, showing that LLMs are not reliable judges for these tasks
+                                        </caption>
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -375,35 +376,24 @@ function Blog() {
                                         <tbody>
                                             <tr>
                                                 <td>GPT-4-Turbo</td>
-                                                <td>0.227</td>
-                                                <td>0.548</td>
-                                                <td>0.247</td>
-                                                <td>0.272</td>
+                                                <td>0.380</td>
+                                                <td>0.214</td>
+                                                <td>0.353</td>
+                                                <td>0.420</td>
                                             </tr>
                                             <tr>
                                                 <td>Claude-3-Opus</td>
-                                                <td>0.25</td>
-                                                <td>0.596</td>
-                                                <td>0.408</td>
-                                                <td>0.098</td>
+                                                <td>0.388</td>
+                                                <td>0.103</td>
+                                                <td>0.294</td>
+                                                <td>0.460</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <p className="c5">
                                     <span className="c0 c21">
-                                        Here, we can see that using objective ground-truth judging is superior to LLM judges, particularly on our
-                                        tasks. On these four tasks, if the LLM judge was highly accurate, we would expect a correlation of close to
-                                        1.
-                                        However, we find that the correlations for all tasks are far below a reasonable value, indicating that LLM
-                                        judges are not appropriate for challenging math and logic tasks.
-                                    </span>
-                                </p>
-                                <p className="c26">
-                                    <span className="c21 c32">
-                                        Correlation of objective ground truth scoring vs. LLM-as-a-judge scoring, on challenging math and logic
-                                        tasks. On all tasks, the correlation is surprisingly low, showing that LLMs are not reliable judges for
-                                        these tasks.
+                                        Here, we can see that using objective ground-truth judging is superior to LLM judges, particularly on our tasks. On these four tasks, while objective ground-truth judging is perfect, we find that the error rates of LLM judging are far above a reasonable value, indicating that LLM judges are not appropriate for challenging math and logic tasks.
                                     </span>
                                 </p>
                             </div>
