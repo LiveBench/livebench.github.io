@@ -178,10 +178,10 @@ function App() {
                 <div className="container">
                     <div className="content has-text-centered">
                         <a className="icon-link"
-                            href=".">
+                            href="./livebench.pdf">
                             <i className="fas fa-file-pdf"></i>
                         </a>
-                        <a className="icon-link" href=".">
+                        <a className="icon-link" href="https://github.com/LiveBench/LiveBench">
                             <i className="fab fa-github"></i>
                         </a>
                     </div>
