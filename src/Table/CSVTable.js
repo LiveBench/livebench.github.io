@@ -19,8 +19,9 @@ const CSVTable = () => {
     // Define columns as a memoized array
     const columns = useMemo(() => [
         { label: "Model", accessor: "model", sortable: true, visible: true },
-        { label: "CTA", accessor: "DataBench_CTA", sortable: true, visible: false },
-        { label: "JoinMap", accessor: "DataBench_JoinMap", sortable: true, visible: false },
+        { label: "CTA", accessor: "cta", sortable: true, visible: false },
+        { label: "JoinMap", accessor: "tablejoin", sortable: true, visible: false },
+        { label: "Table Reformat", accessor: "tablereformat", sortable: true, visible: false },
         { label: "AIME", accessor: "AIME", sortable: true, visible: false },
         { label: "AMC", accessor: "AMC", sortable: true, visible: false },
         { label: "House Traversal", accessor: "house_traversal", sortable: true, visible: false },
@@ -33,16 +34,16 @@ const CSVTable = () => {
         { label: "Plot Unscrambling", accessor: "movie_unscrambling", sortable: true, visible: true },
         { label: "Typo Fixing", accessor: "typos", sortable: true, visible: true },
         { label: "Paraphrase", accessor: "paraphrase", sortable: true, visible: true },
-        { label: "Simpler", accessor: "simpler", sortable: true, visible: true },
+        { label: "simplify", accessor: "simplify", sortable: true, visible: true },
         { label: "Story Generation", accessor: "story_generation", sortable: true, visible: true },
         { label: "Summarize", accessor: "summarize", sortable: true, visible: true },
         { label: "Global Average", accessor: "ga", sortable: true, visible: true, sortbyOrder: "desc" },
         { label: "Reasoning", accessor: "average_reasoning", sortable: true, visible: true },
         { label: "Coding", accessor: "average_coding", sortable: true, visible: true },
         { label: "Data Analysis", accessor: "average_data_analysis", sortable: true, visible: true },
-        { label: "Writing", accessor: "average_writing", sortable: true, visible: true },
+        { label: "Language", accessor: "average_language", sortable: true, visible: true },
         { label: "IF", accessor: "average_instruction_following", sortable: true, visible: true },
-        { label: "Mathematics", accessor: "average_mathematics", sortable: true, visible: true }
+        { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
     ], []);
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + '/table.csv')

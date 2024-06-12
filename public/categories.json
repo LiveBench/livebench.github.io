@@ -5,8 +5,8 @@
         "zebra_puzzle"
     ],
     "Coding": [
-        "livecodebench_lite_generation",
-        "livecodebench_plus_completion"
+        "LCB_generation",
+        "completion"
     ],
     "Mathematics": [
         "AMPS_Hard",
@@ -14,18 +14,18 @@
         "math_proof_comp"
     ],
     "Data Analysis": [
-        "DataBench_CTA",
-        "DataBench_JoinMap",
-        "DataBench_TableReformat"
+        "cta",
+        "tablejoin",
+        "tablereformat"
     ],
-    "Writing": [
+    "Language": [
         "connections",
         "movie_unscrambling",
         "typos"
     ],
     "IF": [
         "paraphrase",
-        "simpler",
+        "simplify",
         "story_generation",
         "summarize"
     ]
