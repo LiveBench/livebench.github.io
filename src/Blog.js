@@ -17,7 +17,8 @@ function Blog() {
                     <div className="container is-max-desktop">
                         <div className="columns is-centered">
                             <div className="column has-text-centered">
-                                <h1 className="title is-1 publication-title">LiveBench: A Challenging, Contamination-Free LLM Benchmark</h1>
+                                <h1 className="title is-1 publication-title">The Release of LiveBench</h1>
+                                <h3 className="title is-3">A Challenging, Contamination-Free LLM Benchmark</h3>
                                 <div className="is-size-5 publication-authors">
                                     <span className="author-block">
                                         <a href="https://crwhite.ml" target="_blank" rel="noreferrer">Colin White*</a><sup>1</sup>, 
@@ -134,8 +135,7 @@ function Blog() {
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">
-                            <h2 className="title is-3">The Release of LiveBench</h2>
-                            <h5 className="subtitle is-5">June x, 2024</h5>
+                            <h5 className="subtitle is-5">June 12, 2024</h5>
                             <div className="content has-text-justified">
 
                                 <p className="c18"><span className="c9">We introduce </span><strong>LiveBench</strong><span className="c0">, a benchmark
