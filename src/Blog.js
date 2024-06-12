@@ -466,10 +466,10 @@ function Blog() {
                 <div className="container">
                     <div className="content has-text-centered">
                         <a className="icon-link"
-                            href="./static/videos/nerfies_paper.pdf">
+                            href="./livebench.pdf">
                             <i className="fas fa-file-pdf"></i>
                         </a>
-                        <a className="icon-link" href="https://github.com/keunhong">
+                        <a className="icon-link" href="https://github.com/LiveBench/LiveBench">
                             <i className="fab fa-github"></i>
                         </a>
                     </div>

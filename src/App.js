@@ -3,8 +3,8 @@ import CSVTable from './Table/CSVTable';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
-import livebench_results from './images/livebench_results.png';
-import { bibtexEntry, tagline } from './constants';
+// import livebench_results from './images/livebench_results.png';
+import { bibtexEntry } from './constants';
 
 function App() {
     return (
@@ -178,10 +178,10 @@ function App() {
                 <div className="container">
                     <div className="content has-text-centered">
                         <a className="icon-link"
-                            href=".">
+                            href="./livebench.pdf">
                             <i className="fas fa-file-pdf"></i>
                         </a>
-                        <a className="icon-link" href=".">
+                        <a className="icon-link" href="https://github.com/LiveBench/LiveBench">
                             <i className="fab fa-github"></i>
                         </a>
                     </div>
