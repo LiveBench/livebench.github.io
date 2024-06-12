@@ -6,12 +6,12 @@
     ],
     "Coding": [
         "LCB_generation",
-        "completion"
+        "coding_completion"
     ],
     "Mathematics": [
         "AMPS_Hard",
         "math_comp",
-        "math_proof_comp"
+        "olympiad"
     ],
     "Data Analysis": [
         "cta",
@@ -20,7 +20,7 @@
     ],
     "Language": [
         "connections",
-        "movie_unscrambling",
+        "plot_unscrambling",
         "typos"
     ],
     "IF": [
