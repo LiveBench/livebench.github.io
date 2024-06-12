@@ -107,7 +107,9 @@ function Blog() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./"
+                                            <a href="https://huggingface.co/livebench"
+                                                target="_blank"
+                                                rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-database"></i>
@@ -117,6 +119,8 @@ function Blog() {
                                         </span>
                                         <span className="link-block">
                                             <a href="./livebench.pdf"
+                                                target="_blank"
+                                                rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i class="fa-regular fa-newspaper"></i>
@@ -137,82 +141,42 @@ function Blog() {
                         <div className="column is-four-fifths">
                             <h5 className="subtitle is-5">June 12, 2024</h5>
                             <div className="content has-text-justified">
-
-                                <p className="c18"><span className="c9">We introduce </span><strong>LiveBench</strong><span className="c0">, a benchmark
-                                    for LLMs designed with test set contamination and ground truth in mind. LiveBench is </span></p>
+                                <p className="c18"><span className="c9">Introducing </span><strong>LiveBench</strong><span className="c0">: a benchmark for LLMs designed with test set contamination and objective evaluation in mind</span>
+                                </p>
+                                <p className="c18"><span className="c9">LiveBench has the following properties: </span>
+                                </p>
                                 <ul className="c28 lst-kix_r92srvgun7j-0 start">
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">A set of 18 diverse tasks across 6 categories, where</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is designed to limit potential contamination by releasing new questions monthly, as well as having questions based on recently-released datasets, arXiv papers, news articles, and IMDb movie synopses.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers,
-                                        and</span></li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">The release of LiveBench&rsquo;s questions are designed to
-                                        limit potential contamination. </span></li>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
+                                    </li>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
+                                    </li>
                                 </ul>
                                 <p className="c10"><span className="c0"></span></p>
                                 <p className="c18">
                                     <span className="c0">
-                                        Today we release the initial batch of 960 questions, and plan to release tranches of questions every month.
-                                        By doing this, we aim for LiveBench to be free from contamination since every release will have new
-                                        questions that
-                                        come from the same categories but are completely novel and generated from similar distributions.
+                                        Today, we release the initial batch of 960 questions and plan to release sets of questions every month. By doing this, we aim for LiveBench to be free from contamination, since every release will have novel questions.
                                     </span>
                                 </p>
                                 <p className="c10"><span className="c0"></span></p>
                                 <p className="c18">
                                     <span className="c9">
-                                        Test set contamination, wherein test data from a benchmark ends up in a newer model&rsquo;s training set, is
-                                        a well-documented obstacle for fair LLM evaluation and can quickly render benchmarks obsolete. As a
-                                        consequence,
-                                        benchmarks that use LLMs-as-a-judge, or that crowdsource prompts and evaluations from human judges, are
-                                        gaining in popularity. While these approaches have many benefits, they also introduce significant biases.
-                                        Also, they
-                                        break down when scoring hard questions; for example, it is difficult for an LLM (or human) to correctly
-                                        grade answers to questions that it itself cannot solve.
+                                        In addition to contamination, LiveBench avoids the pitfalls of LLM judging by including only questions that have an objective answer. While LLM judging and crowdsourced prompts and evaluations have many benefits, they also introduce significant biases and completely break down when judging the answers to hard questions. For example, we show in <a href="./livebench.pdf" target="_blank" rel="noreferrer">our paper</a> that for challenging reasoning and math problems, the pass/fail judgments from GPT-4-Turbo have less than a 60% correlation with the true pass/fail judgments.
                                     </span>
                                 </p>
-                                <p className="c10"><span className="c0"></span></p>
-                                <p className="c18">
-                                    <span className="c0">
-                                        LiveBench introduces a new framework for benchmarking LLMs designed to be immune to both test set
-                                        contamination and the pitfalls of LLM judging and human crowdsourcing. LiveBench is the first benchmark with
-                                        the following
-                                        important properties:
-                                    </span>
-                                </p>
-                                <ul className="c28 lst-kix_wuoha65llqdq-0 start">
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench contains frequently-updated questions based on recent
-                                        information sources, in which questions become harder over time.</span></li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is scored automatically according to the objective
-                                        ground-truth without the use of an LLM judge.</span></li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench questions are drawn from a diverse set of six
-                                        categories with regularly released updates of new questions.</span></li>
-                                </ul>
                                 <div className="has-text-centered">
                                     <img src={livebench_results} alt="Radial Plot Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
                                 </div>
-                                <br></br>
-                                <p className="c18">
-                                    <span className="c0">
-                                        LiveBench questions are difficult; for example, GPT-4-Turbo achieves around 50% accuracy. Questions will be
-                                        added and updated on a monthly basis, and we will release new tasks and harder versions of tasks over time
-                                        so that
-                                        LiveBench can distinguish between the capabilities of LLMs as they improve in the future.</span>
-                                </p>
-                                <p className="c10"><span className="c0"></span></p>
-                                <p className="c18">
-                                        LiveBench currently evaluates several prominent closed-source models and dozens of open-source models
-                                        ranging from 0.5B to 70B in size. LiveBench questions are difficult; for example, GPT-4-Turbo only achieves
-                                        around 50%
-                                        accuracy. &nbsp;We release all <a className="c14"
-                                        href="https://huggingface.co/livebench">questions</a>, <a className="c14" href="http://github.com/liveBench/livebench">code</a>, and model answers
-                                </p>
                                 <p className="c10"><span className="c0"></span></p>
                                 <p className="c18">
                                     <span className="c0">
-                                        Questions will be added and updated on a monthly basis, and we will release new tasks and harder versions of
-                                        tasks over time so that LiveBench can distinguish between the capabilities of LLMs as they improve in the
-                                        future.
-                                        We welcome community engagement and collaboration for expanding the benchmark tasks and models.
+                                        LiveBench currently evaluates several prominent closed-source models and dozens of open-weight models ranging from 0.5B to 70B in size. LiveBench questions are difficult; for example, GPT-4-Turbo achieves around 50% accuracy on LiveBench overall. Furthermore, in our monthly updates, we will release new tasks and harder versions of tasks over time so that LiveBench can distinguish between the capabilities of LLMs as they improve in the future.
+                                    </span>
+                                </p>
+                                <p className="c18">
+                                    <span className="c0">
+                                        We release all <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">questions</a>, <a href="https://github.com/livebench/livebench" target="_blank" rel="noreferrer">code</a>, and model answers, and we welcome community engagement and collaboration for expanding the benchmark tasks and models.
                                     </span>
                                 </p>
                             </div>
@@ -233,38 +197,14 @@ function Blog() {
                                 <ol className="c28 lst-kix_st344of4rgcu-0 start" start="1">
                                     <li className="c18 c29 li-bullet-0">
                                         <span className="c0">tasks which use a continuously updated information source for their questions, e.g., data
-                                            analysis based on recent Kaggle datasets, or fixing typos in recent arXiv abstracts; and </span>
+                                            analysis based on recent Kaggle datasets, or fixing typos in recent arXiv abstracts </span>
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">tasks which are more challenging or diverse versions of
-                                        existing benchmark tasks, e.g., from AMPS, Big-Bench Hard, IFEval, or bAbI. </span></li>
+                                        existing benchmark tasks, e.g., from AMPS, Big-Bench Hard, IFEval, or bAbI </span></li>
                                 </ol>
                                 <p className="c10"><span className="c0"></span></p>
-                                <p className="c18"><span className="c9">Each category and task included in LiveBench are:</span></p>
+                                <p className="c18"><span className="c9">The categories and tasks included in LiveBench are:</span></p>
                                 <p className="c10"><span className="c0"></span></p>
-                                <p className="c4">
-                                    <strong>Reasoning</strong><span className="c9">: a harder version of Web of Lies from </span>
-                                    <span className="c12"><a className="c14"
-                                        href="https://arxiv.org/abs/2206.04615">Big-Bench
-                                        Hard</a></span>
-                                    <span className="c9">, a harder version of positional reasoning from </span>
-                                    <span className="c12"><a className="c14"
-                                        href="https://arxiv.org/abs/1502.05698">bAbI</a></span>
-                                    <span className="c9">, and </span>
-                                    <span className="c12"><a className="c14"
-                                        href="https://en.wikipedia.org/wiki/Zebra_Puzzle">Zebra
-                                        Puzzles</a></span>
-                                </p>
-                                <p className="c4 c15"><span className="c0"></span></p>
-                                <p className="c4">
-                                    <strong>Data Analysis</strong>
-                                    <span className="c0">
-                                        : three tasks, all of which use recent datasets from Kaggle and Socrata: table reformatting (among JSON,
-                                        JSONL, Markdown, CSV, TSV, and HTML), predicting which columns can be used to join two tables, and
-                                        predicting the
-                                        correct type annotation of a data column
-                                    </span>
-                                </p>
-                                <p className="c4 c15"><span className="c0"></span></p>
                                 <p className="c4">
                                     <strong>Math</strong><span className="c9">: questions from high school math competitions from the past 12
                                         months (AMC12, AIME, USAMO, IMO, SMC), as well as harder versions of </span>
@@ -278,6 +218,20 @@ function Blog() {
                                     <span className="c12"><a className="c14"
                                         href="https://livecodebench.github.io">LiveCodeBench</a></span>
                                     <span className="c0">): code generation and a novel code completion task</span>
+                                </p>
+                                <p className="c4 c15"><span className="c0"></span></p>
+                                <p className="c4">
+                                    <strong>Reasoning</strong><span className="c9">: a harder version of Web of Lies from </span>
+                                    <span className="c12"><a className="c14"
+                                        href="https://arxiv.org/abs/2206.04615">Big-Bench
+                                        Hard</a></span>
+                                    <span className="c9">, a harder version of positional reasoning from </span>
+                                    <span className="c12"><a className="c14"
+                                        href="https://arxiv.org/abs/1502.05698">bAbI</a></span>
+                                    <span className="c9">, and </span>
+                                    <span className="c12"><a className="c14"
+                                        href="https://en.wikipedia.org/wiki/Zebra_Puzzle">Zebra
+                                        Puzzles</a></span>
                                 </p>
                                 <p className="c4 c15"><span className="c0"></span></p>
                                 <p className="c4">
@@ -296,6 +250,16 @@ function Blog() {
                                         response
                                     </span>
                                 </p>
+                                <p className="c4 c15"><span className="c0"></span></p>
+                                <p className="c4">
+                                    <strong>Data Analysis</strong>
+                                    <span className="c0">
+                                        : three tasks, all of which use recent datasets from Kaggle and Socrata: table reformatting (among JSON,
+                                        JSONL, Markdown, CSV, TSV, and HTML), predicting which columns can be used to join two tables, and
+                                        predicting the
+                                        correct type annotation of a data column
+                                    </span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -308,14 +272,13 @@ function Blog() {
                             <h2 className="title is-3">Motivation</h2>
                             <div className="content has-text-justified">
                                 <p className="c18">
-                                    <span className="c9">For LiveBench, we want to ensure that our questions are free of </span><strong>contamination</strong><span className="c9">&nbsp;and are easily and </span><strong>fairly
-                                            evaluated</strong>
+                                    <span className="c9">The goal in creating LiveBench is to ensure that its questions are not prone to </span><strong>contamination</strong><span className="c9">&nbsp;and are </span><strong>easily, accurately, and fairly evaluated</strong>
                                     <span className="c0">.</span>
                                 </p>
                                 <p className="c10"><span className="c0"></span></p>
                                 <p className="c18">
                                     <span className="c0">
-                                        Many LLM benchmarks are easily contaminated since modern LLMs include large swaths of the internet in their
+                                        Many LLM benchmarks are easily contaminated, since modern LLMs include large swaths of the internet in their
                                         training data. This is a problem for LLM evaluations since an LLM&rsquo;s performance on a benchmark will be
                                         artificially inflated, or contaminated, if the LLM has seen the questions of a benchmark during training.
                                         &nbsp;
@@ -325,16 +288,16 @@ function Blog() {
                                 <p className="c18">
                                     <span className="c9">For example, </span>
                                     <span className="c12"><a className="c14"
-                                        href="https://openreview.net/forum?id=m2NVG4Htxs">recent</a></span>
+                                        href="https://arxiv.org/abs/2310.10628" target="_blank" rel="noreferrer">recent</a></span>
                                     <span className="c9">&nbsp;</span>
                                     <span className="c12"><a className="c14"
-                                        href="http://livecodebench.github.io">work</a></span>
+                                        href="http://livecodebench.github.io" target="_blank" rel="noreferrer">work</a></span>
                                     <span className="c9">
                                         &nbsp;shows that LLMs&#39; performance on Codeforces plummets after the training data cutoff date of the
                                         LLM, and before the cutoff date, performance is highly correlated with the number of times the problem
                                         appears on
                                         GitHub. Similarly, a <a className="c14"
-                                            href="https://arxiv.org/pdf/2405.00332">recent
+                                            href="https://arxiv.org/pdf/2405.00332" target="_blank" rel="noreferrer">recent
                                             hand-crafted variant</a> of the established math dataset, GSM8K, shows evidence that several models have
                                         overfitted to this benchmark.</span>
                                 </p>
@@ -352,14 +315,15 @@ function Blog() {
                                         open-ended questions, instruction-following questions, and chat bots. However, LLM judging has some
                                         important
                                         shortcomings. (1) LLMs have biases towards their own answers. Typically only GPT-4 and Claude-3-Opus are
-                                        used as judges, as the highest-performing LLMs. Yet, GPT-4 and Claude-3-Opus both favor their own answers.
+                                        used as judges, as the highest-performing LLMs. Yet, GPT-4 and Claude-3-Opus both <a className="c14"
+                                            href="https://lmsys.org/blog/2024-04-19-arena-hard/" target="_blank" rel="noreferrer">favor their own answers</a>.
                                         (2) They
                                         also have a noticeable difference in terms of variance and favorability of other models, and GPT-4 has
                                         variance in its own judging, even with temperature 0. (3) For questions that have ground truth answers, LLM
                                         judges can
                                         make mistakes. For example, question 2 in Arena-Hard asks to write a C++ program to compute whether a given
                                         string can be converted to &lsquo;abc&rsquo; by swapping two letters. GPT-4 incorrectly judges
-                                        gpt-4-0314&#39;s
+                                        its own
                                         solution as incorrect. We present more evidence of this phenomenon below.
                                     </span>
                                 </p>
@@ -462,7 +426,7 @@ function Blog() {
                                     </div>
                                 </div>
                                 <p className="c5">
-                                    We also observe that Pearson&#39;s correlation coefficient of model scores
+                                    We find that Pearson&#39;s correlation coefficient of model scores
                                     between LiveBench and ChatBot Arena is 0.92 and between LiveBench and Arena-Hard is 0.90.
                                 </p>
                                 <p className="c5">
@@ -472,8 +436,6 @@ function Blog() {
                                     Arena-Hard compared to LiveBench -- likely due to the known bias from using gpt-4 itself as the LLM
                                     judge.
                                 </p>
-                                <p className="c5"><span className="c0 c21">These observations emphasize the benefit of using ground-truth judging, which is
-                                    immune to biases based on the style of the output.</span></p>
                                 <p className="c26 c15"><span className="c0 c21"></span></p>
                                 <p className="c26">
                                     We are very excited about the future of LiveBench and actively would like to partner with researchers to

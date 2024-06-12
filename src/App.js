@@ -106,6 +106,8 @@ function App() {
                                         </span>
                                         <span className="link-block">
                                             <a href="https://huggingface.co/livebench"
+                                                target="_blank"
+                                                rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-database"></i>
@@ -115,6 +117,8 @@ function App() {
                                         </span>
                                         <span className="link-block">
                                             <a href="./livebench.pdf"
+                                                target="_blank"
+                                                rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i class="fa-regular fa-newspaper"></i>
@@ -129,39 +133,25 @@ function App() {
                     </div>
                 </div>
             </section>
-            <section className="hero teaser">
-                <div className="container is-max-desktop">
-                    <div className="hero-body">
-                        <h2 className="subtitle has-text-centered">
-                            {tagline}
-                        </h2>
-                        <div className="has-text-centered">
-                            <img src={livebench_results} alt="Radial Plot Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
-                        </div>
-                    </div>
-                </div>
-            </section>
             <section className="section">
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">
                             <h2 className="title is-3">Introduction</h2>
                             <div className="content has-text-justified">
-                                Test set contamination, wherein test data from a benchmark ends up in a newer model’s training set, is a well-documented obstacle for fair LLM evaluation and can quickly render benchmarks obsolete. As a consequence, benchmarks that use LLMs-as-a-judge, or that crowdsource prompts and evaluations from human judges are gaining in popularity.  While LLM judging and crowdsourced benchmarks have many benefits, they also introduce significant biases, and they break down when scoring hard questions; for example, it is difficult for an LLM (or human) to correctly grade answers to questions that it itself cannot solve.
-                                <br /><br />
-                                We introduce a new framework for benchmarking LLMs designed to be immune to both test set contamination and the pitfalls of LLM judging and human crowdsourcing. We use this framework to create LiveBench, the first benchmark with the following properties.
-                                <ul>
-                                    <li>
-                                        Contains frequently-updated questions from new information sources, in which <strong>questions become harder over time</strong>.
+                            <p className="c18"><span className="c9">Introducing </span><strong>LiveBench</strong><span className="c0">: a benchmark for LLMs designed with test set contamination and objective evaluation in mind</span>
+                            </p>
+                            <p className="c10"><span className="c0"></span></p>
+                                <p className="c18"><span className="c9">LiveBench has the following properties: </span>
+                                </p>
+                                <ul className="c28 lst-kix_r92srvgun7j-0 start">
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is designed to limit potential contamination by releasing new questions monthly, as well as having questions based on recently-released datasets, arXiv papers, news articles, and IMDb movie synopses.</span>
                                     </li>
-                                    <li>
-                                        Scores answers automatically according to objective ground-truth values, without the use of LLM judges.
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
                                     </li>
-                                    <li>
-                                        Contains a wide variety of challenging tasks, spanning math, coding, reasoning, writing, instruction following, and data analysis.
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
-                                To achieve this, LiveBench contains questions that are based on recently-released math competitions, arXiv papers, and datasets, and it contains harder, 'contamination-proof' versions of previously released benchmarks: Big-Bench Hard, AMPS, and IFEval. We evaluate several prominent closed-source models, as well as dozens of open-source models ranging from 7B to 70B in size, on our benchmark. LiveBench is hard, with GPT-4-Turbo only achieving 45% accuracy. We release all questions, code, and model answers. Questions will be added and updated on a monthly basis, and we welcome community engagement and collaboration for expanding the benchmark tasks and models.
                             </div>
                         </div>
                     </div>
