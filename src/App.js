@@ -74,6 +74,9 @@ function App() {
                                     <span className="author-block"><sup>4</sup>UMD,</span>
                                     <span className="author-block"><sup>5</sup>USC</span>
                                 </div>
+                                <div className="is-size-5 ">
+                                    <span className="author-block">This work is sponsored by <a href="https://abacus.ai">Abacus.AI</a></span>
+                                </div>
 
                                 <div className="column has-text-centered">
                                     <div className="publication-links">
