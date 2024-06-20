@@ -164,6 +164,9 @@ function App() {
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
                         <h2 className="title is-3">Leaderboard</h2>
+                        <div className="is-size-6 ">
+                            <span className="author-block">Last updated 19 June 2024</span>
+                        </div>
                         <CSVTable />
                     </div>
                 </div>
