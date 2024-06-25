@@ -155,7 +155,7 @@ function Blog() {
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 17 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c10"><span className="c0"></span></p>
@@ -196,7 +196,7 @@ function Blog() {
                             <h2 className="title is-3">LiveBench Overview</h2>
                             <div className="content has-text-justified">
                                 <p className="c18">
-                                    <span className="c0">LiveBench currently consists of 18 tasks across 6 categories: reasoning, data analysis, math,
+                                    <span className="c0">LiveBench currently consists of 17 tasks across 6 categories: reasoning, data analysis, math,
                                         coding, language comprehension, and instruction following. Each task falls into one of two types: </span>
                                 </p>
                                 <ol className="c28 lst-kix_st344of4rgcu-0 start" start="1">
@@ -230,9 +230,6 @@ function Blog() {
                                     <span className="c12"><a className="c14"
                                         href="https://arxiv.org/abs/2206.04615">Big-Bench
                                         Hard</a></span>
-                                    <span className="c9">, a harder version of positional reasoning from </span>
-                                    <span className="c12"><a className="c14"
-                                        href="https://arxiv.org/abs/1502.05698">bAbI</a></span>
                                     <span className="c9">, and </span>
                                     <span className="c12"><a className="c14"
                                         href="https://en.wikipedia.org/wiki/Zebra_Puzzle">Zebra

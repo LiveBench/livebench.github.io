@@ -152,7 +152,7 @@ function App() {
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 17 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c18"><span className="c9"><strong>We will evaluate your model on LiveBench!</strong> Open a <a href="https://github.com/LiveBench/LiveBench/issues" target="_blank" rel="noreferrer">github issue</a> or email us at <a href="mailto:livebench.ai@gmail.com" target="_blank" rel="noreferrer">livebench.ai@gmail.com</a>!</span>
@@ -167,7 +167,7 @@ function App() {
                     <div className="column is-four-fifths">
                         <h2 className="title is-3">Leaderboard</h2>
                         <div className="is-size-6 ">
-                            <span className="author-block">Last updated 20 June 2024</span>
+                            <span className="author-block">Last updated 25 June 2024</span>
                         </div>
                         <CSVTable />
                     </div>
