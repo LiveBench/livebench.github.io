@@ -123,7 +123,7 @@ function Blog() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./livebench.pdf"
+                                            <a href="https://arxiv.org/abs/2406.19314"
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
@@ -167,7 +167,7 @@ function Blog() {
                                 <p className="c10"><span className="c0"></span></p>
                                 <p className="c18">
                                     <span className="c9">
-                                        In addition to contamination, LiveBench avoids the pitfalls of LLM judging by including only questions that have an objective answer. While LLM judging and crowdsourced prompts and evaluations have many benefits, they also introduce significant biases and completely break down when judging the answers to hard questions. For example, we show in <a href="./livebench.pdf" target="_blank" rel="noreferrer">our paper</a> that for challenging reasoning and math problems, the pass/fail judgments from GPT-4-Turbo have an error rate of up to 46%.
+                                        In addition to contamination, LiveBench avoids the pitfalls of LLM judging by including only questions that have an objective answer. While LLM judging and crowdsourced prompts and evaluations have many benefits, they also introduce significant biases and completely break down when judging the answers to hard questions. For example, we show in <a href="https://arxiv.org/abs/2406.19314" target="_blank" rel="noreferrer">our paper</a> that for challenging reasoning and math problems, the pass/fail judgments from GPT-4-Turbo have an error rate of up to 46%.
                                     </span>
                                 </p>
                                 <div className="has-text-centered">
@@ -466,7 +466,7 @@ function Blog() {
                 <div className="container">
                     <div className="content has-text-centered">
                         <a className="icon-link"
-                            href="./livebench.pdf">
+                            href="https://arxiv.org/abs/2406.19314">
                             <i className="fas fa-file-pdf"></i>
                         </a>
                         <a className="icon-link" href="https://github.com/LiveBench/LiveBench">

@@ -119,7 +119,7 @@ function App() {
                                             </a>
                                         </span>
                                         <span className="link-block">
-                                            <a href="./livebench.pdf"
+                                            <a href="https://arxiv.org/abs/2406.19314"
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
@@ -186,7 +186,7 @@ function App() {
                 <div className="container">
                     <div className="content has-text-centered">
                         <a className="icon-link"
-                            href="./livebench.pdf">
+                            href="https://arxiv.org/abs/2406.19314">
                             <i className="fas fa-file-pdf"></i>
                         </a>
                         <a className="icon-link" href="https://github.com/LiveBench/LiveBench">
