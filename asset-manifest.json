@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "./static/css/main.46c593da.css",
-    "main.js": "./static/js/main.5ed02963.js",
+    "main.js": "./static/js/main.a7d6c1b8.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
+    "static/media/livebench_results.png": "./static/media/livebench_results.04fd4c32a7af05a74662.png",
     "static/media/livebench_vs_chatbot_arena.png": "./static/media/livebench_vs_chatbot_arena.2c09af3bc158a5de46ef.png",
     "static/media/fa-solid-900.ttf": "./static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/livebench_vs_arena_hard.png": "./static/media/livebench_vs_arena_hard.067258d8531ffef380b2.png",
-    "static/media/livebench_results.png": "./static/media/livebench_results.fda2ef40c40b8e1f3c96.png",
     "static/media/fa-brands-400.ttf": "./static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
     "static/media/fa-solid-900.woff2": "./static/media/fa-solid-900.4d986b00ff9ca3828fbd.woff2",
     "static/media/fa-brands-400.woff2": "./static/media/fa-brands-400.455ea818179b4def0c43.woff2",
@@ -16,11 +16,11 @@
     "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "./index.html",
     "main.46c593da.css.map": "./static/css/main.46c593da.css.map",
-    "main.5ed02963.js.map": "./static/js/main.5ed02963.js.map",
+    "main.a7d6c1b8.js.map": "./static/js/main.a7d6c1b8.js.map",
     "453.c2db30af.chunk.js.map": "./static/js/453.c2db30af.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.46c593da.css",
-    "static/js/main.5ed02963.js"
+    "static/js/main.a7d6c1b8.js"
   ]
 }
