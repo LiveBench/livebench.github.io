@@ -167,7 +167,7 @@ function App() {
                     <div className="column is-four-fifths">
                         <h2 className="title is-3">Leaderboard</h2>
                         <div className="is-size-6 ">
-                            <span className="author-block">Last updated 19 July 2024</span>
+                            <span className="author-block">Last updated 20 July 2024</span>
                         </div>
                         <CSVTable />
                     </div>
