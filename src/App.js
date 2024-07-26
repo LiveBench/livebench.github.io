@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CSVTable from './Table/CSVTable';
+import CSVTable_2024_07_24 from './Table/CSVTable_2024_07_24';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
@@ -7,6 +8,10 @@ import './App.css';
 import { bibtexEntry } from './constants';
 
 function App() {
+    const [selectedMonth, setSelectedMonth] = useState('July');
+    const handleSliderChange = (event) => {
+        setSelectedMonth(event.target.value === '0' ? 'June' : 'July');
+    };
     return (
         <div className="App">
             <section className="hero">
@@ -142,17 +147,15 @@ function App() {
                         <div className="column is-four-fifths">
                             <h2 className="title is-3">Introduction</h2>
                             <div className="content has-text-justified">
-                            <p className="c18"><span className="c9">Introducing </span><strong>LiveBench</strong><span className="c0">: a benchmark for LLMs designed with test set contamination and objective evaluation in mind</span>
+                            <p className="c18"><span className="c9">Introducing </span><strong>LiveBench</strong><span className="c0">: a benchmark for LLMs designed with test set contamination and objective evaluation in mind. It has the following properties:</span>
                             </p>
                             <p className="c10"><span className="c0"></span></p>
-                                <p className="c18"><span className="c9">LiveBench has the following properties: </span>
-                                </p>
                                 <ul className="c28 lst-kix_r92srvgun7j-0 start">
                                     <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is designed to limit potential contamination by releasing new questions monthly, as well as having questions based on recently-released datasets, arXiv papers, news articles, and IMDb movie synopses.</span>
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 17 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c18"><span className="c9"><strong>We will evaluate your model on LiveBench!</strong> Open a <a href="https://github.com/LiveBench/LiveBench/issues" target="_blank" rel="noreferrer">github issue</a> or email us at <a href="mailto:livebench.ai@gmail.com" target="_blank" rel="noreferrer">livebench.ai@gmail.com</a>!</span>
@@ -163,13 +166,35 @@ function App() {
                 </div>
             </section>
             <section className="section">
+                <div className="container is-max-desktop">
+                    <h2 className="title is-3 has-text-centered">Leaderboard</h2>
+                    <div className="is-size-6 has-text-centered">
+                        <span className="author-block">We update the questions monthly. The initial version was <strong>LiveBench-2024-06-24</strong>, and the latest version is <strong>LiveBench-2024-07-25</strong>, with additional coding questions and a new spatial reasoning task. We will add and remove questions so that the benchmark completely refreshes every 6 months. </span>
+                    </div>
+                    <div className="field">
+                        <div className="is-flex is-justify-content-center is-align-items-center">
+                            <div className="month-label">
+                                <span className="month-text">LiveBench-2024-06-24</span>
+                            </div>
+                            <input
+                                type="range"
+                                min="0"
+                                max="1"
+                                step="1"
+                                value={selectedMonth === 'June' ? '0' : '1'}
+                                onChange={handleSliderChange}
+                                className="slider is-fullwidth mx-2"
+                                style={{ width: '200px' }} // Adjust width as needed
+                            />
+                            <div className="month-label">
+                                <span className="month-text">LiveBench-2024-07-25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
-                        <h2 className="title is-3">Leaderboard</h2>
-                        <div className="is-size-6 ">
-                            <span className="author-block">Last updated 24 July 2024</span>
-                        </div>
-                        <CSVTable />
+                        {selectedMonth === 'June' ? <CSVTable /> : <CSVTable_2024_07_24 />}
                     </div>
                 </div>
             </section>
