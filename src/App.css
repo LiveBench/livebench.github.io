@@ -191,3 +191,8 @@ td {
   margin: 5px 0;
 }
 
+.month-text {
+  font-weight: bold;
+  color: #1d7b13; /* Change this to your preferred color */
+  font-size: 1.2em; /* Adjust size as needed */
+}
