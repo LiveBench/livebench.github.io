@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import CSVTable from './Table/CSVTable';
-import CSVTable_2024_07_24 from './Table/CSVTable_2024_07_24';
+import CSVTable_2024_06_24 from './Table/CSVTable_2024_06_24';
+import CSVTable_2024_07_26 from './Table/CSVTable_2024_07_26';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
@@ -194,7 +194,7 @@ function App() {
                 </div>
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
-                        {selectedMonth === 'June' ? <CSVTable /> : <CSVTable_2024_07_24 />}
+                        {selectedMonth === 'June' ? <CSVTable_2024_06_24 /> : <CSVTable_2024_07_26 />}
                     </div>
                 </div>
             </section>

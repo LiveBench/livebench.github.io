@@ -1,11 +1,11 @@
-// src/Table/CSVTable_2024_07_24.js
+// src/Table/CSVTable_2024_07_26.js
 import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useSortableTable } from "./SortTable";
 
 
-const CSVTable_2024_07_24 = () => {
+const CSVTable_2024_07_26 = () => {
     const [data, setData] = useState([]);
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
@@ -46,7 +46,7 @@ const CSVTable_2024_07_24 = () => {
         { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
     ], []);
     useEffect(() => {
-        fetch(process.env.PUBLIC_URL + '/table_2024_07_24.csv')
+        fetch(process.env.PUBLIC_URL + '/table_2024_07_26.csv')
             .then(response => response.text())
             .then(text => {
                 Papa.parse(text, {
@@ -59,7 +59,7 @@ const CSVTable_2024_07_24 = () => {
                 });
             });
 
-        fetch(process.env.PUBLIC_URL + '/categories_2024_07_24.json')
+        fetch(process.env.PUBLIC_URL + '/categories_2024_07_26.json')
             .then(response => response.json())
             .then(json => {
                 setCategories(json);
@@ -213,4 +213,4 @@ const CSVTable_2024_07_24 = () => {
     );
 };
 
-export default CSVTable_2024_07_24;
+export default CSVTable_2024_07_26;
