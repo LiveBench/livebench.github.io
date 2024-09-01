@@ -1,17 +1,43 @@
 import React, { useState } from 'react';
 import CSVTable_2024_06_24 from './Table/CSVTable_2024_06_24';
 import CSVTable_2024_07_26 from './Table/CSVTable_2024_07_26';
+import CSVTable_2024_08_31 from './Table/CSVTable_2024_08_31';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
 // import livebench_results from './images/livebench_results.png';
 import { bibtexEntry } from './constants';
 
+
 function App() {
     const [selectedMonth, setSelectedMonth] = useState('July');
+    const [sliderPosition, setSliderPosition] = useState(1);
+
     const handleSliderChange = (event) => {
-        setSelectedMonth(event.target.value === '0' ? 'June' : 'July');
+        const value = event.target.value;
+        setSliderPosition(value);
+
+        if (value === '0') {
+            setSelectedMonth('June');
+        } else if (value === '1') {
+            setSelectedMonth('July');
+        } else {
+            setSelectedMonth('August');
+        }
     };
+
+    const getSliderValue = () => {
+        if (selectedMonth === 'June') return '0';
+        if (selectedMonth === 'July') return '1';
+        return '2';
+    };
+    
+    const getDate = () => {
+        if (selectedMonth === 'June') return '6/24/2024';
+        if (selectedMonth === 'July') return '7/26/2024';
+        return '8/31/2024';
+    };
+
     return (
         <div className="App">
             <section className="hero">
@@ -165,39 +191,55 @@ function App() {
                     </div>
                 </div>
             </section>
+
             <section className="section">
                 <div className="container is-max-desktop">
                     <h2 className="title is-3 has-text-centered">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
-                        <span className="author-block">We update the questions monthly. The initial version was <strong>LiveBench-2024-06-24</strong>, and the latest version is <strong>LiveBench-2024-07-25</strong>, with additional coding questions and a new spatial reasoning task. We will add and remove questions so that the benchmark completely refreshes every 6 months. </span>
+                        <span className="author-block">We update the questions monthly. The initial version was <strong>LiveBench-2024-06-24</strong>, the next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. 
+                        The most recent version is <strong>LiveBench-2024-08-31</strong> (in beta) with updated math questions. 
+                        We will add and remove questions so that the benchmark completely refreshes every 6 months. </span>
                     </div>
-                    <div className="field">
+                    <div className="field" style={{ marginTop: '50px' }}>
                         <div className="is-flex is-justify-content-center is-align-items-center">
-                            <div className="month-label">
-                                <span className="month-text">LiveBench-2024-06-24</span>
-                            </div>
-                            <input
-                                type="range"
-                                min="0"
-                                max="1"
-                                step="1"
-                                value={selectedMonth === 'June' ? '0' : '1'}
-                                onChange={handleSliderChange}
-                                className="slider is-fullwidth mx-2"
-                                style={{ width: '200px' }} // Adjust width as needed
-                            />
-                            <div className="month-label">
-                                <span className="month-text">LiveBench-2024-07-25</span>
+                            <div style={{ position: 'relative', width: '200px' }}>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="2"
+                                    step="1"
+                                    value={getSliderValue()}
+                                    onChange={handleSliderChange}
+                                    className="slider is-fullwidth mx-2"
+                                    style={{ width: '100%' }}
+                                />
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        top: '-30px',
+                                        left: `${(sliderPosition / 2) * 100}%`,
+                                        transform: 'translateX(-50%)',
+                                        backgroundColor: '#aaa',
+                                        color: '#fff',
+                                        padding: '5px 10px',
+                                        borderRadius: '5px'
+                                    }}
+                                >
+                                    {getDate()}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
-                        {selectedMonth === 'June' ? <CSVTable_2024_06_24 /> : <CSVTable_2024_07_26 />}
+                        {selectedMonth === 'June' && <CSVTable_2024_06_24 />}
+                        {selectedMonth === 'July' && <CSVTable_2024_07_26 />}
+                        {selectedMonth === 'August' && <CSVTable_2024_08_31 />}
                     </div>
                 </div>
             </section>
+
 
             <section className="section" id="BibTeX">
                 <div className="container is-max-desktop content">
