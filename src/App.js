@@ -33,9 +33,9 @@ function App() {
     };
     
     const getDate = () => {
-        if (selectedMonth === 'June') return '6/24/2024';
-        if (selectedMonth === 'July') return '7/26/2024';
-        return '8/31/2024';
+        if (selectedMonth === 'June') return '2024-06-24';
+        if (selectedMonth === 'July') return '2024-07-26';
+        return '2024-08-31';
     };
 
     return (
@@ -196,13 +196,13 @@ function App() {
                 <div className="container is-max-desktop">
                     <h2 className="title is-3 has-text-centered">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
-                        <span className="author-block">We update the questions monthly. The initial version was <strong>LiveBench-2024-06-24</strong>, the next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. 
-                        The most recent version is <strong>LiveBench-2024-08-31</strong> (in beta) with updated math questions. 
-                        We will add and remove questions so that the benchmark completely refreshes every 6 months. </span>
+                        <span className="author-block">We update the questions monthly. The initial version was <strong>LiveBench-2024-06-24</strong>. The next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. 
+                        The most recent version is <strong>LiveBench-2024-08-31</strong> with updated math questions. 
+                        We update questions each month such that the benchmark completely refreshes every 6 months. </span>
                     </div>
                     <div className="field" style={{ marginTop: '50px' }}>
                         <div className="is-flex is-justify-content-center is-align-items-center">
-                            <div style={{ position: 'relative', width: '200px' }}>
+                            <div style={{ position: 'relative', width: '300px' }}>
                                 <input
                                     type="range"
                                     min="0"
@@ -215,17 +215,32 @@ function App() {
                                 />
                                 <div
                                     style={{
-                                        position: 'absolute',
-                                        top: '-30px',
-                                        left: `${(sliderPosition / 2) * 100}%`,
-                                        transform: 'translateX(-50%)',
-                                        backgroundColor: '#aaa',
-                                        color: '#fff',
-                                        padding: '5px 10px',
-                                        borderRadius: '5px'
+                                    position: 'absolute',
+                                    top: '-40px',
+                                    left: `${(sliderPosition / 2.1) * 100 + 5}%`,
+                                    transform: 'translateX(-50%)',
+                                    backgroundColor: '#3e3e3e',
+                                    color: '#fff',
+                                    padding: '8px 20px',
+                                    borderRadius: '8px',
+                                    fontSize: '14px',
+                                    fontWeight: 'bold',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                                    whiteSpace: 'nowrap',
                                     }}
                                 >
                                     {getDate()}
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '-6px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%) rotate(45deg)',
+                                            width: '12px',
+                                            height: '12px',
+                                            backgroundColor: '#3e3e3e',
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>
