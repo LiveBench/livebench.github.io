@@ -10,8 +10,8 @@ import { bibtexEntry } from './constants';
 
 
 function App() {
-    const [selectedMonth, setSelectedMonth] = useState('July');
-    const [sliderPosition, setSliderPosition] = useState(1);
+    const [selectedMonth, setSelectedMonth] = useState('August');
+    const [sliderPosition, setSliderPosition] = useState(2);
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
