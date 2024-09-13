@@ -196,7 +196,8 @@ function App() {
                 <div className="container is-max-desktop">
                     <h2 className="title is-3 has-text-centered">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
-                        <span className="author-block">We update questions each month such that the benchmark completely refreshes every 6 months. The initial version was <strong>LiveBench-2024-06-24</strong>. The next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. All questions are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>. The most recent version is <strong>LiveBench-2024-08-31</strong> with updated math questions, and we are still in the process of evaluating all models for this version.
+                        <span className="author-block">We update questions each month such that the benchmark completely refreshes every 6 months. The initial version was <strong>LiveBench-2024-06-24</strong>. The next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. All questions are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>. The most recent version is <strong>LiveBench-2024-08-31</strong> with updated math questions.
+                        <br></br><br></br><strong>Note:</strong> the o1 results are preliminary! Since they introduce a new inference paradigm, we will continue to double check their outputs, as well as the default inference settings and prompt techniques in LiveBench (for all models, not just o1 models). LiveBench is truly "live", and we will update it accordingly as necessary in response to new developments in the field. 
                         </span>
                     </div>
                     <div className="field" style={{ marginTop: '50px' }}>
