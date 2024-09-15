@@ -26,9 +26,7 @@ export const useSortableTable = (data, columns, checkedCategories, categories) =
             } else {
                 // Default numeric or string comparison
                 return (
-                    a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
-                        numeric: true,
-                    }) * (sortOrder === "asc" ? 1 : -1)
+                    (a[sortField] - b[sortField]) * (sortOrder === "asc" ? 1 : -1)
                 );
             }
         });
