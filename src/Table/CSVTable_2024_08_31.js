@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useSortableTable } from "./SortTable";
+import { modelLinks } from './modelLinks';
 
 
 const CSVTable_2024_08_31 = () => {
@@ -195,7 +196,11 @@ const CSVTable_2024_08_31 = () => {
                         <tbody>
                             {sortedData.map((row, index) => (
                                 <tr key={index}>
-                                    <td className="sticky-col model-col">{row.model}</td>
+                                    <td className="sticky-col model-col">
+                                        <a href={modelLinks[row.model]} target="_blank" rel="noopener noreferrer">
+                                            {row.model}
+                                        </a>
+                                    </td>
                                     <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) =>
                                         checks.average ? [calculateAverage(row, categories[category]).toFixed(2)] :
