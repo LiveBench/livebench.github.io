@@ -13,6 +13,7 @@ export const modelLinks = {
     "deepseek-v2.5": "https://huggingface.co/deepseek-ai/DeepSeek-V2.5",
     "dracarys-72b-instruct": "https://huggingface.co/abacusai/Dracarys-72B-Instruct",
     "dracarys-llama-3.1-70b-instruct": "https://huggingface.co/abacusai/Dracarys-Llama-3.1-70B-Instruct",
+    "dracarys2-72b-instruct": "https://huggingface.co/abacusai/Dracarys2-72B-Instruct",
     "dracarys2-llama-3.1-70b-instruct": "https://huggingface.co/abacusai/Dracarys2-Llama-3.1-70B-Instruct",
     "gemini-1.5-flash-002": "https://developers.googleblog.com/en/updated-production-ready-gemini-models-reduced-15-pro-pricing-increased-rate-limits-and-more/",
     "gemini-1.5-flash-8b-exp-0827": "https://ai.google.dev/gemini-api/docs/models/experimental-models",
