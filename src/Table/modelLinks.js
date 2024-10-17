@@ -32,6 +32,8 @@ export const modelLinks = {
     "gpt-4o-2024-05-13": "https://openai.com/index/hello-gpt-4o/",
     "gpt-4o-2024-08-06": "https://openai.com/index/hello-gpt-4o/",
     "gpt-4o-mini-2024-07-18": "https://openai.com/index/hello-gpt-4o/",
+    "grok-2": "https://x.ai/blog/grok-2",
+    "grok-2-mini": "https://x.ai/blog/grok-2",
     "lama-3.1-nemotron-70b-instruct": "https://build.nvidia.com/nvidia/llama-3_1-nemotron-70b-instruct",
     "meta-llama-3.1-405b-instruct-turbo": "https://www.together.ai/blog/meta-llama-3-1",
     "meta-llama-3.1-70b-instruct-turbo": "https://www.together.ai/blog/meta-llama-3-1",
