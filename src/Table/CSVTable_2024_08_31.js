@@ -4,6 +4,7 @@ import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useSortableTable } from "./SortTable";
 import { modelLinks } from './modelLinks';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const CSVTable_2024_08_31 = () => {
@@ -15,6 +16,26 @@ const CSVTable_2024_08_31 = () => {
     const [order, setOrder] = useState("asc");
     const [sortField, setSortField] = useState("");
     // const [sortedData, handleSorting] = useSortableTable(data, { key: sortField, direction: order }, categories, checkedCategories);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
+    const updateURL = (checkedCategories) => {
+        const params = new URLSearchParams();
+    
+        // Add only the categories with active selections to query params
+        Object.keys(checkedCategories).forEach(category => {
+            if (checkedCategories[category].average) {
+                params.append(category, 'a'); // 'a' for average
+            } else if (checkedCategories[category].allSubcategories) {
+                params.append(category, 's'); // 's' for subcategories
+            }
+        });
+    
+        // Update the browser's URL without reloading the page
+        navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+    };
 
 
     // Define columns as a memoized array
@@ -69,7 +90,25 @@ const CSVTable_2024_08_31 = () => {
                     return acc;
                 }, {});
                 setCheckedCategories(initialChecked);
+
+                // Parse URL parameters after categories are set
+                const params = new URLSearchParams(location.search);
+                const updatedCategories = { ...initialChecked };
+
+                params.forEach((value, category) => {
+                    if (value === 'a') {
+                        updatedCategories[category].average = true;
+                        updatedCategories[category].allSubcategories = false;
+                    } else if (value === 's') {
+                        updatedCategories[category].allSubcategories = true;
+                        updatedCategories[category].average = false;
+                    }
+                });
+
+                setCheckedCategories(updatedCategories);
+
             });
+
         const handleResize = () => {
             setScreenWidth(window.innerWidth);
         };
@@ -81,9 +120,9 @@ const CSVTable_2024_08_31 = () => {
         };
     }, []);
 
-    
     const handleCheckboxChange = (clickedCategory, type) => {
         setCheckedCategories(prev => {
+            // Preserve the original logic for handling checkboxes
             const updatedCategories = Object.keys(prev).reduce((acc, category) => {
                 acc[category] = {
                     average: prev[category].average,
@@ -94,13 +133,15 @@ const CSVTable_2024_08_31 = () => {
                 }
                 return acc;
             }, {});
-
+    
+            // Handle logic for 'average' checkbox
             if (type === 'average') {
                 Object.keys(updatedCategories).forEach(category => {
                     updatedCategories[category].allSubcategories = false;
                 });
             }
-
+    
+            // Handle logic for 'allSubcategories' checkbox
             if (type === 'allSubcategories') {
                 Object.keys(updatedCategories).forEach(category => {
                     updatedCategories[category].average = false;
@@ -109,18 +150,23 @@ const CSVTable_2024_08_31 = () => {
                     }
                 });
             }
-
+    
+            // Default behavior when no checkboxes are active
             const noCheckboxIsActive = !Object.values(updatedCategories).some(cat => cat.average || cat.allSubcategories);
             if (noCheckboxIsActive) {
                 Object.keys(updatedCategories).forEach(category => {
                     updatedCategories[category].average = true;
                 });
             }
-
+    
+            // Add the URL update to reflect the checkbox state
+            updateURL(updatedCategories);
+    
+            // Return the updated state
             return updatedCategories;
         });
     };
-
+    
 
 
     const handleSortingChange = (accessor) => {
