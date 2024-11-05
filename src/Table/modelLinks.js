@@ -2,6 +2,8 @@
 export const modelLinks = {
     "chatgpt-4o-latest-0903": "https://openai.com/index/hello-gpt-4o/",
     "claude-3-5-sonnet-20240620": "https://www.anthropic.com/news/claude-3-5-sonnet",
+    "claude-3-5-sonnet-20241022": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "claude-3-5-haiku-20241022": "https://www.anthropic.com/claude/haiku",
     "claude-3-haiku-20240307": "https://www.anthropic.com/claude",
     "claude-3-opus-20240229": "https://www.anthropic.com/claude",
     "claude-3-sonnet-20240229": "https://www.anthropic.com/claude",
