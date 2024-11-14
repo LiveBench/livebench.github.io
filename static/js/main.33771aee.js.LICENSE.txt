@@ -52,7 +52,7 @@ License: MIT
  */
 
 /**
- * @remix-run/router v1.16.1
+ * @remix-run/router v1.21.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -63,7 +63,7 @@ License: MIT
  */
 
 /**
- * React Router v6.23.1
+ * React Router v6.28.0
  *
  * Copyright (c) Remix Software Inc.
  *
