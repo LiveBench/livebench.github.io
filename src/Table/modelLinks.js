@@ -54,5 +54,6 @@ export const modelLinks = {
     "phi-3-small-8k-instruct": "https://huggingface.co/microsoft/Phi-3-small-8k-instruct",
     "phi-3.5-mini-instruct": "https://huggingface.co/microsoft/Phi-3.5-mini-instruct",
     "phi-3.5-moe-instruct": "https://huggingface.co/microsoft/Phi-3.5-MoE-instruct",
-    "qwen2.5-72b-instruct": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct"
+    "qwen2.5-72b-instruct": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+    "qwen2.5-7b-instruct-turbo": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
 };
