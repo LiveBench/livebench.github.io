@@ -128,7 +128,7 @@ function Blog() {
                                                 rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
-                                                    <i class="fa-regular fa-newspaper"></i>
+                                                    <i className="fa-regular fa-newspaper"></i>
                                                 </span>
                                                 <span>Paper</span>
                                             </a>

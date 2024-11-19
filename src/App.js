@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import CSVTable_2024_06_24 from './Table/CSVTable_2024_06_24';
-import CSVTable_2024_07_26 from './Table/CSVTable_2024_07_26';
-import CSVTable_2024_08_31 from './Table/CSVTable_2024_08_31';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
 // import livebench_results from './images/livebench_results.png';
 import { bibtexEntry } from './constants';
+import CSVTable from './Table/CSVTable';
 
 
 function App() {
@@ -155,7 +153,7 @@ function App() {
                                                 rel="noreferrer"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
-                                                    <i class="fa-regular fa-newspaper"></i>
+                                                    <i className="fa-regular fa-newspaper"></i>
                                                 </span>
                                                 <span>Paper</span>
                                             </a>
@@ -248,9 +246,9 @@ function App() {
                 </div>
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
-                        {selectedMonth === 'June' && <CSVTable_2024_06_24 />}
-                        {selectedMonth === 'July' && <CSVTable_2024_07_26 />}
-                        {selectedMonth === 'August' && <CSVTable_2024_08_31 />}
+                        {selectedMonth === 'June' && <CSVTable dateStr='2024-06-24' />}
+                        {selectedMonth === 'July' && <CSVTable dateStr='2024-07-26' />}
+                        {selectedMonth === 'August' && <CSVTable dateStr='2024-08-31' />}
                     </div>
                 </div>
             </section>

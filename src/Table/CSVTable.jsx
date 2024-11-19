@@ -1,13 +1,14 @@
-// src/Table/CSVTable_2024_08_31.js
+// src/Table/CSVTable.jsx
 import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useSortableTable } from "./SortTable";
 import { modelLinks } from './modelLinks';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 
-const CSVTable_2024_08_31 = () => {
+const CSVTable = ({dateStr}) => {
+    const date = new Date(dateStr).toISOString().split('T')[0].replaceAll('-', '_');
     const [data, setData] = useState([]);
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
@@ -17,24 +18,35 @@ const CSVTable_2024_08_31 = () => {
     const [sortField, setSortField] = useState("");
     // const [sortedData, handleSorting] = useSortableTable(data, { key: sortField, direction: order }, categories, checkedCategories);
 
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
 
 
     const updateURL = (checkedCategories) => {
         const params = new URLSearchParams();
     
+        let allAverages = true;
+        let anySubcategories = false;
         // Add only the categories with active selections to query params
         Object.keys(checkedCategories).forEach(category => {
-            if (checkedCategories[category].average) {
+            if (checkedCategories[category].average && checkedCategories[category].allSubcategories) {
+                params.append(category, 'as');
+            } else if (checkedCategories[category].average) {
                 params.append(category, 'a'); // 'a' for average
             } else if (checkedCategories[category].allSubcategories) {
+                allAverages = false;
+                anySubcategories = true;
                 params.append(category, 's'); // 's' for subcategories
+            } else {
+                allAverages = false;
             }
         });
+
+        if (allAverages && !anySubcategories) {
+            setSearchParams('');
+            return;
+        }
     
-        // Update the browser's URL without reloading the page
-        navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+        setSearchParams(params);
     };
 
 
@@ -68,7 +80,7 @@ const CSVTable_2024_08_31 = () => {
         { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
     ], []);
     useEffect(() => {
-        fetch(process.env.PUBLIC_URL + '/table_2024_08_31.csv')
+        fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())
             .then(text => {
                 Papa.parse(text, {
@@ -81,31 +93,15 @@ const CSVTable_2024_08_31 = () => {
                 });
             });
 
-        fetch(process.env.PUBLIC_URL + '/categories_2024_08_31.json')
+        fetch(process.env.PUBLIC_URL + `/categories_${date}.json`)
             .then(response => response.json())
             .then(json => {
                 setCategories(json);
-                const initialChecked = Object.keys(json).reduce((acc, category) => {
+                const checked = Object.keys(json).reduce((acc, category) => {
                     acc[category] = { average: true, allSubcategories: false };
                     return acc;
                 }, {});
-                setCheckedCategories(initialChecked);
-
-                // Parse URL parameters after categories are set
-                const params = new URLSearchParams(location.search);
-                const updatedCategories = { ...initialChecked };
-
-                params.forEach((value, category) => {
-                    if (value === 'a') {
-                        updatedCategories[category].average = true;
-                        updatedCategories[category].allSubcategories = false;
-                    } else if (value === 's') {
-                        updatedCategories[category].allSubcategories = true;
-                        updatedCategories[category].average = false;
-                    }
-                });
-
-                setCheckedCategories(updatedCategories);
+                setCheckedCategories(checked);
 
             });
 
@@ -118,53 +114,79 @@ const CSVTable_2024_08_31 = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [date]);
+
+    useEffect(() => {
+        if (Object.keys(categories).length === 0) {
+            return;
+        }
+        if (searchParams.toString() === '') {
+            return;
+        }
+        // Parse URL parameters after categories are set
+        const updatedCategories = Object.keys(categories).reduce((acc, category) => {
+            acc[category] = { average: false, allSubcategories: false };
+            return acc;
+        }, {});
+
+        searchParams.forEach((value, category) => {
+            if (value.includes('a')) {
+                updatedCategories[category].average = true;
+            }
+            if (value.includes('s')) {
+                updatedCategories[category].allSubcategories = true;
+            }
+        });
+
+        setCheckedCategories(updatedCategories);
+    }, [categories, searchParams]);
+
+    useEffect(() => {
+        if (Object.keys(checkedCategories).length === 0) {
+            return;
+        }
+        
+        // Add the URL update to reflect the checkbox state
+        updateURL(checkedCategories);
+    }, [checkedCategories]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
-        setCheckedCategories(prev => {
-            // Preserve the original logic for handling checkboxes
-            const updatedCategories = Object.keys(prev).reduce((acc, category) => {
-                acc[category] = {
-                    average: prev[category].average,
-                    allSubcategories: prev[category].allSubcategories
-                };
+
+        // Preserve the original logic for handling checkboxes
+        const updatedCategories = { ...checkedCategories };
+        updatedCategories[clickedCategory][type] = !checkedCategories[clickedCategory][type];
+
+        // If 'average' for a category is checked, uncheck 'allSubcategories' for all other categories
+        if (type === 'average') {
+            Object.keys(updatedCategories).forEach(category => {
                 if (category === clickedCategory) {
-                    acc[category][type] = !prev[category][type];
+                    return;
                 }
-                return acc;
-            }, {});
-    
-            // Handle logic for 'average' checkbox
-            if (type === 'average') {
-                Object.keys(updatedCategories).forEach(category => {
-                    updatedCategories[category].allSubcategories = false;
-                });
-            }
-    
-            // Handle logic for 'allSubcategories' checkbox
-            if (type === 'allSubcategories') {
-                Object.keys(updatedCategories).forEach(category => {
+                updatedCategories[category].allSubcategories = false;
+            });
+        }
+
+        // If 'allSubcategories' for a category is checked, uncheck everything for all other categories
+        if (type === 'allSubcategories') {
+            Object.keys(updatedCategories).forEach(category => {
+                if (category !== clickedCategory) {
                     updatedCategories[category].average = false;
-                    if (category !== clickedCategory) {
-                        updatedCategories[category].allSubcategories = false;
-                    }
-                });
-            }
-    
-            // Default behavior when no checkboxes are active
-            const noCheckboxIsActive = !Object.values(updatedCategories).some(cat => cat.average || cat.allSubcategories);
-            if (noCheckboxIsActive) {
-                Object.keys(updatedCategories).forEach(category => {
+                    updatedCategories[category].allSubcategories = false;
+                } else if (updatedCategories[category].allSubcategories) {
                     updatedCategories[category].average = true;
-                });
-            }
-    
-            // Add the URL update to reflect the checkbox state
-            updateURL(updatedCategories);
-    
-            // Return the updated state
-            return updatedCategories;
-        });
+                }
+            });
+        }
+
+        // Default behavior when no checkboxes are active
+        const noCheckboxIsActive = !Object.values(updatedCategories).some(cat => cat.average || cat.allSubcategories);
+        if (noCheckboxIsActive) {
+            Object.keys(updatedCategories).forEach(category => {
+                updatedCategories[category].average = true;
+            });
+        }
+
+        setCheckedCategories(updatedCategories);
     };
     
 
@@ -182,7 +204,6 @@ const CSVTable_2024_08_31 = () => {
     const getSortClass = (accessor) => {
         return sortField === accessor ? (order === "asc" ? "up" : "down") : "default";
     };
-
 
     return (
         <div className="table-container">
@@ -227,10 +248,17 @@ const CSVTable_2024_08_31 = () => {
                                     className={`sticky-col globalAverage-col ${getSortClass("ga")}`}
                                     onClick={() => handleSortingChange("ga")}>
                                     Global Average</th>
-                                {Object.entries(checkedCategories).flatMap(([category, checks]) =>
-                                    checks.average ? [`${category} Average`] :
-                                        checks.allSubcategories ? categories[category] : []
-                                ).map((header, index) => (
+                                {Object.entries(checkedCategories).flatMap(([category, checks]) => {
+                                    const res = [];
+                                    if (checks.average) {
+                                        res.push([`${category} Average`]);
+                                    }
+                                    if (checks.allSubcategories) {
+                                        categories[category].forEach(subCat => res.push(subCat));
+                                    }
+                                    return res;
+
+                                }).map((header, index) => (
                                     <th
                                         key={index}
                                         onClick={() => handleSortingChange(header)}
@@ -248,12 +276,16 @@ const CSVTable_2024_08_31 = () => {
                                         </a>
                                     </td>
                                     <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>
-                                    {Object.entries(checkedCategories).flatMap(([category, checks]) =>
-                                        checks.average ? [calculateAverage(row, categories[category]).toFixed(2)] :
-                                            checks.allSubcategories ? categories[category].map(subCat =>
-                                                row[subCat] == null ? '-' :
-                                                    parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)) : []
-                                    ).map((cell, idx) => <td key={idx}>{cell}</td>)}
+                                    {Object.entries(checkedCategories).flatMap(([category, checks]) => {
+                                        const res = [];
+                                        if (checks.average) {
+                                            res.push([calculateAverage(row, categories[category]).toFixed(2)]);
+                                        }
+                                        if (checks.allSubcategories) {
+                                            categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
+                                        }
+                                        return res;
+                                    }).map((cell, idx) => <td key={idx}>{cell}</td>)}
                                 </tr>
                             ))}
                         </tbody>
@@ -264,4 +296,4 @@ const CSVTable_2024_08_31 = () => {
     );
 };
 
-export default CSVTable_2024_08_31;
+export default CSVTable;
