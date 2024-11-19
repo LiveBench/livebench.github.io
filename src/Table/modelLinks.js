@@ -57,5 +57,6 @@ export const modelLinks = {
     "phi-3.5-moe-instruct": "https://huggingface.co/microsoft/Phi-3.5-MoE-instruct",
     "qwen2.5-72b-instruct": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
     "qwen2.5-7b-instruct-turbo": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
-    "qwen2.5-coder-32b-instruct": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct"
+    "qwen2.5-coder-32b-instruct": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    "step-2-16k-202411": "https://www.stepfun.com/#step2",
 };
