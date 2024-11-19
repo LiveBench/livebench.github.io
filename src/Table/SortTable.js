@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react";
 import { getGlobalAverage, calculateAverage} from './Averaging';
 
-export const useSortableTable = (data, columns, checkedCategories, categories) => {
+export const useSortableTable = (data, columns, checkedCategories, categories, searchColumn) => {
     const [tableData, setTableData] = useState([]);
+    const [sortField, setSortField] = useState();
+    const [sortOrder, setSortOrder] = useState();
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const searchData = (searchQuery, searchColumn, data) => {
+        if (searchQuery === "") return data;
+        return data.filter((row) => {
+            return row[searchColumn].toString().toLowerCase().includes(searchQuery.toLowerCase());
+        });
+    };
 
     const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
         return [...sortingData].sort((a, b) => {
+            
             // Null handling standard across all fields
             if (a[sortField] === null) return 1;
             if (b[sortField] === null) return -1;
@@ -23,6 +34,9 @@ export const useSortableTable = (data, columns, checkedCategories, categories) =
                 const avgA = calculateAverage(a, categoryColumns);
                 const avgB = calculateAverage(b, categoryColumns);
                 return (avgA - avgB) * (sortOrder === "asc" ? 1 : -1);
+            } else if (sortField === "model") {
+                // Special case for model sorting
+                return a[sortField].localeCompare(b[sortField]) * (sortOrder === "asc" ? 1 : -1);
             } else {
                 // Default numeric or string comparison
                 return (
@@ -35,12 +49,28 @@ export const useSortableTable = (data, columns, checkedCategories, categories) =
     useEffect(() => {
         const initialSortField = columns.find(col => col.sortbyOrder)?.accessor || "model";
         const initialSortOrder = columns.find(col => col.sortbyOrder)?.sortbyOrder || "asc";
-        setTableData(sortData(initialSortField, initialSortOrder, data, checkedCategories, categories));
-    }, [data, columns, checkedCategories, categories]);
+        setSortField(initialSortField);
+        setSortOrder(initialSortOrder);
+    }, [columns]);
+
+    useEffect(() => {
+        let sortedData = sortData(sortField, sortOrder, data, checkedCategories, categories);
+        if (searchQuery !== "" && searchColumn !== "") {
+            sortedData = searchData(searchQuery, searchColumn, sortedData);
+        }
+        setTableData(sortedData);
+    }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories]);
 
     const handleSorting = (sortField, sortOrder) => {
-        setTableData(sortData(sortField, sortOrder, data, checkedCategories, categories));
-    };
+        setSortField(sortField);
+        setSortOrder(sortOrder);
+    }
 
-    return [tableData, handleSorting];
+    const handleSearch = (searchQuery) => {
+        setSearchQuery(searchQuery);
+    }
+
+
+
+    return [tableData, handleSorting, handleSearch, sortField, sortOrder, searchQuery];
 };

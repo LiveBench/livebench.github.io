@@ -13,10 +13,6 @@ const CSVTable = ({dateStr}) => {
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    // Use the custom hook for sorting
-    const [order, setOrder] = useState("asc");
-    const [sortField, setSortField] = useState("");
-    // const [sortedData, handleSorting] = useSortableTable(data, { key: sortField, direction: order }, categories, checkedCategories);
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -189,21 +185,20 @@ const CSVTable = ({dateStr}) => {
         setCheckedCategories(updatedCategories);
     };
     
+    const [sortedData, handleSorting, handleSearch, sortField, sortOrder, searchQuery] = useSortableTable(data, columns, checkedCategories, categories, 'model');
 
 
     const handleSortingChange = (accessor) => {
-        const sortOrder = accessor === sortField && order === "desc" ? "asc" : "desc";
-        setSortField(accessor);
-        setOrder(sortOrder);
-        handleSorting(accessor, sortOrder);
+        const order = accessor === sortField && sortOrder === "desc" ? "asc" : "desc";
+        handleSorting(accessor, order);
     };
-
-    const [sortedData, handleSorting] = useSortableTable(data, columns, checkedCategories, categories);
-
+    
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
-        return sortField === accessor ? (order === "asc" ? "up" : "down") : "default";
+        return sortField === accessor ? (sortOrder === "asc" ? "up" : "down") : "default";
     };
+
+    const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
 
     return (
         <div className="table-container">
@@ -235,6 +230,14 @@ const CSVTable = ({dateStr}) => {
                     ))}
                 </div>
             )}
+            <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+            </div>
             <div className="scrollable-table">
                 <div className="table-wrap">
                     <table className="main-tabl table">
@@ -244,14 +247,14 @@ const CSVTable = ({dateStr}) => {
                                     className={`sticky-col ${getSortClass("model")}`}
                                     onClick={() => handleSortingChange("model")}>
                                     Model</th>
-                                <th
+                                {numCheckedCategories > 1 && <th
                                     className={`sticky-col globalAverage-col ${getSortClass("ga")}`}
                                     onClick={() => handleSortingChange("ga")}>
-                                    Global Average</th>
+                                    Global Average</th>}
                                 {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                     const res = [];
                                     if (checks.average) {
-                                        res.push([`${category} Average`]);
+                                        res.push(`${category} Average`);
                                     }
                                     if (checks.allSubcategories) {
                                         categories[category].forEach(subCat => res.push(subCat));
@@ -275,11 +278,11 @@ const CSVTable = ({dateStr}) => {
                                             {row.model}
                                         </a>
                                     </td>
-                                    <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>
+                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {
-                                            res.push([calculateAverage(row, categories[category]).toFixed(2)]);
+                                            res.push(calculateAverage(row, categories[category]).toFixed(2));
                                         }
                                         if (checks.allSubcategories) {
                                             categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
