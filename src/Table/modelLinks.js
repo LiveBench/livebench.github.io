@@ -26,6 +26,7 @@ export const modelLinks = {
     "gemini-1.5-pro-exp-0801": "https://ai.google.dev/gemini-api/docs/models/experimental-models",
     "gemini-1.5-pro-exp-0827": "https://ai.google.dev/gemini-api/docs/models/experimental-models",
     "gemini-exp-1114": "https://ai.google.dev/gemini-api/docs/models/experimental-models",
+    "gemini-exp-1121": "https://ai.google.dev/gemini-api/docs/models/experimental-models",
     "gemma-2-27b-it": "https://huggingface.co/google/gemma-2-27b",
     "gemma-2-9b-it": "https://huggingface.co/google/gemma-2-9b",
     "gpt-3.5-turbo-0125": "https://openai.com/index/new-embedding-models-and-api-updates/",
