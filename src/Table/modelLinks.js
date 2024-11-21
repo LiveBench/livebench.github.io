@@ -34,6 +34,7 @@ export const modelLinks = {
     "gpt-4-turbo-2024-04-09": "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
     "gpt-4o-2024-05-13": "https://openai.com/index/hello-gpt-4o/",
     "gpt-4o-2024-08-06": "https://openai.com/index/hello-gpt-4o/",
+    "gpt-4o-2024-11-20": "https://openai.com/index/hello-gpt-4o/",
     "gpt-4o-mini-2024-07-18": "https://openai.com/index/hello-gpt-4o/",
     "grok-2": "https://x.ai/blog/grok-2",
     "grok-2-mini": "https://x.ai/blog/grok-2",
