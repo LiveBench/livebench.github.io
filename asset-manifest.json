@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.b9da24ee.css",
-    "main.js": "./static/js/main.2a2fe86d.js",
+    "main.css": "./static/css/main.10dd7358.css",
+    "main.js": "./static/js/main.7dc28a21.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
     "static/media/livebench_results.png": "./static/media/livebench_results.8e0a4067c9f80f03d93a.png",
     "static/media/livebench_vs_chatbot_arena.png": "./static/media/livebench_vs_chatbot_arena.2c09af3bc158a5de46ef.png",
-    "static/media/fa-solid-900.ttf": "./static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/fa-solid-900.ttf": "./static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/livebench_vs_arena_hard.png": "./static/media/livebench_vs_arena_hard.067258d8531ffef380b2.png",
-    "static/media/fa-brands-400.ttf": "./static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
-    "static/media/fa-solid-900.woff2": "./static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
-    "static/media/fa-brands-400.woff2": "./static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
-    "static/media/fa-regular-400.ttf": "./static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
-    "static/media/fa-regular-400.woff2": "./static/media/fa-regular-400.bc3722686635b5f86132.woff2",
-    "static/media/fa-v4compatibility.ttf": "./static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
-    "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "static/media/fa-brands-400.ttf": "./static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
+    "static/media/fa-solid-900.woff2": "./static/media/fa-solid-900.4d986b00ff9ca3828fbd.woff2",
+    "static/media/fa-brands-400.woff2": "./static/media/fa-brands-400.455ea818179b4def0c43.woff2",
+    "static/media/fa-regular-400.ttf": "./static/media/fa-regular-400.eb91f7b948a42799f678.ttf",
+    "static/media/fa-regular-400.woff2": "./static/media/fa-regular-400.21cb8f55d8e0c5b89751.woff2",
+    "static/media/fa-v4compatibility.ttf": "./static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
+    "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "./index.html",
-    "main.b9da24ee.css.map": "./static/css/main.b9da24ee.css.map",
-    "main.2a2fe86d.js.map": "./static/js/main.2a2fe86d.js.map",
+    "main.10dd7358.css.map": "./static/css/main.10dd7358.css.map",
+    "main.7dc28a21.js.map": "./static/js/main.7dc28a21.js.map",
     "453.c2db30af.chunk.js.map": "./static/js/453.c2db30af.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9da24ee.css",
-    "static/js/main.2a2fe86d.js"
+    "static/css/main.10dd7358.css",
+    "static/js/main.7dc28a21.js"
   ]
 }
