@@ -1,5 +1,5 @@
 // src/Table/CSVTable.jsx
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useSortableTable } from "./SortTable";
@@ -37,8 +37,12 @@ const CSVTable = ({dateStr}) => {
             }
         });
 
+        if (searchParams.has('q')) {
+            params.set('q', searchParams.get('q'));
+        }
+
         if (allAverages && !anySubcategories) {
-            setSearchParams('');
+            setSearchParams(searchParams.has('q') ? new URLSearchParams(`q=${searchParams.get('q')}`) : '');
             return;
         }
     
@@ -118,6 +122,9 @@ const CSVTable = ({dateStr}) => {
         }
         if (searchParams.toString() === '') {
             return;
+        } else if (searchParams.size === 1 && searchParams.has('q')) {
+            handleSearchChange(searchParams.get('q'));
+            return;
         }
         // Parse URL parameters after categories are set
         const updatedCategories = Object.keys(categories).reduce((acc, category) => {
@@ -126,6 +133,12 @@ const CSVTable = ({dateStr}) => {
         }, {});
 
         searchParams.forEach((value, category) => {
+
+            if (category === 'q') {
+                handleSearchChange(value);
+                return;
+            }
+
             if (value.includes('a')) {
                 updatedCategories[category].average = true;
             }
@@ -187,11 +200,21 @@ const CSVTable = ({dateStr}) => {
     
     const [sortedData, handleSorting, handleSearch, sortField, sortOrder, searchQuery] = useSortableTable(data, columns, checkedCategories, categories, 'model');
 
-
     const handleSortingChange = (accessor) => {
         const order = accessor === sortField && sortOrder === "desc" ? "asc" : "desc";
         handleSorting(accessor, order);
     };
+
+    const handleSearchChange = (value) => {
+        handleSearch(value);
+        const newParams = new URLSearchParams(searchParams);
+        if (value !== "") {
+            newParams.set('q', value);
+        } else {
+            newParams.delete('q');
+        }
+        setSearchParams(prev => newParams);
+    }
     
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
@@ -235,7 +258,7 @@ const CSVTable = ({dateStr}) => {
                     type="text"
                     placeholder="Search..."
                     value={searchQuery}
-                    onChange={(e) => handleSearch(e.target.value)}
+                    onChange={(e) => handleSearchChange(e.target.value)}
                 />
             </div>
             <div className="scrollable-table">
