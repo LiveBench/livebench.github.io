@@ -207,6 +207,7 @@ function App() {
                             All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
                             The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
                         <br></br><br></br><strong>Note:</strong> the o1 results are preliminary! Since they introduce a new inference paradigm, we will continue to double check their outputs, as well as the default inference settings and prompt techniques in LiveBench (for all models, not just o1 models). LiveBench is truly "live", and we will update it accordingly as necessary in response to new developments in the field. 
+                        <br></br><br></br><strong>Note:</strong> Not all models have been re-evaluated for the November release. We will update the leaderboard as we re-evaluate models. Check back in a few days.
                         </span>
                     </div>
                     <div className="field" style={{ marginTop: '50px' }}>
