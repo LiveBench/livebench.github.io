@@ -8,8 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedMonth, setSelectedMonth] = useState('August');
-    const [sliderPosition, setSliderPosition] = useState(2);
+    const [selectedMonth, setSelectedMonth] = useState('November');
+    const [sliderPosition, setSliderPosition] = useState(3);
+    const maxSliderValue = 3;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -19,21 +20,25 @@ function App() {
             setSelectedMonth('June');
         } else if (value === '1') {
             setSelectedMonth('July');
-        } else {
+        } else if (value === '2') {
             setSelectedMonth('August');
+        } else {
+            setSelectedMonth('November');
         }
     };
 
     const getSliderValue = () => {
         if (selectedMonth === 'June') return '0';
         if (selectedMonth === 'July') return '1';
-        return '2';
+        if (selectedMonth === 'August') return '2';
+        return '3';
     };
     
     const getDate = () => {
         if (selectedMonth === 'June') return '2024-06-24';
         if (selectedMonth === 'July') return '2024-07-26';
-        return '2024-08-31';
+        if (selectedMonth === 'August') return '2024-08-31';
+        return '2024-11-25';
     };
 
     return (
@@ -194,7 +199,13 @@ function App() {
                 <div className="container is-max-desktop">
                     <h2 className="title is-3 has-text-centered">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
-                        <span className="author-block">We update questions each month such that the benchmark completely refreshes every 6 months. The initial version was <strong>LiveBench-2024-06-24</strong>. The next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task. All questions are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>. The most recent version is <strong>LiveBench-2024-08-31</strong> with updated math questions.
+                        <span className="author-block">
+                            We update questions each month such that the benchmark completely refreshes every 6 months. 
+                            The initial version was <strong>LiveBench-2024-06-24</strong>. 
+                            The next version was <strong>LiveBench-2024-07-25</strong> with additional coding questions and a new spatial reasoning task.
+                            After that, we released <strong>LiveBench-2024-08-31</strong> with updated math questions.
+                            All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
+                            The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
                         <br></br><br></br><strong>Note:</strong> the o1 results are preliminary! Since they introduce a new inference paradigm, we will continue to double check their outputs, as well as the default inference settings and prompt techniques in LiveBench (for all models, not just o1 models). LiveBench is truly "live", and we will update it accordingly as necessary in response to new developments in the field. 
                         </span>
                     </div>
@@ -204,7 +215,7 @@ function App() {
                                 <input
                                     type="range"
                                     min="0"
-                                    max="2"
+                                    max="3"
                                     step="1"
                                     value={getSliderValue()}
                                     onChange={handleSliderChange}
@@ -215,7 +226,7 @@ function App() {
                                     style={{
                                     position: 'absolute',
                                     top: '-40px',
-                                    left: `${(sliderPosition / 2.1) * 100 + 5}%`,
+                                    left: `${(sliderPosition / (maxSliderValue + 0.1)) * 100 + 5}%`,
                                     transform: 'translateX(-50%)',
                                     backgroundColor: '#3e3e3e',
                                     color: '#fff',
@@ -249,6 +260,7 @@ function App() {
                         {selectedMonth === 'June' && <CSVTable dateStr='2024-06-24' />}
                         {selectedMonth === 'July' && <CSVTable dateStr='2024-07-26' />}
                         {selectedMonth === 'August' && <CSVTable dateStr='2024-08-31' />}
+                        {selectedMonth === 'November' && <CSVTable dateStr='2024-11-25' />}
                     </div>
                 </div>
             </section>
