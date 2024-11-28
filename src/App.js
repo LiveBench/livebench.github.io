@@ -206,6 +206,7 @@ function App() {
                             After that, we released <strong>LiveBench-2024-08-31</strong> with updated math questions.
                             All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
                             The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
+                        <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br><strong>Note:</strong> Not all models have been re-evaluated for the November release. We will update the leaderboard as we re-evaluate models. Check back in a few days.
                         </span>
                     </div>
