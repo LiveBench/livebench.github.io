@@ -197,6 +197,16 @@ const CSVTable = ({dateStr}) => {
 
         setCheckedCategories(updatedCategories);
     };
+
+    useEffect(() => {
+        if (data && modelLinks) {
+            for (const row of data) {
+                if (!(row.model in modelLinks)) {
+                    console.warn('missing link for model', row.model);
+                }
+            }
+        }
+    }, [data, modelLinks]);
     
     const [sortedData, handleSorting, handleSearch, sortField, sortOrder, searchQuery] = useSortableTable(data, columns, checkedCategories, categories, 'model');
 
