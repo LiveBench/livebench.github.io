@@ -2,9 +2,10 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
-import { useSortableTable } from "./SortTable";
+import { useTable } from "./SortTable";
 import { modelLinks } from './modelLinks';
 import { useSearchParams } from 'react-router-dom';
+import Select from 'react-select';
 
 
 const CSVTable = ({dateStr}) => {
@@ -17,7 +18,7 @@ const CSVTable = ({dateStr}) => {
     const [searchParams, setSearchParams] = useSearchParams();
 
 
-    const updateURL = (checkedCategories) => {
+    const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
     
         let allAverages = true;
@@ -37,12 +38,27 @@ const CSVTable = ({dateStr}) => {
             }
         });
 
+        if (Object.keys(newFilter).length > 0) {
+            Object.keys(newFilter).forEach(key => {
+                newFilter[key].length > 0 && params.append(key, newFilter[key].join(','));
+            });
+        }
+
         if (searchParams.has('q')) {
             params.set('q', searchParams.get('q'));
         }
 
         if (allAverages && !anySubcategories) {
-            setSearchParams(searchParams.has('q') ? new URLSearchParams(`q=${searchParams.get('q')}`) : '');
+            const newParams = new URLSearchParams();
+            if (searchParams.has('q')) {
+                newParams.set('q', searchParams.get('q'));
+            }
+            if (Object.keys(newFilter).length > 0) {
+                Object.keys(newFilter).forEach(key => {
+                    newFilter[key].length > 0 && newParams.append(key, newFilter[key].join(','));    
+                });
+            }
+            setSearchParams(newParams);
             return;
         }
     
@@ -79,6 +95,9 @@ const CSVTable = ({dateStr}) => {
         { label: "IF", accessor: "average_instruction_following", sortable: true, visible: true },
         { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
     ], []);
+
+    const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
+
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())
@@ -122,32 +141,35 @@ const CSVTable = ({dateStr}) => {
         }
         if (searchParams.toString() === '') {
             return;
-        } else if (searchParams.size === 1 && searchParams.has('q')) {
-            handleSearchChange(searchParams.get('q'));
-            return;
-        }
+        } 
+
+        const anyCatParams = searchParams.keys().some(key => Object.keys(categories).includes(key));
+
         // Parse URL parameters after categories are set
         const updatedCategories = Object.keys(categories).reduce((acc, category) => {
-            acc[category] = { average: false, allSubcategories: false };
+            acc[category] = { average: !anyCatParams, allSubcategories: false };
             return acc;
         }, {});
-
+        const updatedFilter = {};
         searchParams.forEach((value, category) => {
 
             if (category === 'q') {
                 handleSearchChange(value);
                 return;
-            }
-
-            if (value.includes('a')) {
-                updatedCategories[category].average = true;
-            }
-            if (value.includes('s')) {
-                updatedCategories[category].allSubcategories = true;
+            } else if (Object.keys(categories).includes(category)) {
+                if (value.includes('a')) {
+                    updatedCategories[category].average = true;
+                }
+                if (value.includes('s')) {
+                    updatedCategories[category].allSubcategories = true;
+                }
+            } else {
+                updatedFilter[category] = value.split(',');
             }
         });
 
         setCheckedCategories(updatedCategories);
+        handleFilter(updatedFilter);
     }, [categories, searchParams]);
 
     useEffect(() => {
@@ -156,8 +178,15 @@ const CSVTable = ({dateStr}) => {
         }
         
         // Add the URL update to reflect the checkbox state
-        updateURL(checkedCategories);
+        updateURL(checkedCategories, filter);
     }, [checkedCategories]);
+
+    useEffect(() => {
+        if (Object.keys(filter).length === 0) {
+            return;
+        }
+        updateURL(checkedCategories, filter);
+    }, [checkedCategories, filter]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
 
@@ -208,7 +237,7 @@ const CSVTable = ({dateStr}) => {
         }
     }, [data, modelLinks]);
     
-    const [sortedData, handleSorting, handleSearch, sortField, sortOrder, searchQuery] = useSortableTable(data, columns, checkedCategories, categories, 'model');
+    
 
     const handleSortingChange = (accessor) => {
         const order = accessor === sortField && sortOrder === "desc" ? "asc" : "desc";
@@ -225,6 +254,13 @@ const CSVTable = ({dateStr}) => {
         }
         setSearchParams(prev => newParams);
     }
+
+    const handleFilterChange = (filter) => {
+        if (filter.length === 0) {
+            updateURL(checkedCategories, {});
+        }
+        handleFilter({provider: filter.map(f => f.value)});
+    }
     
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
@@ -232,6 +268,8 @@ const CSVTable = ({dateStr}) => {
     };
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
+
+    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model].provider)));
 
     return (
         <div className="table-container">
@@ -271,6 +309,22 @@ const CSVTable = ({dateStr}) => {
                     onChange={(e) => handleSearchChange(e.target.value)}
                 />
             </div>
+            <div className="filter-bar">
+                <Select
+                    isMulti
+                    placeholder="Filter by Provider..."
+                    options={modelProviders.map(provider => ({label: provider, value: provider}))}
+                    onChange={handleFilterChange}
+                    styles={{
+                        control: (styles) => ({
+                            ...styles,
+                            width: '100%',
+                            borderColor: '#000000'
+                        }),
+                    }}
+                    value={filter && filter.provider ? filter.provider.map(p => ({label: p, value: p})) : []}
+                />
+            </div>
             <div className="scrollable-table">
                 <div className="table-wrap">
                     <table className="main-tabl table">
@@ -280,6 +334,10 @@ const CSVTable = ({dateStr}) => {
                                     className={`sticky-col ${getSortClass("model")}`}
                                     onClick={() => handleSortingChange("model")}>
                                     Model</th>
+                                <th
+                                    className={`sticky-col provider-col ${getSortClass("provider")}`}
+                                    onClick={() => handleSortingChange("provider")}>
+                                    Provider</th>
                                 {numCheckedCategories > 1 && <th
                                     className={`sticky-col globalAverage-col ${getSortClass("ga")}`}
                                     onClick={() => handleSortingChange("ga")}>
@@ -307,10 +365,11 @@ const CSVTable = ({dateStr}) => {
                             {sortedData.map((row, index) => (
                                 <tr key={index}>
                                     <td className="sticky-col model-col">
-                                        <a href={modelLinks[row.model]} target="_blank" rel="noopener noreferrer">
+                                        <a href={modelLinks[row.model].url} target="_blank" rel="noopener noreferrer">
                                             {row.model}
                                         </a>
                                     </td>
+                                    <td className="sticky-col provider-col">{modelLinks[row.model].provider}</td>
                                     {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];

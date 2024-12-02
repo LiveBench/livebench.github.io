@@ -1,16 +1,28 @@
 import { useState, useEffect } from "react";
 import { getGlobalAverage, calculateAverage} from './Averaging';
 
-export const useSortableTable = (data, columns, checkedCategories, categories, searchColumn) => {
+export const useTable = (data, columns, checkedCategories, categories, searchColumn, filterInfo) => {
     const [tableData, setTableData] = useState([]);
     const [sortField, setSortField] = useState();
     const [sortOrder, setSortOrder] = useState();
     const [searchQuery, setSearchQuery] = useState("");
+    const [filter, setFilter] = useState({}); // {column: values[]}
 
     const searchData = (searchQuery, searchColumn, data) => {
         if (searchQuery === "") return data;
         return data.filter((row) => {
             return row[searchColumn].toString().toLowerCase().includes(searchQuery.toLowerCase());
+        });
+    };
+
+    const filterData = (filter, data) => {
+        if (Object.keys(filter).length === 0) return data;
+        if (Object.keys(filter).every(key => filter[key].length === 0)) return data;
+        return data.filter((row) => {
+            const rowFilterInfo = filterInfo[row.model];
+            return Object.keys(filter).every((key) => {
+                return filter[key].some(value => value.toLowerCase() === rowFilterInfo[key].toLowerCase());
+            });
         });
     };
 
@@ -58,8 +70,9 @@ export const useSortableTable = (data, columns, checkedCategories, categories, s
         if (searchQuery !== "" && searchColumn !== "") {
             sortedData = searchData(searchQuery, searchColumn, sortedData);
         }
+        sortedData = filterData(filter, sortedData);
         setTableData(sortedData);
-    }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories]);
+    }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories, filter]);
 
     const handleSorting = (sortField, sortOrder) => {
         setSortField(sortField);
@@ -70,7 +83,11 @@ export const useSortableTable = (data, columns, checkedCategories, categories, s
         setSearchQuery(searchQuery);
     }
 
+    const handleFilter = (filter) => {
+        setFilter(filter);
+    }
 
 
-    return [tableData, handleSorting, handleSearch, sortField, sortOrder, searchQuery];
+
+    return [tableData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter];
 };
