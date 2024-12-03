@@ -67,5 +67,8 @@ export const modelLinks = {
     "qwen2.5-7b-instruct-turbo": { url: "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct", provider: "Alibaba" },
     "qwen2.5-coder-32b-instruct": { url: "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", provider: "Alibaba" },
     "step-2-16k-202411": { url: "https://www.stepfun.com/#step2", provider: "StepFun" },
-    "grok-beta": { url: "https://x.ai/blog/api", provider: "xAI" }
+    "grok-beta": { url: "https://x.ai/blog/api", provider: "xAI" },
+    "amazon.nova-lite-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" },
+    "amazon.nova-micro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" },
+    "amazon.nova-pro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" }
 };
