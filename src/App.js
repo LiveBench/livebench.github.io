@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './App.css';
 // import livebench_results from './images/livebench_results.png';
 import { bibtexEntry } from './constants';
 import CSVTable from './Table/CSVTable';
-
+import Markdown from 'react-markdown';
 
 function App() {
     const [selectedMonth, setSelectedMonth] = useState('November');
     const [sliderPosition, setSliderPosition] = useState(3);
+    const [changelog, setChangelog] = useState('');
     const maxSliderValue = 3;
 
     const handleSliderChange = (event) => {
@@ -40,6 +41,12 @@ function App() {
         if (selectedMonth === 'August') return '2024-08-31';
         return '2024-11-25';
     };
+
+    useEffect(() => {
+        fetch('/changelog.md')
+            .then(response => response.text())
+            .then(text => setChangelog(text));
+    }, []);
 
     return (
         <div className="App">
@@ -197,19 +204,24 @@ function App() {
 
             <section className="section">
                 <div className="container is-max-desktop">
-                    <h2 className="title is-3 has-text-centered">Leaderboard</h2>
-                    <div className="is-size-6 has-text-centered">
+                    <div className="changelog">
+                        <h2 className="title is-3">Changelog</h2>
                         <span className="author-block">
                             We update questions each month such that the benchmark completely refreshes every 6 months. 
-                            The initial version was <strong>LiveBench-2024-06-24</strong>. 
-                            The next version was <strong>LiveBench-2024-07-26</strong> with additional coding questions and a new spatial reasoning task.
-                            After that, we released <strong>LiveBench-2024-08-31</strong> with updated math questions.
-                            All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
-                        <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
-                        <br></br><br></br><strong>Note:</strong> Not all models have been re-evaluated for the November release. We will update the leaderboard as we re-evaluate models. Check back in a few days.
+                            All questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
+                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
                         </span>
+                        <br></br>
+                        <div className="content" style={{textAlign: 'left'}}>
+                            <Markdown components={{
+                                h3: ({node, ...props}) => <h3 className="title is-4" style={{marginBottom: 0}} {...props} />,
+                                ul: ({node, ...props}) => <ul style={{listStyleType: 'disc'}} {...props} />
+                            }}>{changelog}</Markdown>
+                        </div>
                     </div>
+                    <br></br>
+                    <h2 className="title is-3 has-text-centered">Leaderboard</h2>
+
                     <div className="field" style={{ marginTop: '50px' }}>
                         <div className="is-flex is-justify-content-center is-align-items-center">
                             <div style={{ position: 'relative', width: '300px' }}>
