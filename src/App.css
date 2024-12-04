@@ -123,7 +123,23 @@ td {
 .scrollable-table {
   margin: 0 auto;
   /* Center the scrollable-table horizontally */
+  overflow-y: auto;
+  max-height: 800px;
 }
+
+.scrollable-table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+  border-bottom: 1px solid #000000;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.scrollable-table th {
+  border-top: 1px solid #ccc;
+}
+
 
 .category-group {
   margin-right: 10px;
@@ -215,4 +231,17 @@ td {
   font-weight: bold;
   color: #1d7b13; /* Change this to your preferred color */
   font-size: 1.2em; /* Adjust size as needed */
+}
+
+.other-controls {
+  margin-bottom: 1rem;
+}
+
+.clear-filters-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
 }

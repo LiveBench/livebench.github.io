@@ -17,6 +17,7 @@ const CSVTable = ({dateStr}) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const [showProvider, setShowProvider] = useState(true);
 
     const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
@@ -58,6 +59,7 @@ const CSVTable = ({dateStr}) => {
                     newFilter[key].length > 0 && newParams.append(key, newFilter[key].join(','));    
                 });
             }
+            console.log(newParams);
             setSearchParams(newParams);
             return;
         }
@@ -269,7 +271,7 @@ const CSVTable = ({dateStr}) => {
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
 
-    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model].provider)));
+    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.provider ?? 'Unknown')));
 
     return (
         <div className="table-container">
@@ -301,6 +303,11 @@ const CSVTable = ({dateStr}) => {
                     ))}
                 </div>
             )}
+            <div className="other-controls">
+                <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
+                <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Provider</label>
+                <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({});}} className="clear-filters-button">Clear Filters</button>
+            </div>
             <div className="search-bar">
                 <input
                     type="text"
@@ -321,6 +328,11 @@ const CSVTable = ({dateStr}) => {
                             width: '100%',
                             borderColor: '#000000'
                         }),
+                        menu: (styles) => ({
+                            ...styles,
+                            width: '100%',
+                            zIndex: 1000
+                        })
                     }}
                     value={filter && filter.provider ? filter.provider.map(p => ({label: p, value: p})) : []}
                 />
@@ -334,10 +346,10 @@ const CSVTable = ({dateStr}) => {
                                     className={`sticky-col ${getSortClass("model")}`}
                                     onClick={() => handleSortingChange("model")}>
                                     Model</th>
-                                <th
+                                {showProvider && <th
                                     className={`sticky-col provider-col ${getSortClass("provider")}`}
                                     onClick={() => handleSortingChange("provider")}>
-                                    Provider</th>
+                                    Provider</th>}
                                 {numCheckedCategories > 1 && <th
                                     className={`sticky-col globalAverage-col ${getSortClass("ga")}`}
                                     onClick={() => handleSortingChange("ga")}>
@@ -365,11 +377,11 @@ const CSVTable = ({dateStr}) => {
                             {sortedData.map((row, index) => (
                                 <tr key={index}>
                                     <td className="sticky-col model-col">
-                                        <a href={modelLinks[row.model].url} target="_blank" rel="noopener noreferrer">
+                                        <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
                                             {row.model}
                                         </a>
                                     </td>
-                                    <td className="sticky-col provider-col">{modelLinks[row.model].provider}</td>
+                                    {showProvider && <td className="sticky-col provider-col">{modelLinks[row.model]?.provider ?? 'Unknown'}</td>}
                                     {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
