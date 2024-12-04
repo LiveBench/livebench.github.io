@@ -115,13 +115,16 @@ function App() {
                                 <div className="column has-text-centered">
                                     <div className="publication-links">
                                         <span className="link-block">
-                                            <a href="./#"
+                                            <button onClick={() => {document.getElementById('Leaderboard').scrollIntoView({ behavior: 'smooth' });}}
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-solid fa-medal"></i>
                                                 </span>
                                                 <span>Leaderboard</span>
-                                            </a>
+                                            </button>
+                                            
+                                        </span>
+                                        <span className="link-block">
                                             <a href="./#/blog"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
@@ -197,7 +200,7 @@ function App() {
 
             <section className="section">
                 <div className="container is-max-desktop">
-                    <h2 className="title is-3 has-text-centered">Leaderboard</h2>
+                    <h2 className="title is-3 has-text-centered" id="Leaderboard">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
                         <span className="author-block">
                             We update questions each month such that the benchmark completely refreshes every 6 months. 

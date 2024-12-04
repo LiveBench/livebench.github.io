@@ -37,12 +37,19 @@
   }
 }
 
+.publication-links {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+
 
 table {
   width: 100%;
   min-width: 300px;
   /* Ensure minimum width even if screen is too small */
-  border-collapse: collapse;
+  border-collapse: separate;
 }
 
 table,
@@ -132,12 +139,7 @@ td {
   top: 0;
   z-index: 1;
   background-color: #fff;
-  border-bottom: 1px solid #000000;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
-}
-
-.scrollable-table th {
-  border-top: 1px solid #ccc;
+  box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.4), inset 0 1px 0 #ccc;
 }
 
 
@@ -244,4 +246,13 @@ td {
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin-left: 1rem;
+}
+
+.section {
+  padding: 1rem;
+}
+
+.hero-body {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
