@@ -72,5 +72,6 @@ export const modelLinks = {
     "grok-beta": { url: "https://x.ai/blog/api", provider: "xAI" },
     "amazon.nova-lite-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" },
     "amazon.nova-micro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" },
-    "amazon.nova-pro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" }
+    "amazon.nova-pro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", provider: "Amazon" },
+    "qwq-32b-preview": { url: "https://huggingface.co/Qwen/QWQ-32B-Preview", provider: "Alibaba" }
 };

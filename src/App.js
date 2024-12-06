@@ -210,6 +210,7 @@ function App() {
                             All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
                             The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
+                        <br></br><br></br><strong>Note: The results for QwQ-32B-Preview are preliminary. Its reasoning and output style is very different from other models, so we are in the process of updating our scoring scripts. For some tasks, the scores may not be fully representative of the model's performance.</strong>
                         </span>
                     </div>
                     <div className="field" style={{ marginTop: '50px' }}>
