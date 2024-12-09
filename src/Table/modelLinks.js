@@ -56,6 +56,7 @@ export const modelLinks = {
     "mixtral-8x22b-instruct-v0.1": { url: "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1", provider: "Mistral AI" },
     "o1-mini-2024-09-12": { url: "https://platform.openai.com/docs/guides/reasoning", provider: "OpenAI" },
     "o1-preview-2024-09-12": { url: "https://platform.openai.com/docs/guides/reasoning", provider: "OpenAI" },
+    "o1": { url: "https://openai.com/o1/", provider: "OpenAI" },
     "open-mistral-nemo": { url: "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407", provider: "Mistral AI" },
     "phi-3-medium-128k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-medium-128k-instruct", provider: "Microsoft" },
     "phi-3-medium-4k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-medium-4k-instruct", provider: "Microsoft" },

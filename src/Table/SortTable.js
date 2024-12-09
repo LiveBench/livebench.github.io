@@ -28,7 +28,19 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
 
     const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
         return [...sortingData].sort((a, b) => {
-            
+
+            if (a.model === 'o1' && sortField !== 'provider') {
+                const o1CodingAvg = calculateAverage(a, categories['Coding']);
+                const otherCodingAvg = calculateAverage(b, categories['Coding']);
+                return (o1CodingAvg - otherCodingAvg) * (sortOrder === "asc" ? 1 : -1);
+            }
+
+            if (b.model === 'o1' && sortField !== 'provider') {
+                const o1CodingAvg = calculateAverage(b, categories['Coding']);
+                const otherCodingAvg = calculateAverage(a, categories['Coding']);
+                return (o1CodingAvg - otherCodingAvg) * (sortOrder === "asc" ? 1 : -1);
+            }
+
             // Null handling standard across all fields
             if (a[sortField] === null) return 1;
             if (b[sortField] === null) return -1;
