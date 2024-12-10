@@ -13,7 +13,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/details" element={<Blog />} />
       </Routes>
     </Router>
   </React.StrictMode>

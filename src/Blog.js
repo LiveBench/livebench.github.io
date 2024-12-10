@@ -92,12 +92,15 @@ function Blog() {
                                                 </span>
                                                 <span>Leaderboard</span>
                                             </a>
-                                            <a href="./#/blog"
+                                            
+                                        </span>
+                                        <span className='link-block'>
+                                            <a href="./#/details"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-regular fa-newspaper"></i>
                                                 </span>
-                                                <span>Blog</span>
+                                                <span>Details</span>
                                             </a>
                                         </span>
                                         <span className="link-block">

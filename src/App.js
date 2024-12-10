@@ -125,12 +125,12 @@ function App() {
                                             
                                         </span>
                                         <span className="link-block">
-                                            <a href="./#/blog"
+                                            <a href="./#/details"
                                                 className="external-link button is-normal is-rounded is-dark">
                                                 <span className="icon">
                                                     <i className="fa-regular fa-newspaper"></i>
                                                 </span>
-                                                <span>Blog</span>
+                                                <span>Details</span>
                                             </a>
                                         </span>
                                         <span className="link-block">
@@ -210,7 +210,18 @@ function App() {
                             All questions for these previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
                             The most recent version is <strong>LiveBench-2024-11-25</strong>, which includes refreshed instruction following questions and updated zebra puzzles and connections tasks.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
-                        <br></br><br></br><strong>Note: We're currently in the process of error-checking our scoring scripts. Because of this, the models' scores on LiveBench-2024-11-25 may change as they are re-scored. We want to ensure all models are scored fairly.</strong>
+                        <br></br><br></br>
+                        <span className="link-block">
+                            <a href="https://github.com/LiveBench/LiveBench/blob/main/changelog.md"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="external-link button is-normal is-rounded is-dark">
+                                <span className="icon">
+                                    <i className="fa-solid fa-file-lines"></i>
+                                </span>
+                                <span>View Full Changelog</span>
+                            </a>
+                        </span>
                         <br></br><br></br><strong>Note: o1 was evaluated manually using ChatGPT. So far, it has only been scored on coding tasks.</strong>
                         </span>
                     </div>
