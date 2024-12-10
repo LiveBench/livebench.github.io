@@ -272,6 +272,9 @@ const CSVTable = ({dateStr}) => {
 
     const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.provider ?? 'Unknown')));
 
+    const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'provider' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
+
+    console.log('show o1', show_o1, checkedCategories['Coding']?.average, checkedCategories['Coding']?.allSubcategories, sortField);
     return (
         <div className="table-container">
             {screenWidth > 1315 && (
@@ -373,8 +376,8 @@ const CSVTable = ({dateStr}) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedData.map((row, index) => (
-                                <tr key={index} className={(row.model === 'o1' ? 'o1-row ' : ' ') + (sortField !== 'Coding Average' && sortField !== 'ga' && sortField !== 'provider' && sortField !== 'model' && sortField !== 'coding_completion' && sortField !== 'LCB_generation' ? 'not-coding' : '')}>
+                            {sortedData.map((row, index) => 
+                                row.model !== 'o1' || show_o1 ? <tr key={index} className={(row.model === 'o1' ? 'o1-row ' : ' ')}>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
                                             {row.model}
@@ -401,8 +404,8 @@ const CSVTable = ({dateStr}) => {
                                         }
                                         return res;
                                     }).map((cell, idx) => <td key={idx}>{cell}</td>)}
-                                </tr>
-                            ))}
+                                </tr> : null
+                            )}
                         </tbody>
                     </table>
                 </div>
