@@ -14,6 +14,7 @@ export const modelLinks = {
     "command-r-plus-08-2024": { url: "https://docs.cohere.com/docs/models", provider: "Cohere" },
     "deepseek-coder-v2": { url: "https://huggingface.co/deepseek-ai/DeepSeek-V2", provider: "DeepSeek" },
     "deepseek-v2.5": { url: "https://huggingface.co/deepseek-ai/DeepSeek-V2.5", provider: "DeepSeek" },
+    "deepseek-v2.5-1210": { url: "https://api-docs.deepseek.com/news/news1210", provider: "DeepSeek" },
     "dracarys-72b-instruct": { url: "https://huggingface.co/abacusai/Dracarys-72B-Instruct", provider: "AbacusAI" },
     "dracarys-llama-3.1-70b-instruct": { url: "https://huggingface.co/abacusai/Dracarys-Llama-3.1-70B-Instruct", provider: "AbacusAI" },
     "dracarys2-72b-instruct": { url: "https://huggingface.co/abacusai/Dracarys2-72B-Instruct", provider: "AbacusAI" },
