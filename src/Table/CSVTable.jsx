@@ -260,7 +260,7 @@ const CSVTable = ({dateStr}) => {
         if (filter.length === 0) {
             updateURL(checkedCategories, {});
         }
-        handleFilter({provider: filter.map(f => f.value)});
+        handleFilter({organization: filter.map(f => f.value)});
     }
     
     // Utility to compute class for sorting
@@ -270,9 +270,9 @@ const CSVTable = ({dateStr}) => {
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
 
-    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.provider ?? 'Unknown')));
+    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown')));
 
-    const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'provider' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
+    const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'organization' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
 
     return (
         <div className="table-container">
@@ -306,7 +306,7 @@ const CSVTable = ({dateStr}) => {
             )}
             <div className="other-controls">
                 <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
-                <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Provider</label>
+                <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
                 <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch('');}} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -320,8 +320,8 @@ const CSVTable = ({dateStr}) => {
             <div className="filter-bar">
                 <Select
                     isMulti
-                    placeholder="Filter by Provider..."
-                    options={modelProviders.map(provider => ({label: provider, value: provider}))}
+                    placeholder="Filter by organization..."
+                    options={modelProviders.map(organization => ({label: organization, value: organization}))}
                     onChange={handleFilterChange}
                     styles={{
                         control: (styles) => ({
@@ -335,7 +335,7 @@ const CSVTable = ({dateStr}) => {
                             zIndex: 1000
                         })
                     }}
-                    value={filter && filter.provider ? filter.provider.map(p => ({label: p, value: p})) : []}
+                    value={filter && filter.organization ? filter.organization.map(p => ({label: p, value: p})) : []}
                 />
             </div>
             <div className="scrollable-table">
@@ -348,9 +348,9 @@ const CSVTable = ({dateStr}) => {
                                     onClick={() => handleSortingChange("model")}>
                                     Model</th>
                                 {showProvider && <th
-                                    className={`sticky-col provider-col ${getSortClass("provider")}`}
-                                    onClick={() => handleSortingChange("provider")}>
-                                    Provider</th>}
+                                    className={`sticky-col organization-col ${getSortClass("organization")}`}
+                                    onClick={() => handleSortingChange("organization")}>
+                                    Organization</th>}
                                 {numCheckedCategories > 1 && <th
                                     className={`sticky-col globalAverage-col ${getSortClass("ga")}`}
                                     onClick={() => handleSortingChange("ga")}>
@@ -382,7 +382,7 @@ const CSVTable = ({dateStr}) => {
                                             {row.model}
                                         </a>
                                     </td>
-                                    {showProvider && <td className="sticky-col provider-col">{modelLinks[row.model]?.provider ?? 'Unknown'}</td>}
+                                    {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
                                     {numCheckedCategories > 1 && row.model != 'o1' && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {numCheckedCategories > 1 && row.model === 'o1' && <td className="sticky-col globalAverage-col">N/A</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {

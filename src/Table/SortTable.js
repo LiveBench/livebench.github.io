@@ -20,8 +20,9 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
         if (Object.keys(filter).every(key => filter[key].length === 0)) return data;
         return data.filter((row) => {
             const rowFilterInfo = filterInfo[row.model];
+            if (rowFilterInfo === undefined) return false;
             return Object.keys(filter).every((key) => {
-                return filter[key].some(value => value.toLowerCase() === rowFilterInfo[key].toLowerCase());
+                return filter[key]?.some(value => value.toLowerCase() === rowFilterInfo[key]?.toLowerCase());
             });
         });
     };
@@ -29,13 +30,13 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
     const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
         return [...sortingData].sort((a, b) => {
 
-            if (a.model === 'o1' && sortField !== 'provider') {
+            if (a.model === 'o1' && sortField !== 'organization') {
                 const o1CodingAvg = calculateAverage(a, categories['Coding']);
                 const otherCodingAvg = calculateAverage(b, categories['Coding']);
                 return (o1CodingAvg - otherCodingAvg) * (sortOrder === "asc" ? 1 : -1);
             }
 
-            if (b.model === 'o1' && sortField !== 'provider') {
+            if (b.model === 'o1' && sortField !== 'organization') {
                 const o1CodingAvg = calculateAverage(b, categories['Coding']);
                 const otherCodingAvg = calculateAverage(a, categories['Coding']);
                 return (o1CodingAvg - otherCodingAvg) * (sortOrder === "asc" ? 1 : -1);
