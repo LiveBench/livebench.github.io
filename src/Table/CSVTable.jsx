@@ -99,6 +99,7 @@ const CSVTable = ({dateStr}) => {
 
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
 
+
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())
@@ -307,7 +308,7 @@ const CSVTable = ({dateStr}) => {
             <div className="other-controls">
                 <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
                 <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
-                <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch('');}} className="clear-filters-button">Clear Filters</button>
+                <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch(''); updateURL(checkedCategories, filter); handleSorting('ga', 'desc');}} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
                 <input

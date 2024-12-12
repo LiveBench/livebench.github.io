@@ -30,6 +30,7 @@ export const modelLinks = {
     "gemini-1.5-pro-api-0514": { url: "https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/gemini-1.5-flash-preview-0514", organization: "Google" },
     "gemini-1.5-pro-exp-0801": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-1.5-pro-exp-0827": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
+    "gemini-2.0-flash-exp": { url: "https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2", organization: "Google" },
     "gemini-exp-1114": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-exp-1121": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-exp-1206": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
@@ -75,5 +76,6 @@ export const modelLinks = {
     "amazon.nova-lite-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", organization: "Amazon" },
     "amazon.nova-micro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", organization: "Amazon" },
     "amazon.nova-pro-v1:0": { url: "https://aws.amazon.com/ai/generative-ai/nova/", organization: "Amazon" },
-    "qwq-32b-preview": { url: "https://huggingface.co/Qwen/QWQ-32B-Preview", organization: "Alibaba" }
+    "qwq-32b-preview": { url: "https://huggingface.co/Qwen/QWQ-32B-Preview", organization: "Alibaba" },
+    "olmo-2-1124-13b-instruct": {url: "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct", organization: "AllenAI"},
 };
