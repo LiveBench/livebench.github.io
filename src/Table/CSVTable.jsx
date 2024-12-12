@@ -144,7 +144,7 @@ const CSVTable = ({dateStr}) => {
             return;
         } 
 
-        const anyCatParams = searchParams.keys().some(key => Object.keys(categories).includes(key));
+        const anyCatParams = Array.from(searchParams.keys()).some(key => Object.keys(categories).includes(key));
 
         // Parse URL parameters after categories are set
         const updatedCategories = Object.keys(categories).reduce((acc, category) => {
