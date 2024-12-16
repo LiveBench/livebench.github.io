@@ -28,16 +28,8 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
     };
 
     const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
+        console.log("sorting data", sortingData.map(row => row.model));
         return [...sortingData].sort((a, b) => {
-
-            if (a.model === 'o1' && sortField === 'ga') {
-                const o1PreviewRow = data.find(row => row.model === 'o1-preview-2024-09-12');
-                const o1PreviewGA = parseFloat(getGlobalAverage(o1PreviewRow, checkedCategories, categories));
-                const globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
-                return (o1PreviewGA - globalAvgB) * (sortOrder === "asc" ? 1 : -1);
-            }
-
-            
 
             // Null handling standard across all fields
             if (a[sortField] === null) return 1;
@@ -46,8 +38,22 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
 
             // Global average case
             if (sortField === 'ga') {
-                const globalAvgA = parseFloat(getGlobalAverage(a, checkedCategories, categories));
-                const globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
+                let globalAvgA = 0;
+                let globalAvgB = 0;
+                if (a.model === 'o1') {
+                    const o1PreviewRow = data.find(row => row.model === 'o1-preview-2024-09-12');
+                    globalAvgA = parseFloat(getGlobalAverage(o1PreviewRow, checkedCategories, categories));
+                } else {
+                    globalAvgA = parseFloat(getGlobalAverage(a, checkedCategories, categories));
+                }
+                if (b.model === 'o1') {
+                    const o1PreviewRow = data.find(row => row.model === 'o1-preview-2024-09-12');
+                    globalAvgB = parseFloat(getGlobalAverage(o1PreviewRow, checkedCategories, categories));
+                } else {
+                    globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
+                }
+
+                console.log("ga", a.model, b.model, globalAvgA, globalAvgB, (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1));
                 return (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1);
             } else if (sortField.includes("Average")) {
                 // Extract the category name from sortField
@@ -77,6 +83,7 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
 
     useEffect(() => {
         let sortedData = sortData(sortField, sortOrder, data, checkedCategories, categories);
+        console.log("sorted models", sortedData.map(row => row.model));
         if (searchQuery !== "" && searchColumn !== "") {
             sortedData = searchData(searchQuery, searchColumn, sortedData);
         }
