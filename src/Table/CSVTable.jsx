@@ -194,7 +194,10 @@ const CSVTable = ({dateStr}) => {
 
         // Preserve the original logic for handling checkboxes
         const updatedCategories = { ...checkedCategories };
+
         updatedCategories[clickedCategory][type] = !checkedCategories[clickedCategory][type];
+
+        
 
         // If 'average' for a category is checked, uncheck 'allSubcategories' for all other categories
         if (type === 'average') {
@@ -226,7 +229,68 @@ const CSVTable = ({dateStr}) => {
             });
         }
 
+        let newSortField = sortField;
+        const newNumCheckedCategories = Object.values(updatedCategories).filter(cat => cat.average || cat.allSubcategories).length;
+
+        // sorting logic:
+        // if we were sorting by a category and it is now unchecked, reset the sort field to global average
+        // if we were sorting by a subcategory and it is now unchecked, reset the sort field to the category, if it is the only category checked; otherwise, reset to global average
+        // if we were sorting by a category and now another category is checked, reset sort field to global average
+        if (updatedCategories[clickedCategory][type] && sortField !== 'model' && sortField !== 'organization') { // if the category was just checked
+
+            // If we were sorting by a category and another category is now checked
+            if (sortField.endsWith('Average') && newNumCheckedCategories > 1) {
+                newSortField = 'ga';
+            }
+            else if (sortField === 'ga' || (newNumCheckedCategories === 1 && !sortField.includes(clickedCategory))) {
+                // if we were sorting by ga and now one category is checked, sort by that category's average
+                if (newNumCheckedCategories === 1) {
+                    const checkedCategory = Object.keys(updatedCategories).find(cat => updatedCategories[cat].average || updatedCategories[cat].allSubcategories);
+                    newSortField = `${checkedCategory.charAt(0).toUpperCase() + checkedCategory.slice(1)} Average`;
+                }
+            }
+            // If we were sorting by a subcategory and its category is now unchecked
+            else if (!sortField.endsWith('Average') && sortField !== 'ga') {
+                // Find which category this subcategory belongs to
+                const categoryWithSubcategory = Object.keys(categories).find(category => 
+                    categories[category].toLowerCase().includes(sortField.toLowerCase())
+                );
+                
+                if (categoryWithSubcategory && !updatedCategories[categoryWithSubcategory].allSubcategories) {
+                    if (newNumCheckedCategories === 1) {
+                        // Only one category checked, sort by that category's average
+                        const checkedCategory = Object.keys(updatedCategories).find(cat => 
+                            updatedCategories[cat].average || updatedCategories[cat].allSubcategories
+                        );
+                        newSortField = `${checkedCategory.charAt(0).toUpperCase() + checkedCategory.slice(1)} Average`;
+                    } else {
+                        // Multiple categories checked, sort by global average
+                        newSortField = 'ga';
+                    }
+                }
+            }
+        } else if (sortField !== 'model' && sortField !== 'organization') { // if the category was just unchecked
+            if (sortField.endsWith('Average') && sortField.toLowerCase().startsWith(clickedCategory.toLowerCase())) {
+                // If we were sorting by this category's average and it's now unchecked
+                newSortField = 'ga';
+            } else if (!sortField.endsWith('Average') && sortField !== 'ga' && sortField !== 'model' && sortField !== 'organization') {
+                // Find which category this subcategory belongs to
+                const categoryWithSubcategory = Object.keys(categories).find(category => 
+                    categories[category].includes(sortField)
+                );
+                
+                if (categoryWithSubcategory === clickedCategory && !updatedCategories[categoryWithSubcategory].average) {
+                    newSortField = 'ga';
+                } else if (categoryWithSubcategory === clickedCategory && updatedCategories[categoryWithSubcategory].average) {
+                    newSortField = `${categoryWithSubcategory.charAt(0).toUpperCase() + categoryWithSubcategory.slice(1)} Average`;
+                }
+            }
+        }
+
+        handleSorting(newSortField, sortOrder);
+
         setCheckedCategories(updatedCategories);
+
     };
 
     useEffect(() => {
@@ -275,6 +339,7 @@ const CSVTable = ({dateStr}) => {
 
     const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'organization' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
 
+    console.log('sortField', sortField);
     return (
         <div className="table-container">
             {screenWidth > 1315 && (
@@ -396,7 +461,7 @@ const CSVTable = ({dateStr}) => {
                                             }
                                         }
                                         if (checks.allSubcategories) {
-                                            if (row.model === 'o1' && category != 'coding') {
+                                            if (row.model === 'o1' && category.toLowerCase() != 'coding') {
                                                 categories[category].forEach(subCat => res.push('N/A'));
                                             } else {
                                                 categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
