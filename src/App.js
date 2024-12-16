@@ -312,7 +312,7 @@ function App() {
                                         href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
                                         Commons Attribution-ShareAlike 4.0 International License</a>.
                                     <br></br>The site was inspired by the <a
-                                        href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noreferrer">Nerfies project</a> and by<a
+                                        href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noreferrer">Nerfies project</a> and by <a
                                         href="https://livecodebench.github.io/" target="_blank" rel="noreferrer">LiveCodeBench</a>.
                                 </p>
                             </div>

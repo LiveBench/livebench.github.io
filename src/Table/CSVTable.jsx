@@ -317,7 +317,6 @@ const CSVTable = ({dateStr}) => {
 
     const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'organization' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
 
-    console.log('sortField', sortField);
     return (
         <div className="table-container">
             {screenWidth > 1315 && (

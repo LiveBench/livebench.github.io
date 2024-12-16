@@ -46,6 +46,7 @@ export const modelLinks = {
     "gpt-4o-mini-2024-07-18": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI" },
     "grok-2": { url: "https://x.ai/blog/grok-2", organization: "xAI" },
     "grok-2-mini": { url: "https://x.ai/blog/grok-2", organization: "xAI" },
+    "grok-2-1212": { url: "https://x.ai/blog/grok-1212", organization: "xAI" },
     "lama-3.1-nemotron-70b-instruct": { url: "https://build.nvidia.com/nvidia/llama-3_1-nemotron-70b-instruct", organization: "NVIDIA" },
     "meta-llama-3.1-405b-instruct-turbo": { url: "https://www.together.ai/blog/meta-llama-3-1", organization: "Meta" },
     "meta-llama-3.1-70b-instruct-turbo": { url: "https://www.together.ai/blog/meta-llama-3-1", organization: "Meta" },
