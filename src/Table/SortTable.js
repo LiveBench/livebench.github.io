@@ -28,7 +28,6 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
     };
 
     const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
-        console.log("sorting data", sortingData.map(row => row.model));
         return [...sortingData].sort((a, b) => {
 
             // Null handling standard across all fields
@@ -53,7 +52,6 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
                     globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
                 }
 
-                console.log("ga", a.model, b.model, globalAvgA, globalAvgB, (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1));
                 return (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1);
             } else if (sortField.includes("Average")) {
                 // Extract the category name from sortField
@@ -83,7 +81,6 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
 
     useEffect(() => {
         let sortedData = sortData(sortField, sortOrder, data, checkedCategories, categories);
-        console.log("sorted models", sortedData.map(row => row.model));
         if (searchQuery !== "" && searchColumn !== "") {
             sortedData = searchData(searchQuery, searchColumn, sortedData);
         }
