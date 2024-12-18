@@ -315,8 +315,6 @@ const CSVTable = ({dateStr}) => {
 
     const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown')));
 
-    const show_o1 = (checkedCategories['Coding']?.average || checkedCategories['Coding']?.allSubcategories) && (sortField === 'Coding Average' || sortField === 'ga' || sortField === 'organization' || sortField === 'model' || sortField === 'coding_completion' || sortField === 'LCB_generation');
-
     return (
         <div className="table-container">
             {screenWidth > 1315 && (
@@ -419,34 +417,25 @@ const CSVTable = ({dateStr}) => {
                         </thead>
                         <tbody>
                             {sortedData.map((row, index) => 
-                                row.model !== 'o1' || show_o1 ? <tr key={index} className={(row.model === 'o1' ? 'o1-row ' : ' ')}>
+                                <tr key={index}>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
                                             {row.model}
                                         </a>
                                     </td>
                                     {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
-                                    {numCheckedCategories > 1 && row.model != 'o1' && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
-                                    {numCheckedCategories > 1 && row.model === 'o1' && <td className="sticky-col globalAverage-col">N/A</td>}
+                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {
-                                            if (row.model === 'o1' && category.toLowerCase() !== 'coding') {
-                                                res.push('N/A');
-                                            } else {
-                                                res.push(calculateAverage(row, categories[category]).toFixed(2));
-                                            }
+                                            res.push(calculateAverage(row, categories[category]).toFixed(2));
                                         }
                                         if (checks.allSubcategories) {
-                                            if (row.model === 'o1' && category.toLowerCase() != 'coding') {
-                                                categories[category].forEach(subCat => res.push('N/A'));
-                                            } else {
-                                                categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
-                                            }
+                                            categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
                                         }
                                         return res;
                                     }).map((cell, idx) => <td key={idx}>{cell}</td>)}
-                                </tr> : null
+                                </tr>
                             )}
                         </tbody>
                     </table>

@@ -39,18 +39,8 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
             if (sortField === 'ga') {
                 let globalAvgA = 0;
                 let globalAvgB = 0;
-                if (a.model === 'o1') {
-                    const o1PreviewRow = data.find(row => row.model === 'o1-preview-2024-09-12');
-                    globalAvgA = parseFloat(getGlobalAverage(o1PreviewRow, checkedCategories, categories));
-                } else {
-                    globalAvgA = parseFloat(getGlobalAverage(a, checkedCategories, categories));
-                }
-                if (b.model === 'o1') {
-                    const o1PreviewRow = data.find(row => row.model === 'o1-preview-2024-09-12');
-                    globalAvgB = parseFloat(getGlobalAverage(o1PreviewRow, checkedCategories, categories));
-                } else {
-                    globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
-                }
+                globalAvgA = parseFloat(getGlobalAverage(a, checkedCategories, categories));
+                globalAvgB = parseFloat(getGlobalAverage(b, checkedCategories, categories));
 
                 return (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1);
             } else if (sortField.includes("Average")) {

@@ -222,7 +222,6 @@ function App() {
                                 <span>View Full Changelog</span>
                             </a>
                         </span>
-                        <br></br><br></br><strong>Note: o1 was evaluated manually using ChatGPT. So far, it has only been scored on coding tasks.</strong>
                         </span>
                     </div>
                     <div className="field" style={{ marginTop: '50px' }}>
