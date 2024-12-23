@@ -31,6 +31,7 @@ export const modelLinks = {
     "gemini-1.5-pro-exp-0801": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-1.5-pro-exp-0827": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-2.0-flash-exp": { url: "https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2", organization: "Google" },
+    "gemini-2.0-flash-thinking-exp-1219": { url: "https://ai.google.dev/gemini-api/docs/thinking-mode", organization: "Google" },
     "gemini-exp-1114": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-exp-1121": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
     "gemini-exp-1206": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google" },
