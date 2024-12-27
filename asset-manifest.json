@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.db257824.css",
-    "main.js": "./static/js/main.01f1fa2f.js",
+    "main.js": "./static/js/main.9e1d7b5c.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
     "static/media/livebench_results.png": "./static/media/livebench_results.8e0a4067c9f80f03d93a.png",
     "static/media/livebench_vs_chatbot_arena.png": "./static/media/livebench_vs_chatbot_arena.2c09af3bc158a5de46ef.png",
@@ -21,6 +21,6 @@
   },
   "entrypoints": [
     "static/css/main.db257824.css",
-    "static/js/main.01f1fa2f.js"
+    "static/js/main.9e1d7b5c.js"
   ]
 }
