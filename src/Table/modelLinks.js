@@ -72,6 +72,7 @@ export const modelLinks = {
     "phi-3-small-8k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-small-8k-instruct", organization: "Microsoft" },
     "phi-3.5-mini-instruct": { url: "https://huggingface.co/microsoft/Phi-3.5-mini-instruct", organization: "Microsoft" },
     "phi-3.5-moe-instruct": { url: "https://huggingface.co/microsoft/Phi-3.5-MoE-instruct", organization: "Microsoft" },
+    "phi-4": { url: "https://huggingface.co/microsoft/Phi-4", organization: "Microsoft" },
     "qwen2.5-72b-instruct-turbo": { url: "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct", organization: "Alibaba" },
     "qwen2.5-7b-instruct-turbo": { url: "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct", organization: "Alibaba" },
     "qwen2.5-coder-32b-instruct": { url: "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", organization: "Alibaba" },
