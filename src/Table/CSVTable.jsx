@@ -317,8 +317,7 @@ const CSVTable = ({dateStr}) => {
 
     return (
         <div className="table-container">
-            {screenWidth > 1315 && (
-                <div className="category-checkboxes">
+            <div className="category-checkboxes">
                     {Object.keys(categories).map((category, idx) => (
                         <div key={idx} className="category-group">
                             <div>
@@ -343,8 +342,7 @@ const CSVTable = ({dateStr}) => {
                             </div>
                         </div>
                     ))}
-                </div>
-            )}
+            </div>
             <div className="other-controls">
                 <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
                 <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
