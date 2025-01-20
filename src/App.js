@@ -8,9 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedMonth, setSelectedMonth] = useState('November');
-    const [sliderPosition, setSliderPosition] = useState(3);
-    const maxSliderValue = 3;
+    const [selectedMonth, setSelectedMonth] = useState('January');
+    const [sliderPosition, setSliderPosition] = useState(4);
+    const maxSliderValue = 4;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -22,8 +22,10 @@ function App() {
             setSelectedMonth('July');
         } else if (value === '2') {
             setSelectedMonth('August');
-        } else {
+        } else if (value === '3'){
             setSelectedMonth('November');
+        } else {
+            setSelectedMonth('January');
         }
     };
 
@@ -31,14 +33,16 @@ function App() {
         if (selectedMonth === 'June') return '0';
         if (selectedMonth === 'July') return '1';
         if (selectedMonth === 'August') return '2';
-        return '3';
+        if (selectedMonth === 'November') return '3';
+        return '4';
     };
     
     const getDate = () => {
         if (selectedMonth === 'June') return '2024-06-24';
         if (selectedMonth === 'July') return '2024-07-26';
         if (selectedMonth === 'August') return '2024-08-31';
-        return '2024-11-25';
+        if (selectedMonth === 'November') return '2024-11-25';
+        return '2025-01-25';
     };
 
     return (
@@ -276,6 +280,7 @@ function App() {
                         {selectedMonth === 'July' && <CSVTable dateStr='2024-07-26' />}
                         {selectedMonth === 'August' && <CSVTable dateStr='2024-08-31' />}
                         {selectedMonth === 'November' && <CSVTable dateStr='2024-11-25' />}
+                        {selectedMonth === 'January' && <CSVTable dateStr='2025-01-25' />}
                     </div>
                 </div>
             </section>
