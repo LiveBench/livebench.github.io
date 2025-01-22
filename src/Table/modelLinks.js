@@ -17,6 +17,7 @@ export const modelLinks = {
     "deepseek-v2.5-1210": { url: "https://api-docs.deepseek.com/news/news1210", organization: "DeepSeek" },
     "deepseek-v3": { url: "https://api-docs.deepseek.com/news/news1226", organization: "DeepSeek" },
     "deepseek-r1": { url: "https://huggingface.co/deepseek-ai/DeepSeek-R1", organization: "DeepSeek" },
+    "deepseek-r1-distill-qwen-32b": { url: "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B", organization: "DeepSeek" },
     "dracarys-72b-instruct": { url: "https://huggingface.co/abacusai/Dracarys-72B-Instruct", organization: "AbacusAI" },
     "dracarys-llama-3.1-70b-instruct": { url: "https://huggingface.co/abacusai/Dracarys-Llama-3.1-70B-Instruct", organization: "AbacusAI" },
     "dracarys2-72b-instruct": { url: "https://huggingface.co/abacusai/Dracarys2-72B-Instruct", organization: "AbacusAI" },
