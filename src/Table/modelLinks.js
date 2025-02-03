@@ -71,6 +71,7 @@ export const modelLinks = {
     "o1-2024-12-17-low": { url: "https://openai.com/o1/", organization: "OpenAI" },
     "o3-mini-2025-01-31-high": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI" },
     "o3-mini-2025-01-31-low": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI" },
+    "o3-mini-2025-01-31-medium": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI" },
     "o3-mini-2025-01-31": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI" },
     "open-mistral-nemo": { url: "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407", organization: "Mistral AI" },
     "phi-3-medium-128k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-medium-128k-instruct", organization: "Microsoft" },
