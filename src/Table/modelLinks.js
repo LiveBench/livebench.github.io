@@ -1,7 +1,7 @@
 // modelLinks.js
 export const modelLinks = {
     "chatgpt-4o-latest-0903": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI" },
-    "chatgpt-4o-latest-2025-01-30": { url: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes#h_caaeddc37e", organization: "OpenAI" },
+    "chatgpt-4o-latest-2025-01-29": { url: "https://help.openai.com/en/articles/9624314-model-release-notes", organization: "OpenAI" },
     "claude-3-5-sonnet-20240620": { url: "https://www.anthropic.com/news/claude-3-5-sonnet", organization: "Anthropic" },
     "claude-3-5-sonnet-20241022": { url: "https://www.anthropic.com/news/3-5-models-and-computer-use", organization: "Anthropic" },
     "claude-3-5-haiku-20241022": { url: "https://www.anthropic.com/claude/haiku", organization: "Anthropic" },
