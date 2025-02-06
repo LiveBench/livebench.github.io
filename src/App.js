@@ -183,7 +183,7 @@ function App() {
                             </p>
                             <p className="c10"><span className="c0"></span></p>
                                 <ul className="c28 lst-kix_r92srvgun7j-0 start">
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is designed to limit potential contamination by releasing new questions monthly, as well as having questions based on recently-released datasets, arXiv papers, news articles, and IMDb movie synopses.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench is designed to limit potential contamination by releasing new questions regularly, as well as having questions based on recently-released datasets, arXiv papers, news articles, and IMDb movie synopses.</span>
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, allowing hard questions to be scored accurately and automatically, without the use of an LLM judge.</span>
                                     </li>
@@ -203,7 +203,7 @@ function App() {
                     <h2 className="title is-3 has-text-centered" id="Leaderboard">Leaderboard</h2>
                     <div className="is-size-6 has-text-centered">
                         <span className="author-block">
-                            We update questions each month such that the benchmark completely refreshes every 6 months. 
+                            We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             The initial version was <strong>LiveBench-2024-06-24</strong>. 
                             The next version was <strong>LiveBench-2024-07-26</strong> with additional coding questions and a new spatial reasoning task.
                             After that, we released <strong>LiveBench-2024-08-31</strong> with updated math questions.
