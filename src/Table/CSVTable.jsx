@@ -313,7 +313,7 @@ const CSVTable = ({dateStr}) => {
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
 
-    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown')));
+    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown'))).sort();
 
     return (
         <div className="table-container">
