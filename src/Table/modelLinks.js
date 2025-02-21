@@ -99,5 +99,4 @@ export const modelLinks = {
     "qwq-32b-preview": { url: "https://huggingface.co/Qwen/QWQ-32B-Preview", organization: "Alibaba" },
     "olmo-2-1124-13b-instruct": {url: "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct", organization: "AllenAI"},
     "learnlm-1.5-pro-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google"},
-    "grok3": {url: "https://x.ai/blog/grok", organization: "xAI"},
 };
