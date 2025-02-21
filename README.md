@@ -11,11 +11,12 @@ This should be done on a local machine so that changes may be verified with brow
 npm install
 ```
 
-### Building and running
+### Run dev server
 ```bash
-npm run build
 npm run start
 ```
+
+Automatically reloads on file changes and serves at [http://localhost:3000](http://localhost:3000) by default.
 
 ### Deploying
 ```bash
