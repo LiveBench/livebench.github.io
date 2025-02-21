@@ -16,9 +16,9 @@ export const getGlobalAverage = (row, checkedCategories, categories) => {
 };
 
 
-export const calculateAverage = (row, columns) => {
+export const calculateAverage = (row, columns, fixedSize) => {
     if (!columns) return '-';
     const validValues = columns.map(col => parseFloat(row[col])).filter(val => !isNaN(val));
     const average = validValues.length > 0 ? validValues.reduce((a, b) => a + b, 0) / validValues.length : NaN;
-    return isNaN(average) ? '-' : average;
+    return isNaN(average) ? '-' : fixedSize ? average.toFixed(fixedSize) : average;
 };

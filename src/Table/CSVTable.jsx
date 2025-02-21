@@ -426,7 +426,7 @@ const CSVTable = ({dateStr}) => {
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {
-                                            res.push(calculateAverage(row, categories[category]).toFixed(2));
+                                            res.push(calculateAverage(row, categories[category], 2));
                                         }
                                         if (checks.allSubcategories) {
                                             categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
