@@ -21,7 +21,7 @@ const CSVTable = ({dateStr}) => {
 
     const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
-    
+
         let allAverages = true;
         let anySubcategories = false;
         // Add only the categories with active selections to query params
@@ -56,13 +56,13 @@ const CSVTable = ({dateStr}) => {
             }
             if (Object.keys(newFilter).length > 0) {
                 Object.keys(newFilter).forEach(key => {
-                    newFilter[key].length > 0 && newParams.append(key, newFilter[key].join(','));    
+                    newFilter[key].length > 0 && newParams.append(key, newFilter[key].join(','));
                 });
             }
             setSearchParams(newParams);
             return;
         }
-    
+
         setSearchParams(params);
     };
 
@@ -143,7 +143,7 @@ const CSVTable = ({dateStr}) => {
         }
         if (searchParams.toString() === '') {
             return;
-        } 
+        }
 
         const anyCatParams = Array.from(searchParams.keys()).some(key => Object.keys(categories).includes(key));
 
@@ -179,7 +179,7 @@ const CSVTable = ({dateStr}) => {
         if (Object.keys(checkedCategories).length === 0) {
             return;
         }
-        
+
         // Add the URL update to reflect the checkbox state
         updateURL(checkedCategories, filter);
     }, [checkedCategories]);
@@ -198,7 +198,7 @@ const CSVTable = ({dateStr}) => {
 
         updatedCategories[clickedCategory][type] = !checkedCategories[clickedCategory][type];
 
-        
+
 
         // If 'average' for a category is checked, uncheck 'allSubcategories' for all other categories
         if (type === 'average') {
@@ -280,8 +280,8 @@ const CSVTable = ({dateStr}) => {
 
         handleSorting(newSortField, sortOrder);
     }
-    
-    
+
+
 
     const handleSortingChange = (accessor) => {
         const order = accessor === sortField && sortOrder === "desc" ? "asc" : "desc";
@@ -305,7 +305,7 @@ const CSVTable = ({dateStr}) => {
         }
         handleFilter({organization: filter.map(f => f.value)});
     }
-    
+
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
         return sortField === accessor ? (sortOrder === "asc" ? "up" : "down") : "default";
@@ -414,7 +414,7 @@ const CSVTable = ({dateStr}) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedData.map((row, index) => 
+                            {sortedData.map((row, index) =>
                                 <tr key={index}>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
@@ -422,7 +422,7 @@ const CSVTable = ({dateStr}) => {
                                         </a>
                                     </td>
                                     {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
-                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
+                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{(row['model'] === 'grok-3-thinking') ? "" : getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {
