@@ -9,6 +9,8 @@ export const getGlobalAverageColumns = (checkedCategories, categories) => {
 export const getGlobalAverage = (row, checkedCategories, categories) => {
     if (row['model'] === 'grok-3-thinking') {
         return 72;
+    } else if (row['model'] == 'grok-3') {
+        return 58;
     }
     const averages = Object.entries(checkedCategories).flatMap(([category, checks]) =>
         checks.average ? [calculateAverage(row, categories[category])] :

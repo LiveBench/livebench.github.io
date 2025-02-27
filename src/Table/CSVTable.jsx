@@ -422,14 +422,14 @@ const CSVTable = ({dateStr}) => {
                                         </a>
                                     </td>
                                     {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
-                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{(row['model'] === 'grok-3-thinking') ? "" : getGlobalAverage(row, checkedCategories, categories)}</td>}
+                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{(row['model'] === 'grok-3-thinking') || row['model'] === 'grok-3' ? "" : getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {
                                             res.push(calculateAverage(row, categories[category], 2));
                                         }
                                         if (checks.allSubcategories) {
-                                            categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat].toFixed(2)));
+                                            categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat]));
                                         }
                                         return res;
                                     }).map((cell, idx) => <td key={idx}>{cell}</td>)}

@@ -1,9 +1,9 @@
 export const bibtexEntry = `
-@article{livebench,
-  author    = {White, Colin and Dooley, Samuel and Roberts, Manley and Pal, Arka and Feuer, Ben and Jain, Siddhartha and Shwartz-Ziv, Ravid and Jain, Neel and Saifullah, Khalid and Naidu, Siddartha and Hegde, Chinmay and LeCun, Yann and Goldstein, Tom and Neiswanger, Willie and Goldblum, Micah},
-  title     = {LiveBench: A Challenging, Contamination-Free LLM Benchmark},
-  url       = {arXiv preprint arXiv:2406.19314},
-  year      = {2024},
+@inproceedings{livebench,
+  title={LiveBench: A Challenging, Contamination-Free {LLM} Benchmark},
+  author={Colin White and Samuel Dooley and Manley Roberts and Arka Pal and Benjamin Feuer and Siddhartha Jain and Ravid Shwartz-Ziv and Neel Jain and Khalid Saifullah and Sreemanti Dey and Shubh-Agrawal and Sandeep Singh Sandha and Siddartha Venkat Naidu and Chinmay Hegde and Yann LeCun and Tom Goldstein and Willie Neiswanger and Micah Goldblum},
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2025},
 }`;
 
 

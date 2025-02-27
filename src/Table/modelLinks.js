@@ -8,6 +8,8 @@ export const modelLinks = {
     "claude-3-haiku-20240307": { url: "https://www.anthropic.com/claude", organization: "Anthropic" },
     "claude-3-opus-20240229": { url: "https://www.anthropic.com/claude", organization: "Anthropic" },
     "claude-3-sonnet-20240229": { url: "https://www.anthropic.com/claude", organization: "Anthropic" },
+    "claude-3-7-sonnet-thinking": { url: "https://www.anthropic.com/news/claude-3-7-sonnet", organization: "Anthropic"},
+    "claude-3-7-sonnet": { url: "https://www.anthropic.com/news/claude-3-7-sonnet", organization: "Anthropic"},
     "command-r": { url: "https://docs.cohere.com/docs/models", organization: "Cohere" },
     "command-r-08-2024": { url: "https://docs.cohere.com/docs/models", organization: "Cohere" },
     "command-r-plus": { url: "https://docs.cohere.com/docs/models", organization: "Cohere" },
@@ -99,5 +101,8 @@ export const modelLinks = {
     "qwq-32b-preview": { url: "https://huggingface.co/Qwen/QWQ-32B-Preview", organization: "Alibaba" },
     "olmo-2-1124-13b-instruct": {url: "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct", organization: "AllenAI"},
     "learnlm-1.5-pro-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google"},
-    "grok-3-thinking": {url: "https://x.ai/blog/grok", organization: "xAI"},
+    "grok-3-thinking": {url: "https://x.ai/blog/grok-3", organization: "xAI"},
+    "grok-3": {url: "https://x.ai/blog/grok-3", organization: "xAI"},
+    "gpt-4.5-preview": {url: "https://openai.com/index/introducing-gpt-4-5/", organization: "OpenAI"},
+    "gemini-2.0-flash-lite": {url: "https://developers.googleblog.com/en/start-building-with-the-gemini-2-0-flash-family/", organization: "Google"}
 };
