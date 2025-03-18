@@ -105,5 +105,7 @@ export const modelLinks = {
     "grok-3": {url: "https://x.ai/blog/grok-3", organization: "xAI"},
     "gpt-4.5-preview": {url: "https://openai.com/index/introducing-gpt-4-5/", organization: "OpenAI"},
     "gemini-2.0-flash-lite": {url: "https://developers.googleblog.com/en/start-building-with-the-gemini-2-0-flash-family/", organization: "Google"},
-    "qwq-32b": { url: "https://qwenlm.github.io/blog/qwq-32b/", organization: "Alibaba"}
+    "qwq-32b": { url: "https://qwenlm.github.io/blog/qwq-32b/", organization: "Alibaba"},
+    "mistral-small-2503": { url: "https://mistral.ai/news/mistral-small-3-1", organization: "Mistral AI"},
+    "gemma-3-27b-it": { url: "https://blog.google/technology/developers/gemma-3/", organization: "Google" }
 };
