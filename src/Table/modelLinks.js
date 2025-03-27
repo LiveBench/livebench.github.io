@@ -2,6 +2,7 @@
 export const modelLinks = {
     "chatgpt-4o-latest-0903": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI" },
     "chatgpt-4o-latest-2025-01-29": { url: "https://help.openai.com/en/articles/9624314-model-release-notes", organization: "OpenAI" },
+    "chatgpt-4o-latest-2025-03-27": { url: "https://x.com/OpenAIDevs/status/1905335104211185999?t=pmYR2_xGFyWs1xOGuNxRsw&s=19", organization: "OpenAI" },
     "claude-3-5-sonnet-20240620": { url: "https://www.anthropic.com/news/claude-3-5-sonnet", organization: "Anthropic" },
     "claude-3-5-sonnet-20241022": { url: "https://www.anthropic.com/news/3-5-models-and-computer-use", organization: "Anthropic" },
     "claude-3-5-haiku-20241022": { url: "https://www.anthropic.com/claude/haiku", organization: "Anthropic" },
@@ -109,5 +110,7 @@ export const modelLinks = {
     "mistral-small-2503": { url: "https://mistral.ai/news/mistral-small-3-1", organization: "Mistral AI"},
     "gemma-3-27b-it": { url: "https://blog.google/technology/developers/gemma-3/", organization: "Google" },
     "perplexity-sonar": { url: "https://perplexity.ai/", organization: "Perplexity" },
-    "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity" }
+    "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity" },
+    "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek"},
+    "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google"}
 };
