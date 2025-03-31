@@ -112,9 +112,9 @@ function App() {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="column has-text-centered mt-3">
+                                <div className="column has-text-centered">
                                     <a href="https://liveswebench.ai" className="liveswebench-callout" target='_blank' rel="noopener noreferrer"> 
-                                        New! Check out LiveSWEBench, our new benchmark for AI coding agents
+                                        <span>New! Check out LiveSWEBench, our new benchmark for AI coding agents</span>
                                     </a>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ function App() {
                     </div>
                 </div>
             </section>
-            <section className="section p-0 mt-1">
+            <section className="section p-0">
                 <div className="container is-max-desktop">
                     <div className="columns is-centered has-text-centered">
                         <div className="column is-four-fifths">

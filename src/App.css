@@ -286,11 +286,18 @@ thead th:first-child {
 
 .liveswebench-callout {
   background-color: rgb(128, 201, 240);
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 10px;
-
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: black;
+  word-wrap: break-word;
+  display: inline-block;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.liveswebench-callout span {
+  display: block;
 }
 
 .liveswebench-callout:hover {
