@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.2ff4902e.css",
-    "main.js": "./static/js/main.aec6b047.js",
+    "main.css": "./static/css/main.bedbef7b.css",
+    "main.js": "./static/js/main.59c9b45d.js",
     "static/js/453.c2db30af.chunk.js": "./static/js/453.c2db30af.chunk.js",
     "static/media/livebench_results.png": "./static/media/livebench_results.8e0a4067c9f80f03d93a.png",
     "static/media/livebench_vs_chatbot_arena.png": "./static/media/livebench_vs_chatbot_arena.2c09af3bc158a5de46ef.png",
@@ -15,12 +15,12 @@
     "static/media/fa-v4compatibility.ttf": "./static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "./index.html",
-    "main.2ff4902e.css.map": "./static/css/main.2ff4902e.css.map",
-    "main.aec6b047.js.map": "./static/js/main.aec6b047.js.map",
+    "main.bedbef7b.css.map": "./static/css/main.bedbef7b.css.map",
+    "main.59c9b45d.js.map": "./static/js/main.59c9b45d.js.map",
     "453.c2db30af.chunk.js.map": "./static/js/453.c2db30af.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2ff4902e.css",
-    "static/js/main.aec6b047.js"
+    "static/css/main.bedbef7b.css",
+    "static/js/main.59c9b45d.js"
   ]
 }
