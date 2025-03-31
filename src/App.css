@@ -283,3 +283,16 @@ thead th:first-child {
 .o1-row.not-coding {
   display: none;
 }
+
+.liveswebench-callout {
+  background-color: rgb(128, 201, 240);
+  padding: 1.5rem;
+  border-radius: 10px;
+
+  font-size: 1.5rem;
+  color: black;
+}
+
+.liveswebench-callout:hover {
+  background-color: rgb(122, 220, 233);
+}
