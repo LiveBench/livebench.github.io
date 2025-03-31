@@ -112,5 +112,7 @@ export const modelLinks = {
     "perplexity-sonar": { url: "https://perplexity.ai/", organization: "Perplexity" },
     "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity" },
     "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek"},
-    "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google"}
+    "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google"},
+    "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent"},
+    "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI" }
 };
