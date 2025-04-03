@@ -18,6 +18,7 @@ const CSVTable = ({dateStr}) => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [showProvider, setShowProvider] = useState(true);
+    const [showApiName, setShowApiName] = useState(false);
 
     const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
@@ -324,6 +325,18 @@ const CSVTable = ({dateStr}) => {
 
     const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown'))).sort();
 
+    // Create a map to identify models with duplicate display names
+    const displayNameCounts = useMemo(() => {
+        const counts = {};
+        data.forEach(row => {
+            const displayName = modelLinks[row.model]?.displayName;
+            if (displayName) {
+                counts[displayName] = (counts[displayName] || 0) + 1;
+            }
+        });
+        return counts;
+    }, [data, modelLinks]);
+
     return (
         <div className="table-container">
             <div className="category-checkboxes">
@@ -355,6 +368,8 @@ const CSVTable = ({dateStr}) => {
             <div className="other-controls">
                 <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
                 <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
+                <input type="checkbox" checked={showApiName} onChange={() => setShowApiName(!showApiName)} id="showApiName" style={{marginLeft: '1rem'}} />
+                <label htmlFor="showApiName" style={{marginLeft: '0.5rem'}}>Show API Name</label>
                 <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch(''); updateURL(checkedCategories, filter); handleSorting('ga', 'desc');}} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -427,7 +442,16 @@ const CSVTable = ({dateStr}) => {
                                 <tr key={index}>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
-                                            {row.model}
+                                            {showApiName ? row.model : (() => {
+                                                const displayName = modelLinks[row.model]?.displayName ?? row.model;
+                                                const version = modelLinks[row.model]?.version;
+                                                // Show version in parentheses if there are multiple models with the same display name
+                                                // and this model has a version defined
+                                                if (!showApiName && displayNameCounts[displayName] > 1 && version !== undefined) {
+                                                    return `${displayName} (${version})`;
+                                                }
+                                                return displayName;
+                                            })()}
                                         </a>
                                     </td>
                                     {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
