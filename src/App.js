@@ -8,7 +8,7 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedMonth, setSelectedMonth] = useState('January');
+    const [selectedMonth, setSelectedMonth] = useState('April');
     const [sliderPosition, setSliderPosition] = useState(4);
     const maxSliderValue = 4;
 
@@ -25,7 +25,7 @@ function App() {
         } else if (value === '3'){
             setSelectedMonth('November');
         } else {
-            setSelectedMonth('January');
+            setSelectedMonth('April');
         }
     };
 
@@ -42,7 +42,7 @@ function App() {
         if (selectedMonth === 'July') return '2024-07-26';
         if (selectedMonth === 'August') return '2024-08-31';
         if (selectedMonth === 'November') return '2024-11-25';
-        return '2025-01-25';
+        return '2025-04-02';
     };
 
     return (
@@ -180,7 +180,7 @@ function App() {
                                 <input
                                     type="range"
                                     min="0"
-                                    max="3"
+                                    max={maxSliderValue}
                                     step="1"
                                     value={getSliderValue()}
                                     onChange={handleSliderChange}
@@ -226,7 +226,7 @@ function App() {
                         {selectedMonth === 'July' && <CSVTable dateStr='2024-07-26' />}
                         {selectedMonth === 'August' && <CSVTable dateStr='2024-08-31' />}
                         {selectedMonth === 'November' && <CSVTable dateStr='2024-11-25' />}
-                        {selectedMonth === 'January' && <CSVTable dateStr='2025-01-25' />}
+                        {selectedMonth === 'April' && <CSVTable dateStr='2025-04-02' />}
                     </div>
                 </div>
             </section>

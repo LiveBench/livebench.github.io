@@ -68,34 +68,43 @@ const CSVTable = ({dateStr}) => {
 
 
     // Define columns as a memoized array
-    const columns = useMemo(() => [
-        { label: "Model", accessor: "model", sortable: true, visible: true },
-        { label: "CTA", accessor: "cta", sortable: true, visible: false },
-        { label: "JoinMap", accessor: "tablejoin", sortable: true, visible: false },
-        { label: "Table Reformat", accessor: "tablereformat", sortable: true, visible: false },
-        { label: "AIME", accessor: "AIME", sortable: true, visible: false },
-        { label: "AMC", accessor: "AMC", sortable: true, visible: false },
-        { label: "Spatial", accessor: "spatial", sortable: true, visible: false },
-        { label: "AMPS_Hard", accessor: "AMPS_Hard", sortable: true, visible: false },
-        { label: "web_of_lies_v2", accessor: "web_of_lies_v2", sortable: true, visible: false },
-        { label: "zebra_puzzle", accessor: "zebra_puzzle", sortable: true, visible: false },
-        { label: "SMC", accessor: "smc", sortable: true, visible: true },
-        { label: "IMO", accessor: "imo", sortable: true, visible: true },
-        { label: "Connections", accessor: "connections", sortable: true, visible: true },
-        { label: "Plot Unscrambling", accessor: "movie_unscrambling", sortable: true, visible: true },
-        { label: "Typo Fixing", accessor: "typos", sortable: true, visible: true },
-        { label: "Paraphrase", accessor: "paraphrase", sortable: true, visible: true },
-        { label: "simplify", accessor: "simplify", sortable: true, visible: true },
-        { label: "Story Generation", accessor: "story_generation", sortable: true, visible: true },
-        { label: "Summarize", accessor: "summarize", sortable: true, visible: true },
-        { label: "Global Average", accessor: "ga", sortable: true, visible: true, sortbyOrder: "desc" },
-        { label: "Reasoning", accessor: "average_reasoning", sortable: true, visible: true },
-        { label: "Coding", accessor: "average_coding", sortable: true, visible: true },
-        { label: "Data Analysis", accessor: "average_data_analysis", sortable: true, visible: true },
-        { label: "Language", accessor: "average_language", sortable: true, visible: true },
-        { label: "IF", accessor: "average_instruction_following", sortable: true, visible: true },
-        { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
-    ], []);
+    const columns = useMemo(() => {
+        let res = [
+            { label: "Model", accessor: "model", sortable: true, visible: true },
+            { label: "CTA", accessor: "cta", sortable: true, visible: false },
+            { label: "JoinMap", accessor: "tablejoin", sortable: true, visible: false },
+            { label: "Table Reformat", accessor: "tablereformat", sortable: true, visible: false },
+            { label: "AIME", accessor: "AIME", sortable: true, visible: false },
+            { label: "AMC", accessor: "AMC", sortable: true, visible: false },
+            { label: "Spatial", accessor: "spatial", sortable: true, visible: false },
+            { label: "AMPS_Hard", accessor: "AMPS_Hard", sortable: true, visible: false },
+            { label: "zebra_puzzle", accessor: "zebra_puzzle", sortable: true, visible: false },
+            { label: "SMC", accessor: "smc", sortable: true, visible: true },
+            { label: "IMO", accessor: "imo", sortable: true, visible: true },
+            { label: "Connections", accessor: "connections", sortable: true, visible: true },
+            { label: "Plot Unscrambling", accessor: "movie_unscrambling", sortable: true, visible: true },
+            { label: "Typo Fixing", accessor: "typos", sortable: true, visible: true },
+            { label: "Paraphrase", accessor: "paraphrase", sortable: true, visible: true },
+            { label: "simplify", accessor: "simplify", sortable: true, visible: true },
+            { label: "Story Generation", accessor: "story_generation", sortable: true, visible: true },
+            { label: "Summarize", accessor: "summarize", sortable: true, visible: true },
+            { label: "Global Average", accessor: "ga", sortable: true, visible: true, sortbyOrder: "desc" },
+            { label: "Reasoning", accessor: "average_reasoning", sortable: true, visible: true },
+            { label: "Coding", accessor: "average_coding", sortable: true, visible: true },
+            { label: "Data Analysis", accessor: "average_data_analysis", sortable: true, visible: true },
+            { label: "Language", accessor: "average_language", sortable: true, visible: true },
+            { label: "IF", accessor: "average_instruction_following", sortable: true, visible: true },
+            { label: "Mathematics", accessor: "average_math", sortable: true, visible: true }
+        ];
+
+        if (dateStr > '2024-11-25') {
+            res.push({ label: "web_of_lies_v2", accessor: "web_of_lies_v2", sortable: true, visible: false })
+        } else {
+            res.push({ label: "web_of_lies_v3", accessor: "web_of_lies_v3", sortable: true, visible: false })
+        }
+
+        return res;
+    }, [dateStr]);
 
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
 
