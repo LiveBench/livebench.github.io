@@ -42,7 +42,8 @@ export const modelLinks = {
     "gemini-1.5-pro-exp-0801": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google", displayName: "Gemini 1.5 Pro Experimental", version: "2024-08-01" },
     "gemini-1.5-pro-exp-0827": { url: "https://ai.google.dev/gemini-api/docs/models/experimental-models", organization: "Google", displayName: "Gemini 1.5 Pro Experimental", version: "2024-08-27" },
     "gemini-2.0-flash-exp": { url: "https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2", organization: "Google", displayName: "Gemini 2.0 Flash Experimental" },
-    "gemini-2.0-flash": { url: "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/", organization: "Google", displayName: "Gemini 2.0 Flash" },
+    "gemini-2.0-flash": { url: "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/", organization: "Google", displayName: "Gemini 2.0 Flash", version: "001"},
+    "gemini-2.0-flash-001": { url: "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/", organization: "Google", displayName: "Gemini 2.0 Flash", version: "001" },
     "gemini-2.0-flash-thinking-exp-1219": { url: "https://ai.google.dev/gemini-api/docs/thinking-mode", organization: "Google", displayName: "Gemini 2.0 Flash Thinking Experimental", version: "2024-12-19", reasoner: true },
     "gemini-2.0-flash-thinking-exp-01-21": { url: "https://ai.google.dev/gemini-api/docs/thinking-mode", organization: "Google", displayName: "Gemini 2.0 Flash Thinking Experimental", version: "2025-01-21", reasoner: true },
     "gemini-2.0-flash-lite-preview-02-05": { url: "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/", organization: "Google", displayName: "Gemini 2.0 Flash Lite Preview", version: "2025-02-05" },
@@ -122,5 +123,6 @@ export const modelLinks = {
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Experimental", version: "2025-03-25", reasoner: true},
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
-    "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"}
+    "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"},
+    "llama-4-maverick-17b-128e-instruct": {url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", organization: "Meta", displayName:"Llama 4 Maverick 17B 128E Instruct"}
 };
