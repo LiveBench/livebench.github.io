@@ -19,6 +19,7 @@ const CSVTable = ({dateStr}) => {
 
     const [showProvider, setShowProvider] = useState(true);
     const [showApiName, setShowApiName] = useState(false);
+    const [showReasoners, setShowReasoners] = useState(true);
 
     const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
@@ -370,6 +371,8 @@ const CSVTable = ({dateStr}) => {
                 <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
                 <input type="checkbox" checked={showApiName} onChange={() => setShowApiName(!showApiName)} id="showApiName" style={{marginLeft: '1rem'}} />
                 <label htmlFor="showApiName" style={{marginLeft: '0.5rem'}}>Show API Name</label>
+                <input type="checkbox" checked={showReasoners} onChange={() => setShowReasoners(!showReasoners)} id="showReasoners" style={{marginLeft: '1rem'}} />
+                <label htmlFor="showReasoners" style={{marginLeft: '0.5rem'}}>Show Reasoning Models</label>
                 <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch(''); updateURL(checkedCategories, filter); handleSorting('ga', 'desc');}} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -439,9 +442,9 @@ const CSVTable = ({dateStr}) => {
                         </thead>
                         <tbody>
                             {sortedData.map((row, index) =>
-                                <tr key={index}>
+                                (showReasoners || !modelLinks[row.model]?.reasoner) && <tr key={index}>
                                     <td className="sticky-col model-col">
-                                        <a href={modelLinks[row.model]?.url ?? '#'} target="_blank" rel="noopener noreferrer">
+                                        <a href={modelLinks[row.model]?.url ?? '#'} target={modelLinks[row.model]?.url ? "_blank" : ""} rel="noopener noreferrer">
                                             {showApiName ? row.model : (() => {
                                                 const displayName = modelLinks[row.model]?.displayName ?? row.model;
                                                 const version = modelLinks[row.model]?.version;
@@ -454,8 +457,8 @@ const CSVTable = ({dateStr}) => {
                                             })()}
                                         </a>
                                     </td>
-                                    {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? 'Unknown'}</td>}
-                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{(row['model'] === 'grok-3-thinking') || row['model'] === 'grok-3' ? "" : getGlobalAverage(row, checkedCategories, categories)}</td>}
+                                    {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? ''}</td>}
+                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
                                     {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                         const res = [];
                                         if (checks.average) {

@@ -158,8 +158,8 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             All questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2024-11-25</strong>.
-                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2024-11-25 had 300 new questions, so currently 30% of questions in LiveBench are not publicly released.</strong>
+                            The most recent version is <strong>LiveBench-2025-04-02</strong>. This verison includes updated coding, language, math, and reasoning questions.
+                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2025-04-02 had ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
                             <a href="https://github.com/LiveBench/LiveBench/blob/main/changelog.md"
@@ -191,7 +191,7 @@ function App() {
                                     style={{
                                     position: 'absolute',
                                     top: '-40px',
-                                    left: `${(sliderPosition / (maxSliderValue + 0.1)) * 100 + 5}%`,
+                                    left: `${(sliderPosition / (maxSliderValue + 0.1)) * 100 + 2.5}%`,
                                     transform: 'translateX(-50%)',
                                     backgroundColor: '#3e3e3e',
                                     color: '#fff',
