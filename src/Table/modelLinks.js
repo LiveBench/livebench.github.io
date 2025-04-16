@@ -125,5 +125,8 @@ export const modelLinks = {
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
     "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"},
-    "llama-4-maverick-17b-128e-instruct": {url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", organization: "Meta", displayName:"Llama 4 Maverick 17B 128E Instruct"}
+    "llama-4-maverick-17b-128e-instruct": {url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", organization: "Meta", displayName:"Llama 4 Maverick 17B 128E Instruct"},
+    "gpt-4.1-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1", version: "2025-04-14"},
+    "gpt-4.1-mini-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Mini", version: "2025-04-14"},
+    "gpt-4.1-nano-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Nano", version: "2025-04-14"}
 };
