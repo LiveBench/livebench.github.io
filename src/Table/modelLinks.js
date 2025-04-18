@@ -120,7 +120,7 @@ export const modelLinks = {
     "gemma-3-4b-it": { url: "https://blog.google/technology/developers/gemma-3/", organization: "Google", displayName: "Gemma 3 4B" },
     "perplexity-sonar": { url: "https://perplexity.ai/", organization: "Perplexity", displayName: "Perplexity Sonar" },
     "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity", displayName: "Perplexity Sonar Pro" },
-    "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3", version: "2025-03-24"},
+    "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-03-24"},
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
@@ -132,5 +132,6 @@ export const modelLinks = {
     "o3-2025-04-16-high": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o3 High", version: "2025-04-16", reasoner: true},
     "o3-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o3 Medium", version: "2025-04-16", reasoner: true},
     "o4-mini-2025-04-16-high": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini High", version: "2025-04-16", reasoner: true},
-    "o4-mini-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini Medium", version: "2025-04-16", reasoner: true}
+    "o4-mini-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini Medium", version: "2025-04-16", reasoner: true},
+    "gemini-2.5-flash-preview-04-17": {url: "https://blog.google/products/gemini/gemini-2-5-flash-preview/", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-04-17", reasoner: true}
 };
