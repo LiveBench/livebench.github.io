@@ -12,7 +12,8 @@ const CSVTable = ({dateStr}) => {
     const date = new Date(dateStr).toISOString().split('T')[0].replaceAll('-', '_');
     const [data, setData] = useState([]);
     const [categories, setCategories] = useState({});
-    const [checkedCategories, setCheckedCategories] = useState({});
+    const [checkedCategories, setCheckedCategories] = useState(() => ({}));
+    const [rankingMap, setRankingMap] = useState(new Map());
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -73,6 +74,7 @@ const CSVTable = ({dateStr}) => {
     const columns = useMemo(() => {
         let res = [
             { label: "Model", accessor: "model", sortable: true, visible: true },
+            { label: "Ranking", accessor: "ranking", sortable: true, visible: true, sortByFn: (a, b) => rankingMap.get(a.model) - rankingMap.get(b.model) },
             { label: "CTA", accessor: "cta", sortable: true, visible: false },
             { label: "JoinMap", accessor: "tablejoin", sortable: true, visible: false },
             { label: "Table Reformat", accessor: "tablereformat", sortable: true, visible: false },
@@ -110,6 +112,26 @@ const CSVTable = ({dateStr}) => {
 
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
 
+    // Calculate initial rankings when data and categories are loaded
+    useEffect(() => {
+        if (!data.length || !Object.keys(categories).length) return;
+        
+        // Use current checkedCategories if available, otherwise create default
+        const rankingCategories = Object.keys(checkedCategories).length ? checkedCategories :
+            Object.keys(categories).reduce((acc, category) => {
+                acc[category] = { average: true, allSubcategories: false };
+                return acc;
+            }, {});
+
+        const map = new Map();
+        const initialRanking = [...data].sort(
+            (a, b) => getGlobalAverage(b, rankingCategories, categories) - getGlobalAverage(a, rankingCategories, categories)
+        );
+        initialRanking.forEach((row, idx) => {
+            map.set(row.model, idx + 1);
+        });
+        setRankingMap(map);
+    }, [data, categories]);
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
@@ -410,6 +432,10 @@ const CSVTable = ({dateStr}) => {
                         <thead>
                             <tr>
                                 <th
+                                    className={`sticky-col ${getSortClass("ranking")}`}
+                                    onClick={() => handleSortingChange("ranking")}>
+                                    Ranking</th>
+                                <th
                                     className={`sticky-col ${getSortClass("model")}`}
                                     onClick={() => handleSortingChange("model")}>
                                     Model</th>
@@ -443,6 +469,7 @@ const CSVTable = ({dateStr}) => {
                         <tbody>
                             {sortedData.map((row, index) =>
                                 (showReasoners || !modelLinks[row.model]?.reasoner) && <tr key={index}>
+                                    <td className="sticky-col">{rankingMap.get(row.model)}</td>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target={modelLinks[row.model]?.url ? "_blank" : ""} rel="noopener noreferrer">
                                             {showApiName ? row.model : (() => {
