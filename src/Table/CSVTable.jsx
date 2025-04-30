@@ -110,7 +110,6 @@ const CSVTable = ({dateStr}) => {
 
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
 
-
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())

@@ -8,41 +8,36 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedMonth, setSelectedMonth] = useState('April');
-    const [sliderPosition, setSliderPosition] = useState(4);
-    const maxSliderValue = 4;
+    const [selectedDate, setSelectedDate] = useState('2025-04-25');
+    const [sliderPosition, setSliderPosition] = useState(5);
+    const maxSliderValue = 5;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
         setSliderPosition(value);
 
         if (value === '0') {
-            setSelectedMonth('June');
+            setSelectedDate('2024-06-24');
         } else if (value === '1') {
-            setSelectedMonth('July');
+            setSelectedDate('2024-07-26');
         } else if (value === '2') {
-            setSelectedMonth('August');
+            setSelectedDate('2024-08-31');
         } else if (value === '3'){
-            setSelectedMonth('November');
+            setSelectedDate('2024-11-25');
+        } else if (value === '4') {
+            setSelectedDate('2025-04-02');
         } else {
-            setSelectedMonth('April');
+            setSelectedDate('2025-04-25');
         }
     };
 
     const getSliderValue = () => {
-        if (selectedMonth === 'June') return '0';
-        if (selectedMonth === 'July') return '1';
-        if (selectedMonth === 'August') return '2';
-        if (selectedMonth === 'November') return '3';
-        return '4';
-    };
-    
-    const getDate = () => {
-        if (selectedMonth === 'June') return '2024-06-24';
-        if (selectedMonth === 'July') return '2024-07-26';
-        if (selectedMonth === 'August') return '2024-08-31';
-        if (selectedMonth === 'November') return '2024-11-25';
-        return '2025-04-02';
+        if (selectedDate === '2024-06-24') return '0';
+        if (selectedDate === '2024-07-26') return '1';
+        if (selectedDate === '2024-08-31') return '2';
+        if (selectedDate === '2024-11-25') return '3';
+        if (selectedDate === '2025-04-02') return '4';
+        else return '5';
     };
 
     return (
@@ -157,9 +152,9 @@ function App() {
                     <div className="is-size-6 has-text-centered">
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
-                            All questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-04-02</strong>. This verison includes updated coding, language, math, and reasoning questions.
-                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent update. LiveBench-2025-04-02 had ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
+                            Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
+                            The most recent version is <strong>LiveBench-2025-04-25</strong>. This verison includes updated coding and data analysis questions.
+                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02 and LiveBench-2025-04-25 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
                             <a href="https://github.com/LiveBench/LiveBench/blob/main/changelog.md"
@@ -203,7 +198,7 @@ function App() {
                                     whiteSpace: 'nowrap',
                                     }}
                                 >
-                                    {getDate()}
+                                    {selectedDate}
                                     <div
                                         style={{
                                             position: 'absolute',
@@ -222,11 +217,7 @@ function App() {
                 </div>
                 <div className="columns is-centered">
                     <div className="column is-four-fifths">
-                        {selectedMonth === 'June' && <CSVTable dateStr='2024-06-24' />}
-                        {selectedMonth === 'July' && <CSVTable dateStr='2024-07-26' />}
-                        {selectedMonth === 'August' && <CSVTable dateStr='2024-08-31' />}
-                        {selectedMonth === 'November' && <CSVTable dateStr='2024-11-25' />}
-                        {selectedMonth === 'April' && <CSVTable dateStr='2025-04-02' />}
+                        <CSVTable dateStr={selectedDate}/>
                     </div>
                 </div>
             </section>
