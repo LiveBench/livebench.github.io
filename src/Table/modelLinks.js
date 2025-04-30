@@ -122,10 +122,12 @@ export const modelLinks = {
     "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity", displayName: "Perplexity Sonar Pro" },
     "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-03-24"},
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
+    "gemini-2.5-pro-preview-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
     "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"},
     "llama-4-maverick-17b-128e-instruct": {url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", organization: "Meta", displayName:"Llama 4 Maverick 17B 128E Instruct"},
+    "llama4-maverick-instruct-basic": {url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", organization: "Meta", displayName:"Llama 4 Maverick 17B 128E Instruct"},
     "gpt-4.1-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1", version: "2025-04-14"},
     "gpt-4.1-mini-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Mini", version: "2025-04-14"},
     "gpt-4.1-nano-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Nano", version: "2025-04-14"},
@@ -133,5 +135,9 @@ export const modelLinks = {
     "o3-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o3 Medium", version: "2025-04-16", reasoner: true},
     "o4-mini-2025-04-16-high": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini High", version: "2025-04-16", reasoner: true},
     "o4-mini-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini Medium", version: "2025-04-16", reasoner: true},
-    "gemini-2.5-flash-preview-04-17": {url: "https://blog.google/products/gemini/gemini-2-5-flash-preview/", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-04-17", reasoner: true}
+    "gemini-2.5-flash-preview-04-17": {url: "https://blog.google/products/gemini/gemini-2-5-flash-preview/", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-04-17", reasoner: true},
+    "qwen3-30b-a3b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 30B A3B", reasoner: true},
+    "qwen3-32b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 32B", reasoner: true},
+    "learnlm-2.0-flash-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google", displayName: "LearnLM 2.0 Flash Experimental"},
+    "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B", reasoner: true},
 };
