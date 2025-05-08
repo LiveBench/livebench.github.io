@@ -123,6 +123,7 @@ export const modelLinks = {
     "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-03-24"},
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "gemini-2.5-pro-preview-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
+    "gemini-2.5-pro-preview-05-06": {url: "https://developers.googleblog.com/en/gemini-2-5-pro-io-improved-coding-performance/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-05-06", reasoner: true},
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
     "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"},
@@ -140,4 +141,6 @@ export const modelLinks = {
     "qwen3-32b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 32B", reasoner: true},
     "learnlm-2.0-flash-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google", displayName: "LearnLM 2.0 Flash Experimental"},
     "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B", reasoner: true},
+    "phi-4-reasoning-plus": {url: "https://huggingface.co/microsoft/Phi-4-reasoning-plus", organization: "Microsoft", displayName: "Phi-4 Reasoning Plus", reasoner: true},
+    "mistral-medium-2505": {url: "https://mistral.ai/news/mistral-medium-3", organization: "Mistral AI", displayName: "Mistral Medium 3", version: "2025-05"}
 };
