@@ -8,9 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedDate, setSelectedDate] = useState('2025-04-25');
-    const [sliderPosition, setSliderPosition] = useState(5);
-    const maxSliderValue = 5;
+    const [selectedDate, setSelectedDate] = useState('2025-05-17');
+    const [sliderPosition, setSliderPosition] = useState(6);
+    const maxSliderValue = 6;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -26,8 +26,10 @@ function App() {
             setSelectedDate('2024-11-25');
         } else if (value === '4') {
             setSelectedDate('2025-04-02');
-        } else {
+        } else if (value === '5'){
             setSelectedDate('2025-04-25');
+        } else {
+            setSelectedDate('2025-05-17');
         }
     };
 
@@ -37,7 +39,8 @@ function App() {
         if (selectedDate === '2024-08-31') return '2';
         if (selectedDate === '2024-11-25') return '3';
         if (selectedDate === '2025-04-02') return '4';
-        else return '5';
+        if (selectedDate === '2025-04-25') return '5';
+        return '6';
     };
 
     return (

@@ -1,0 +1,35 @@
+{
+    "Reasoning": [
+        "web_of_lies_v3",
+        "zebra_puzzle",
+        "spatial"
+    ],
+    "Coding": [
+        "code_generation",
+        "code_completion"
+    ],
+    "Agentic Coding": [
+        "agentic_coding_js",
+        "agentic_coding_python"
+    ],
+    "Mathematics": [
+        "AMPS_Hard",
+        "math_comp",
+        "olympiad"
+    ],
+    "Data Analysis": [
+        "tablejoin",
+        "tablereformat"
+    ],
+    "Language": [
+        "connections",
+        "plot_unscrambling",
+        "typos"
+    ],
+    "IF": [
+        "paraphrase",
+        "simplify",
+        "story_generation",
+        "summarize"
+    ]
+}
