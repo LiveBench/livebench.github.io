@@ -143,5 +143,9 @@ export const modelLinks = {
     "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B", reasoner: true},
     "phi-4-reasoning-plus": {url: "https://huggingface.co/microsoft/Phi-4-reasoning-plus", organization: "Microsoft", displayName: "Phi-4 Reasoning Plus", reasoner: true},
     "mistral-medium-2505": {url: "https://mistral.ai/news/mistral-medium-3", organization: "Mistral AI", displayName: "Mistral Medium 3", version: "2025-05"},
-    "gemini-2.5-flash-preview-05-20": {url: "https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/#flash-improvements", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-05-20", reasoner: true}
+    "gemini-2.5-flash-preview-05-20": {url: "https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/#flash-improvements", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-05-20", reasoner: true},
+    "claude-4-sonnet-20250514-thinking-64k": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Sonnet Thinking", version: "2025-05-14", reasoner: true },
+    "claude-4-sonnet-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Sonnet", version: "2025-05-14" },
+    "claude-4-opus-20250514-thinking-32k": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus Thinking", version: "2025-05-14", reasoner: true },
+    "claude-4-opus-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus", version: "2025-05-14" },
 };
