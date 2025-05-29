@@ -148,4 +148,5 @@ export const modelLinks = {
     "claude-4-sonnet-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Sonnet", version: "2025-05-14" },
     "claude-4-opus-20250514-thinking-32k": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus Thinking", version: "2025-05-14", reasoner: true },
     "claude-4-opus-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus", version: "2025-05-14" },
+    "deepseek-r1-0528": { url: "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528", organization: "DeepSeek", displayName: "DeepSeek R1", reasoner: true, version: "2025-05-28"},
 };
