@@ -9,8 +9,9 @@
         "code_completion"
     ],
     "Agentic Coding": [
-        "agentic_coding_js",
-        "agentic_coding_python"
+        "javascript",
+        "typescript",
+        "python"
     ],
     "Mathematics": [
         "AMPS_Hard",
