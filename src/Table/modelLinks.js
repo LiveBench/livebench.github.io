@@ -139,6 +139,7 @@ export const modelLinks = {
     "gemini-2.5-flash-preview-04-17": {url: "https://blog.google/products/gemini/gemini-2-5-flash-preview/", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-04-17", reasoner: true},
     "qwen3-30b-a3b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 30B A3B", reasoner: true},
     "qwen3-32b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 32B", reasoner: true},
+    "qwen3-14b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 14B", reasoner: true},
     "learnlm-2.0-flash-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google", displayName: "LearnLM 2.0 Flash Experimental"},
     "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B", reasoner: true},
     "phi-4-reasoning-plus": {url: "https://huggingface.co/microsoft/Phi-4-reasoning-plus", organization: "Microsoft", displayName: "Phi-4 Reasoning Plus", reasoner: true},
