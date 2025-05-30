@@ -8,9 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedDate, setSelectedDate] = useState('2025-04-25');
-    const [sliderPosition, setSliderPosition] = useState(5);
-    const maxSliderValue = 5;
+    const [selectedDate, setSelectedDate] = useState('2025-05-17');
+    const [sliderPosition, setSliderPosition] = useState(6);
+    const maxSliderValue = 6;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -26,8 +26,10 @@ function App() {
             setSelectedDate('2024-11-25');
         } else if (value === '4') {
             setSelectedDate('2025-04-02');
-        } else {
+        } else if (value === '5'){
             setSelectedDate('2025-04-25');
+        } else {
+            setSelectedDate('2025-05-17');
         }
     };
 
@@ -37,7 +39,8 @@ function App() {
         if (selectedDate === '2024-08-31') return '2';
         if (selectedDate === '2024-11-25') return '3';
         if (selectedDate === '2025-04-02') return '4';
-        else return '5';
+        if (selectedDate === '2025-04-25') return '5';
+        return '6';
     };
 
     return (
@@ -153,8 +156,8 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-04-25</strong>. This verison includes updated coding and data analysis questions.
-                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02 and LiveBench-2025-04-25 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
+                            The most recent version is <strong>LiveBench-2025-05-17</strong>. This verison includes a new agentic coding task, where models must operate in a real development environment to solve a real-world repository issue.
+                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02, LiveBench-2025-04-25, and LiveBench-2025-05-17 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
                             <a href="https://github.com/LiveBench/LiveBench/blob/main/changelog.md"
