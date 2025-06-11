@@ -124,6 +124,8 @@ export const modelLinks = {
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "gemini-2.5-pro-preview-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "gemini-2.5-pro-preview-05-06": {url: "https://developers.googleblog.com/en/gemini-2-5-pro-io-improved-coding-performance/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-05-06", reasoner: true},
+    "gemini-2.5-pro-preview-06-05-default": {url: "https://blog.google/products/gemini/gemini-2-5-pro-latest-preview/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-06-05", reasoner: true},
+    "gemini-2.5-pro-preview-06-05-highthinking": {url: "https://blog.google/products/gemini/gemini-2-5-pro-latest-preview/", organization: "Google", displayName: "Gemini 2.5 Pro Preview (2025-06-05 Max Thinking)", version: "2025-06-05", reasoner: true},
     "hunyuan-turbos-20250313": {url: "https://cloud.tencent.com/document/product/1729/104753", organization: "Tencent", displayName: "Hunyuan Turbos", version: "2025-03-13"},
     "azerogpt": {url: "https://azero.soundai.com/#/dashboard", organization: "SoundAI", displayName: "AzeroGPT" },
     "command-a-03-2025": {url: "https://cohere.com/blog/command-a", organization: "Cohere", displayName: "Command A", version: "2025-03"},

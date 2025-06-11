@@ -8,7 +8,7 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedDate, setSelectedDate] = useState('2025-05-17');
+    const [selectedDate, setSelectedDate] = useState('2025-05-30');
     const [sliderPosition, setSliderPosition] = useState(6);
     const maxSliderValue = 6;
 
@@ -29,7 +29,7 @@ function App() {
         } else if (value === '5'){
             setSelectedDate('2025-04-25');
         } else {
-            setSelectedDate('2025-05-17');
+            setSelectedDate('2025-05-30');
         }
     };
 
@@ -138,7 +138,7 @@ function App() {
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, eliminating the need for an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 18 diverse tasks across 6 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 21 diverse tasks across 7 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c18"><span className="c9"><strong>We will evaluate your model on LiveBench!</strong> Open a <a href="https://github.com/LiveBench/LiveBench/issues" target="_blank" rel="noreferrer">github issue</a> or email us at <a href="mailto:livebench@livebench.ai" target="_blank" rel="noreferrer">livebench@livebench.ai</a>!</span>
@@ -156,8 +156,8 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-05-17</strong>. This verison includes a new agentic coding task, where models must operate in a real development environment to solve a real-world repository issue.
-                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02, LiveBench-2025-04-25, and LiveBench-2025-05-17 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
+                            The most recent version is <strong>LiveBench-2025-05-30</strong>. This verison includes a new agentic coding task, where models must operate in a real development environment to solve a real-world repository issue.
+                        <br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02, LiveBench-2025-04-25, and LiveBench-2025-05-30 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
                             <a href="https://github.com/LiveBench/LiveBench/blob/main/changelog.md"
