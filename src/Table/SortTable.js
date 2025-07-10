@@ -28,8 +28,13 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
         });
     };
 
-    const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories) => {
+    const sortData = (sortField, sortOrder, sortingData, checkedCategories, categories, columns) => {
+        const column = columns.find(col => col.accessor === sortField);
         return [...sortingData].sort((a, b) => {
+            // Use custom sort function if provided
+            if (column?.sortByFn) {
+                return column.sortByFn(a, b) * (sortOrder === "asc" ? 1 : -1);
+            }
             let primaryCompare = 0;
 
             // Null handling standard across all fields
@@ -82,13 +87,13 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
     }, [columns]);
 
     useEffect(() => {
-        let sortedData = sortData(sortField, sortOrder, data, checkedCategories, categories);
+        let sortedData = sortData(sortField, sortOrder, data, checkedCategories, categories, columns);
         if (searchQuery !== "" && searchColumn !== "") {
             sortedData = searchData(searchQuery, searchColumn, sortedData);
         }
         sortedData = filterData(filter, sortedData);
         setTableData(sortedData);
-    }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories, filter]);
+    }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories, filter, columns]);
 
     const handleSorting = (sortField, sortOrder) => {
         setSortField(sortField);
