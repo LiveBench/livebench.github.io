@@ -143,7 +143,7 @@ export const modelLinks = {
     "qwen3-32b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 32B", reasoner: true},
     "qwen3-14b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 14B", reasoner: true},
     "learnlm-2.0-flash-experimental": {url: "https://ai.google.dev/gemini-api/docs/learnlm", organization: "Google", displayName: "LearnLM 2.0 Flash Experimental"},
-    "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B", reasoner: true},
+    "qwen3-235b-a22b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 235B A22B Thinking", reasoner: true},
     "phi-4-reasoning-plus": {url: "https://huggingface.co/microsoft/Phi-4-reasoning-plus", organization: "Microsoft", displayName: "Phi-4 Reasoning Plus", reasoner: true},
     "mistral-medium-2505": {url: "https://mistral.ai/news/mistral-medium-3", organization: "Mistral AI", displayName: "Mistral Medium 3", version: "2025-05"},
     "gemini-2.5-flash-preview-05-20": {url: "https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/#flash-improvements", organization: "Google", displayName: "Gemini 2.5 Flash", version: "2025-05-20", reasoner: true},
@@ -156,4 +156,7 @@ export const modelLinks = {
     "gemini-2.5-flash-lite-preview-06-17-highthinking": {url: "https://deepmind.google/models/gemini/flash-lite/", organization: "Google", displayName: "Gemini 2.5 Flash Lite Preview (Thinking)", version: "2025-06-17", reasoner: true},
     "gemma-3n-e2b-it": {url: "https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/", organization: "Google", displayName: "Gemma 3n E2B IT"},
     "gemma-3n-e4b-it": {url: "https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/", organization: "Google", displayName: "Gemma 3n E4B IT"},
+    "grok-4-0709": {url: "https://docs.x.ai/docs/models/grok-4-0709", organization: "xAI", displayName: "Grok 4", reasoner: true, version: "2025-07-09"},
+    "kimi-k2-instruct": {url: "https://huggingface.co/moonshotai/Kimi-K2-Instruct", organization: "Moonshot AI", displayName: "Kimi K2 Instruct"},
+    "qwen3-235b-a22b-instruct-2507": {url: "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507", organization: "Alibaba", displayName: "Qwen 3 235B A22B Instruct 2507"},
 };
