@@ -159,4 +159,8 @@ export const modelLinks = {
     "grok-4-0709": {url: "https://docs.x.ai/docs/models/grok-4-0709", organization: "xAI", displayName: "Grok 4", reasoner: true, version: "2025-07-09"},
     "kimi-k2-instruct": {url: "https://huggingface.co/moonshotai/Kimi-K2-Instruct", organization: "Moonshot AI", displayName: "Kimi K2 Instruct"},
     "qwen3-235b-a22b-instruct-2507": {url: "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507", organization: "Alibaba", displayName: "Qwen 3 235B A22B Instruct 2507"},
+    "qwen3-coder-480b-a35b-instruct": {url: "https://qwenlm.github.io/blog/qwen3-coder/", organization: "Alibaba", displayName: "Qwen 3 Coder 480B A35B Instruct"},
+    "qwen3-235b-a22b-thinking-2507": {url: "https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507", organization: "Alibaba", displayName: "Qwen 3 235B A22B Thinking 2507", reasoner: true},
+    "glm-4.5": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5", reasoner: true},
+    "glm-4.5-air": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5 Air", reasoner: true},
 };
