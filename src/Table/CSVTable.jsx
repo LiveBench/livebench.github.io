@@ -20,6 +20,7 @@ const CSVTable = ({dateStr}) => {
     const [showProvider, setShowProvider] = useState(true);
     const [showApiName, setShowApiName] = useState(false);
     const [showReasoners, setShowReasoners] = useState(true);
+    const [showOpenWeights, setShowOpenWeights] = useState(false);
 
     const updateURL = (checkedCategories, newFilter) => {
         const params = new URLSearchParams();
@@ -372,6 +373,8 @@ const CSVTable = ({dateStr}) => {
                 <label htmlFor="showApiName" style={{marginLeft: '0.5rem'}}>Show API Name</label>
                 <input type="checkbox" checked={showReasoners} onChange={() => setShowReasoners(!showReasoners)} id="showReasoners" style={{marginLeft: '1rem'}} />
                 <label htmlFor="showReasoners" style={{marginLeft: '0.5rem'}}>Show Reasoning Models</label>
+                <input type="checkbox" checked={showOpenWeights} onChange={() => setShowOpenWeights(!showOpenWeights)} id="showOpenWeights" style={{marginLeft: '1rem'}} />
+                <label htmlFor="showOpenWeights" style={{marginLeft: '0.5rem'}}>Show Open Weight Models Only</label>
                 <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch(''); updateURL(checkedCategories, filter); handleSorting('ga', 'desc');}} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -441,7 +444,7 @@ const CSVTable = ({dateStr}) => {
                         </thead>
                         <tbody>
                             {sortedData.map((row, index) =>
-                                (showReasoners || !modelLinks[row.model]?.reasoner) && <tr key={index}>
+                                (showReasoners || !modelLinks[row.model]?.reasoner) && (!showOpenWeights || modelLinks[row.model]?.openweight) && <tr key={index}>
                                     <td className="sticky-col model-col">
                                         <a href={modelLinks[row.model]?.url ?? '#'} target={modelLinks[row.model]?.url ? "_blank" : ""} rel="noopener noreferrer">
                                             {showApiName ? row.model : (() => {
