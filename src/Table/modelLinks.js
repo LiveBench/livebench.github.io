@@ -151,6 +151,7 @@ export const modelLinks = {
     "claude-4-sonnet-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Sonnet", version: "2025-05-14" },
     "claude-4-opus-20250514-thinking-32k": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus Thinking", version: "2025-05-14", reasoner: true },
     "claude-4-opus-20250514-base": { url: "https://www.anthropic.com/news/claude-4", organization: "Anthropic", displayName: "Claude 4 Opus", version: "2025-05-14" },
+    "claude-4-1-opus-20250805-thinking-32k": { url: "https://www.anthropic.com/news/claude-opus-4-1", organization: "Anthropic", displayName: "Claude 4.1 Opus Thinking", version: "2025-08-05", reasoner: true },
     "deepseek-r1-0528": { url: "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528", organization: "DeepSeek", displayName: "DeepSeek R1", reasoner: true, version: "2025-05-28"},
     "o3-pro-2025-06-10-high": {url: "https://platform.openai.com/docs/models/o3-pro", organization: "OpenAI", displayName: "o3 Pro High", version: "2025-06-10", reasoner: true},
     "gemini-2.5-flash-lite-preview-06-17-highthinking": {url: "https://deepmind.google/models/gemini/flash-lite/", organization: "Google", displayName: "Gemini 2.5 Flash Lite Preview (Thinking)", version: "2025-06-17", reasoner: true},
