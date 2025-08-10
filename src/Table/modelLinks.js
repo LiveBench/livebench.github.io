@@ -62,6 +62,8 @@ export const modelLinks = {
     "gpt-4o-2024-11-20": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o", version: "2024-11-20" },
     "gpt-4o-mini-2024-07-18": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o Mini", version: "2024-07-18" },
     "gpt-5-2025-08-07": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Thinking", version: "2025-08-07", reasoner: true },
+    "gpt-5-2025-08-07-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Minimal", version: "2025-08-07", reasoner: true },
+    "gpt-5-2025-08-07-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Low", version: "2025-08-07", reasoner: true },
     "gpt-oss-120b": { url: "https://openai.com/index/introducing-gpt-oss/", organization: "OpenAI", displayName: "GPT OSS 120b", version: "2025-08-05", reasoner: true, openweight: true },
     "grok-2": { url: "https://x.ai/blog/grok-2", organization: "xAI", displayName: "Grok 2" },
     "grok-2-mini": { url: "https://x.ai/blog/grok-2", organization: "xAI", displayName: "Grok 2 Mini"},
