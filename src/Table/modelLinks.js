@@ -65,6 +65,7 @@ export const modelLinks = {
     "gpt-5-2025-08-07-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 High", version: "2025-08-07", reasoner: true },
     "gpt-5-2025-08-07-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Minimal", version: "2025-08-07", reasoner: true },
     "gpt-5-2025-08-07-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Low", version: "2025-08-07", reasoner: true },
+    "gpt-5-chat-latest": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Chat", version: "2025-08-07"},
     "gpt-5-mini-2025-08-07": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini", version: "2025-08-07", reasoner: true },
     "gpt-5-mini-2025-08-07-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini High", version: "2025-08-07", reasoner: true },
     "gpt-oss-120b": { url: "https://openai.com/index/introducing-gpt-oss/", organization: "OpenAI", displayName: "GPT OSS 120b", version: "2025-08-05", reasoner: true, openweight: true },
