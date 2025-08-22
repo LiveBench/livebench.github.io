@@ -134,7 +134,7 @@ export const modelLinks = {
     "gemma-3-4b-it": { url: "https://blog.google/technology/developers/gemma-3/", organization: "Google", displayName: "Gemma 3 4B", openweight: true },
     "perplexity-sonar": { url: "https://perplexity.ai/", organization: "Perplexity", displayName: "Perplexity Sonar" },
     "perplexity-sonar-pro": { url: "https://perplexity.ai/", organization: "Perplexity", displayName: "Perplexity Sonar Pro" },
-    "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-03-24", openweight: true},
+    "deepseek-v3-0324": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324", organization: "DeepSeek", displayName: "DeepSeek V3 0324", version: "2025-03-24", openweight: true},
     "gemini-2.5-pro-exp-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "gemini-2.5-pro-preview-03-25": {url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-03-25", reasoner: true},
     "gemini-2.5-pro-preview-05-06": {url: "https://developers.googleblog.com/en/gemini-2-5-pro-io-improved-coding-performance/", organization: "Google", displayName: "Gemini 2.5 Pro Preview", version: "2025-05-06", reasoner: true},
@@ -178,4 +178,6 @@ export const modelLinks = {
     "qwen3-235b-a22b-thinking-2507": {url: "https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507", organization: "Alibaba", displayName: "Qwen 3 235B A22B Thinking 2507", reasoner: true, openweight: true},
     "glm-4.5": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5", reasoner: true, openweight: true},
     "glm-4.5-air": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5 Air", reasoner: true, openweight: true},
+    "deepseek-v3.1": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-08-20", openweight: true},
+    "deepseek-v3.1-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1 Thinking", version: "2025-08-20", openweight: true, reasoner: true},
 };
