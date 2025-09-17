@@ -63,6 +63,7 @@ export const modelLinks = {
     "gpt-4o-mini-2024-07-18": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o Mini", version: "2024-07-18" },
     "gpt-5-2025-08-07": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Medium", version: "2025-08-07", reasoner: true },
     "gpt-5-2025-08-07-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 High", version: "2025-08-07", reasoner: true },
+    "gpt-5-pro": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Pro", version: "2025-08-07", reasoner: true },
     "gpt-5-2025-08-07-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Minimal", version: "2025-08-07", reasoner: true },
     "gpt-5-2025-08-07-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Low", version: "2025-08-07", reasoner: true },
     "gpt-5-chat-latest": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Chat", version: "2025-08-07"},
@@ -181,4 +182,6 @@ export const modelLinks = {
     "deepseek-v3.1": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-08-20", openweight: true},
     "deepseek-v3.1-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1 Thinking", version: "2025-08-20", openweight: true, reasoner: true},
     "grok-code-fast-1-0825": {url: "https://docs.x.ai/docs/models/grok-code-fast-1", organization: "xAI", displayName: "Grok Code Fast", reasoner: true, version: "2025-08-26"},
+    "sonoma-dusk-alpha": {url: "https://openrouter.ai/openrouter/sonoma-dusk-alpha", organization: "Stealth", displayName: "Sonoma Dusk Alpha", reasoner: true, version: "2025-09-06"},
+    "sonoma-sky-alpha": {url: "https://openrouter.ai/openrouter/sonoma-sky-alpha", organization: "Stealth", displayName: "Sonoma Sky Alpha", reasoner: true, version: "2025-09-06"},
 };

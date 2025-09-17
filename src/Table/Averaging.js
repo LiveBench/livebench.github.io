@@ -17,7 +17,7 @@ export const getGlobalAverage = (row, checkedCategories, categories) => {
             checks.allSubcategories ? [calculateAverage(row, categories[category])] : []
     );
     var avg = averages.length ? averages.reduce((a, b) => a + b) / averages.length : 0;
-    return avg.toFixed(2);
+    return isNaN(avg) ? '-' : avg.toFixed(2);
 };
 
 
