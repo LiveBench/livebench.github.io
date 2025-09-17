@@ -184,4 +184,6 @@ export const modelLinks = {
     "grok-code-fast-1-0825": {url: "https://docs.x.ai/docs/models/grok-code-fast-1", organization: "xAI", displayName: "Grok Code Fast", reasoner: true, version: "2025-08-26"},
     "sonoma-dusk-alpha": {url: "https://openrouter.ai/openrouter/sonoma-dusk-alpha", organization: "Stealth", displayName: "Sonoma Dusk Alpha", reasoner: true, version: "2025-09-06"},
     "sonoma-sky-alpha": {url: "https://openrouter.ai/openrouter/sonoma-sky-alpha", organization: "Stealth", displayName: "Sonoma Sky Alpha", reasoner: true, version: "2025-09-06"},
+    "qwen3-next-80b-a3b-instruct": {url: "https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Next 80B A3B Instruct", openweight: true},
+    "qwen3-next-80b-a3b-thinking": {url: "https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Next 80B A3B Thinking", reasoner: true, openweight: true},
 };
