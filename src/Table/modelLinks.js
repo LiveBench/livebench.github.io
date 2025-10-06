@@ -186,4 +186,12 @@ export const modelLinks = {
     "sonoma-sky-alpha": {url: "https://openrouter.ai/openrouter/sonoma-sky-alpha", organization: "Stealth", displayName: "Sonoma Sky Alpha", reasoner: true, version: "2025-09-06"},
     "qwen3-next-80b-a3b-instruct": {url: "https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Next 80B A3B Instruct", openweight: true},
     "qwen3-next-80b-a3b-thinking": {url: "https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Next 80B A3B Thinking", reasoner: true, openweight: true},
+    "grok-4-fast-non-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-fast-non-reasoning", organization: "xAI", displayName: "Grok 4 Fast (Non-Reasoning)", reasoner: false, version: "2025-09-22"},
+    "grok-4-fast-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-fast-reasoning", organization: "xAI", displayName: "Grok 4 Fast", reasoner: true, version: "2025-09-22"},
+    "deepseek-v3.1-terminus": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus", organization: "DeepSeek", displayName: "DeepSeek V3.1 Terminus", version: "2025-09-22", openweight: true},
+    "deepseek-v3.1-terminus-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus", organization: "DeepSeek", displayName: "DeepSeek V3.1 Terminus Thinking", version: "2025-09-22", openweight: true, reasoner: true},
+    "gpt-5-codex": {url: "https://platform.openai.com/docs/models/gpt-5-codex", organization: "OpenAI", displayName: "GPT-5 Codex", version: "2025-09-22", openweight: false, reasoner: true},
+    "qwen3-max-2025-09-23": {url: "https://qwen.ai/blog?id=241398b9cd6353de490b0f82806c7848c5d2777d&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Max", version: "2025-09-23", openweight: true},
+    "claude-sonnet-4-5-20250929": {url: "https://www.anthropic.com/news/claude-sonnet-4-5", organization: "Anthropic", displayName: "Claude Sonnet 4.5", version: "2025-09-29", reasoner: false},
+    "claude-sonnet-4-5-20250929-thinking-64k": {url: "https://www.anthropic.com/news/claude-sonnet-4-5", organization: "Anthropic", displayName: "Claude Sonnet 4.5 Thinking", version: "2025-09-29", reasoner: true},
 };
