@@ -87,54 +87,6 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
             sortedData = searchData(searchQuery, searchColumn, sortedData);
         }
         sortedData = filterData(filter, sortedData);
-        // gpt-5-pro handling:
-        // - On 'ga', place under the base gpt-5-* -high row
-        // - Otherwise, if gpt-5-pro has no value for the sort column, remove it; keep normal sorting if it does
-        if (Array.isArray(sortedData) && sortedData.length > 0 && sortField) {
-            const proIndex = sortedData.findIndex(row => row.model === 'gpt-5-pro');
-            if (proIndex !== -1) {
-                if (sortField === 'ga') {
-                    const baseHighIndex = sortedData.findIndex(row => /^gpt-5-\d.*-high$/.test(row.model));
-                    if (baseHighIndex !== -1 && proIndex !== baseHighIndex + 1) {
-                        const dataCopy = [...sortedData];
-                        const [proRow] = dataCopy.splice(proIndex, 1);
-                        const insertIndex = proIndex > baseHighIndex ? baseHighIndex + 1 : baseHighIndex;
-                        dataCopy.splice(insertIndex, 0, proRow);
-                        sortedData = dataCopy;
-                    }
-                } else {
-                    const proRow = sortedData[proIndex];
-                    const isNumeric = (val) => {
-                        if (val === null || val === undefined) return false;
-                        if (typeof val === 'number') return Number.isFinite(val);
-                        if (typeof val === 'string') {
-                            const trimmed = val.trim();
-                            if (trimmed === '' || trimmed.toLowerCase() === 'n/a') return false;
-                            const parsed = parseFloat(trimmed);
-                            return Number.isFinite(parsed);
-                        }
-                        return false;
-                    };
-                    let hasValue = (sortField === 'model' || sortField === 'organization');
-                    if (!hasValue) {
-                        if (typeof sortField === 'string' && sortField.endsWith(' Average')) {
-                            const categoryName = sortField.replace(' Average', '');
-                            const categoryColumns = categories[categoryName];
-                            const avg = calculateAverage(proRow, categoryColumns);
-                            const num = typeof avg === 'number' ? avg : parseFloat(avg);
-                            hasValue = Number.isFinite(num);
-                        } else {
-                            hasValue = isNumeric(proRow?.[sortField]);
-                        }
-                    }
-                    if (!hasValue) {
-                        const dataCopy = [...sortedData];
-                        dataCopy.splice(proIndex, 1);
-                        sortedData = dataCopy;
-                    }
-                }
-            }
-        }
         setTableData(sortedData);
     }, [data, sortField, sortOrder, searchQuery, searchColumn, checkedCategories, categories, filter]);
 

@@ -116,7 +116,7 @@ function App() {
                                 </div>
                                 <div className="column has-text-centered">
                                     <a href="https://liveswebench.ai" className="liveswebench-callout" target='_blank' rel="noopener noreferrer"> 
-                                        <span>New! Check out LiveSWEBench, our new benchmark for AI coding agents</span>
+                                        <span>Check out LiveSWEBench, our benchmark for AI coding agents</span>
                                     </a>
                                 </div>
                             </div>
