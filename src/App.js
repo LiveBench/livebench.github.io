@@ -53,7 +53,7 @@ function App() {
                                 <h1 className="title is-1 publication-title mb-0">LiveBench</h1>
                                 <h3 className="title is-3 mb-1">A Challenging, Contamination-Free LLM Benchmark</h3>
                                 <div className="is-size-5 ">
-                                    <span className="author-block">LiveBench will appear as a <a href="https://openreview.net/forum?id=sKYHBTAxVa">Spotlight Paper</a> in ICLR 2025.</span>
+                                    <span className="author-block">LiveBench appeared as a <a href="https://openreview.net/forum?id=sKYHBTAxVa">Spotlight Paper</a> in ICLR 2025.</span>
                                     <br></br>
                                     <span className="author-block">This work is sponsored by <a href="https://abacus.ai">Abacus.AI</a></span>
                                 </div>
