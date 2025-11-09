@@ -156,7 +156,7 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-05-30</strong>. This verison includes a new agentic coding task, where models must operate in a real development environment to solve a real-world repository issue.
+                            The most recent version is <strong>LiveBench-2025-05-30</strong>. This version includes a new agentic coding task, where models must operate in a real development environment to solve a real-world repository issue.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates. LiveBench-2025-04-02, LiveBench-2025-04-25, and LiveBench-2025-05-30 comprise ~300 new questions, so currently ~30% of questions in LiveBench are not publicly released.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
