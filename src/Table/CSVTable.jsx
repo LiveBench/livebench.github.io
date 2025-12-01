@@ -81,14 +81,14 @@ const CSVTable = ({dateStr}) => {
             { label: "AMC", accessor: "AMC", sortable: true, visible: false },
             { label: "Spatial", accessor: "spatial", sortable: true, visible: false },
             { label: "AMPS_Hard", accessor: "AMPS_Hard", sortable: true, visible: false },
-            { label: "zebra_puzzle", accessor: "zebra_puzzle", sortable: true, visible: false },
+            { label: "Zebra Puzzle", accessor: "zebra_puzzle", sortable: true, visible: false },
             { label: "SMC", accessor: "smc", sortable: true, visible: true },
             { label: "IMO", accessor: "imo", sortable: true, visible: true },
             { label: "Connections", accessor: "connections", sortable: true, visible: true },
-            { label: "Plot Unscrambling", accessor: "movie_unscrambling", sortable: true, visible: true },
+            { label: "Plot Unscrambling", accessor: "plot_unscrambling", sortable: true, visible: true },
             { label: "Typo Fixing", accessor: "typos", sortable: true, visible: true },
             { label: "Paraphrase", accessor: "paraphrase", sortable: true, visible: true },
-            { label: "simplify", accessor: "simplify", sortable: true, visible: true },
+            { label: "Simplify", accessor: "simplify", sortable: true, visible: true },
             { label: "Story Generation", accessor: "story_generation", sortable: true, visible: true },
             { label: "Summarize", accessor: "summarize", sortable: true, visible: true },
             { label: "Global Average", accessor: "ga", sortable: true, visible: true, sortbyOrder: "desc" },
@@ -104,6 +104,10 @@ const CSVTable = ({dateStr}) => {
             res.push({ label: "web_of_lies_v2", accessor: "web_of_lies_v2", sortable: true, visible: false })
         } else {
             res.push({ label: "web_of_lies_v3", accessor: "web_of_lies_v3", sortable: true, visible: false })
+        }
+
+        if (dateStr >= '2025-11-25') {
+            res.push({ label: "Theory of Mind", accessor: "theory_of_mind", sortable: true, visible: true });
         }
 
         return res;
