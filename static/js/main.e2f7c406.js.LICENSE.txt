@@ -6,7 +6,7 @@ object-assign
 
 /* @license
 Papa Parse
-v5.4.1
+v5.5.2
 https://github.com/mholt/PapaParse
 License: MIT
 */
@@ -52,7 +52,7 @@ License: MIT
  */
 
 /**
- * @remix-run/router v1.21.0
+ * @remix-run/router v1.23.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -63,7 +63,7 @@ License: MIT
  */
 
 /**
- * React Router v6.28.0
+ * React Router v6.30.0
  *
  * Copyright (c) Remix Software Inc.
  *
