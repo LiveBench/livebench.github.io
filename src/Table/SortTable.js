@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { getGlobalAverage, calculateAverage} from './Averaging';
-import { modelLinks } from './modelLinks';
+import { getModelInfo } from './modelLinks';
 
-export const useTable = (data, columns, checkedCategories, categories, searchColumn, filterInfo) => {
+export const useTable = (data, columns, checkedCategories, categories, searchColumn, modelInfoLookup) => {
     const [tableData, setTableData] = useState([]);
     const [sortField, setSortField] = useState();
     const [sortOrder, setSortOrder] = useState();
@@ -20,7 +20,7 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
         if (Object.keys(filter).length === 0) return data;
         if (Object.keys(filter).every(key => filter[key].length === 0)) return data;
         return data.filter((row) => {
-            const rowFilterInfo = filterInfo[row.model];
+            const rowFilterInfo = modelInfoLookup ? modelInfoLookup(row.model) : undefined;
             if (rowFilterInfo === undefined) return false;
             return Object.keys(filter).every((key) => {
                 return filter[key]?.some(value => value.toLowerCase() === rowFilterInfo[key]?.toLowerCase());
@@ -47,8 +47,8 @@ export const useTable = (data, columns, checkedCategories, categories, searchCol
                 primaryCompare = (globalAvgA - globalAvgB) * (sortOrder === "asc" ? 1 : -1);
             } else if (sortField === "organization") {
                 // Special case for organization sorting
-                const orgA = modelLinks[a.model]?.organization || '';
-                const orgB = modelLinks[b.model]?.organization || '';
+                const orgA = getModelInfo(a.model)?.organization || '';
+                const orgB = getModelInfo(b.model)?.organization || '';
                 primaryCompare = orgA.localeCompare(orgB) * (sortOrder === "asc" ? 1 : -1);
             } else if (sortField.includes("Average")) {
                 // Extract the category name from sortField

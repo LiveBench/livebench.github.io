@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useTable } from "./SortTable";
-import { modelLinks } from './modelLinks';
+import { getModelInfo, getVariantGroup } from './modelLinks';
 import { useSearchParams } from 'react-router-dom';
 import Select from 'react-select';
 
@@ -21,8 +21,9 @@ const CSVTable = ({dateStr}) => {
     const [showApiName, setShowApiName] = useState(false);
     const [showReasoners, setShowReasoners] = useState(true);
     const [showOpenWeights, setShowOpenWeights] = useState(false);
+    const [showVariants, setShowVariants] = useState(false);
 
-    const updateURL = (checkedCategories, newFilter) => {
+    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newSearchQuery = null) => {
         const params = new URLSearchParams();
 
         let allAverages = true;
@@ -48,20 +49,57 @@ const CSVTable = ({dateStr}) => {
             });
         }
 
-        if (searchParams.has('q')) {
-            params.set('q', searchParams.get('q'));
+        const effectiveSearchQuery = newSearchQuery !== null ? newSearchQuery : searchQuery;
+        if (effectiveSearchQuery && effectiveSearchQuery !== '') {
+            params.set('q', effectiveSearchQuery);
         }
+
+        // Add sort parameters
+        const effectiveSortField = newSortField !== null ? newSortField : sortField;
+        const effectiveSortOrder = newSortOrder !== null ? newSortOrder : sortOrder;
+        if (effectiveSortField && effectiveSortField !== 'ga') {
+            params.set('sort', effectiveSortField);
+        }
+        if (effectiveSortOrder && effectiveSortOrder !== 'desc') {
+            params.set('order', effectiveSortOrder);
+        }
+
+        // Add display toggle parameters (only if not default values)
+        const effectiveShowProvider = newShowProvider !== null ? newShowProvider : showProvider;
+        const effectiveShowApiName = newShowApiName !== null ? newShowApiName : showApiName;
+        const effectiveShowReasoners = newShowReasoners !== null ? newShowReasoners : showReasoners;
+        const effectiveShowOpenWeights = newShowOpenWeights !== null ? newShowOpenWeights : showOpenWeights;
+        const effectiveShowVariants = newShowVariants !== null ? newShowVariants : showVariants;
+        
+        if (!effectiveShowProvider) params.set('provider', 'false');
+        if (effectiveShowApiName) params.set('api', 'true');
+        if (!effectiveShowReasoners) params.set('reasoners', 'false');
+        if (effectiveShowOpenWeights) params.set('openweight', 'true');
+        if (effectiveShowVariants) params.set('variants', 'true');
 
         if (allAverages && !anySubcategories) {
             const newParams = new URLSearchParams();
-            if (searchParams.has('q')) {
-                newParams.set('q', searchParams.get('q'));
+            if (effectiveSearchQuery && effectiveSearchQuery !== '') {
+                newParams.set('q', effectiveSearchQuery);
             }
             if (Object.keys(newFilter).length > 0) {
                 Object.keys(newFilter).forEach(key => {
                     newFilter[key].length > 0 && newParams.append(key, newFilter[key].join(','));
                 });
             }
+            // Add sort parameters even when all averages
+            if (effectiveSortField && effectiveSortField !== 'ga') {
+                newParams.set('sort', effectiveSortField);
+            }
+            if (effectiveSortOrder && effectiveSortOrder !== 'desc') {
+                newParams.set('order', effectiveSortOrder);
+            }
+            // Add display toggles even when all averages
+            if (!effectiveShowProvider) newParams.set('provider', 'false');
+            if (effectiveShowApiName) newParams.set('api', 'true');
+            if (!effectiveShowReasoners) newParams.set('reasoners', 'false');
+            if (effectiveShowOpenWeights) newParams.set('openweight', 'true');
+            if (effectiveShowVariants) newParams.set('variants', 'true');
             setSearchParams(newParams);
             return;
         }
@@ -113,7 +151,7 @@ const CSVTable = ({dateStr}) => {
         return res;
     }, [dateStr]);
 
-    const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', modelLinks);
+    const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', getModelInfo);
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
@@ -168,26 +206,55 @@ const CSVTable = ({dateStr}) => {
             return acc;
         }, {});
         const updatedFilter = {};
-        searchParams.forEach((value, category) => {
+        searchParams.forEach((value, key) => {
 
-            if (category === 'q') {
+            if (key === 'q') {
                 handleSearchChange(value);
                 return;
-            } else if (Object.keys(categories).includes(category)) {
+            } else if (key === 'sort') {
+                // Sort parameter will be handled after categories are set
+                return;
+            } else if (key === 'order') {
+                // Sort order will be handled with sort field
+                return;
+            } else if (key === 'provider') {
+                setShowProvider(value === 'true');
+                return;
+            } else if (key === 'api') {
+                setShowApiName(value === 'true');
+                return;
+            } else if (key === 'reasoners') {
+                setShowReasoners(value === 'true');
+                return;
+            } else if (key === 'openweight') {
+                setShowOpenWeights(value === 'true');
+                return;
+            } else if (key === 'variants') {
+                setShowVariants(value === 'true');
+                return;
+            } else if (Object.keys(categories).includes(key)) {
                 if (value.includes('a')) {
-                    updatedCategories[category].average = true;
+                    updatedCategories[key].average = true;
                 }
                 if (value.includes('s')) {
-                    updatedCategories[category].allSubcategories = true;
+                    updatedCategories[key].allSubcategories = true;
                 }
             } else {
-                updatedFilter[category] = value.split(',');
+                updatedFilter[key] = value.split(',');
             }
         });
 
         setCheckedCategories(updatedCategories);
         handleFilter(updatedFilter);
-        updateSorting(updatedCategories);
+        
+        // Handle sort parameters
+        if (searchParams.has('sort')) {
+            const sortFieldFromUrl = searchParams.get('sort');
+            const sortOrderFromUrl = searchParams.get('order') || 'desc';
+            handleSorting(sortFieldFromUrl, sortOrderFromUrl);
+        } else {
+            updateSorting(updatedCategories);
+        }
     }, [categories, searchParams]);
 
     useEffect(() => {
@@ -205,6 +272,13 @@ const CSVTable = ({dateStr}) => {
         }
         updateURL(checkedCategories, filter);
     }, [checkedCategories, filter]);
+
+    useEffect(() => {
+        if (Object.keys(checkedCategories).length === 0) {
+            return;
+        }
+        updateURL(checkedCategories, filter);
+    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
 
@@ -252,14 +326,14 @@ const CSVTable = ({dateStr}) => {
     };
 
     useEffect(() => {
-        if (data && modelLinks) {
+        if (data) {
             for (const row of data) {
-                if (!(row.model in modelLinks)) {
+                if (!getModelInfo(row.model)) {
                     console.warn('missing link for model', row.model);
                 }
             }
         }
-    }, [data, modelLinks]);
+    }, [data]);
 
     const updateSorting = (newCheckedCategories) => {
 
@@ -301,6 +375,7 @@ const CSVTable = ({dateStr}) => {
     const handleSortingChange = (accessor) => {
         const order = accessor === sortField && sortOrder === "desc" ? "asc" : "desc";
         handleSorting(accessor, order);
+        updateURL(checkedCategories, filter, accessor, order);
     };
 
     const handleSearchChange = (value) => {
@@ -321,6 +396,28 @@ const CSVTable = ({dateStr}) => {
         handleFilter({organization: filter.map(f => f.value)});
     }
 
+    const handleResetFilters = () => {
+        // Reset categories to all averages
+        const defaultCategories = Object.keys(checkedCategories).reduce((acc, category) => {
+            acc[category] = {average: true, allSubcategories: false};
+            return acc;
+        }, {});
+        
+        // Set all state to defaults
+        setCheckedCategories(defaultCategories);
+        handleFilter({});
+        handleSearch('');
+        handleSorting('ga', 'desc');
+        setShowProvider(true);
+        setShowApiName(false);
+        setShowReasoners(true);
+        setShowOpenWeights(false);
+        setShowVariants(false);
+        
+        // Update URL with default values (including empty search)
+        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, '');
+    }
+
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
         return sortField === accessor ? (sortOrder === "asc" ? "up" : "down") : "default";
@@ -328,19 +425,75 @@ const CSVTable = ({dateStr}) => {
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
 
-    const modelProviders = Array.from(new Set(data.map(row => modelLinks[row.model]?.organization ?? 'Unknown'))).sort();
+    const modelProviders = Array.from(new Set(data.map(row => getModelInfo(row.model)?.organization ?? 'Unknown'))).sort();
 
     // Create a map to identify models with duplicate display names
     const displayNameCounts = useMemo(() => {
         const counts = {};
         data.forEach(row => {
-            const displayName = modelLinks[row.model]?.displayName;
+            const displayName = getModelInfo(row.model)?.displayName;
             if (displayName) {
                 counts[displayName] = (counts[displayName] || 0) + 1;
             }
         });
         return counts;
-    }, [data, modelLinks]);
+    }, [data]);
+
+    const computeVariantScore = useCallback((row) => {
+        if (!row) {
+            return -Infinity;
+        }
+        if (!sortField || sortField === 'ga' || sortField === 'model' || sortField === 'organization') {
+            const avg = parseFloat(getGlobalAverage(row, checkedCategories, categories));
+            return isNaN(avg) ? -Infinity : avg;
+        }
+        if (sortField.endsWith(' Average')) {
+            const categoryName = sortField.replace(' Average', '');
+            const categoryColumns = categories[categoryName];
+            const avg = calculateAverage(row, categoryColumns);
+            const num = typeof avg === 'number' ? avg : parseFloat(avg);
+            return isNaN(num) ? -Infinity : num;
+        }
+        const numericValue = typeof row[sortField] === 'number' ? row[sortField] : parseFloat(row[sortField]);
+        return isNaN(numericValue) ? -Infinity : numericValue;
+    }, [sortField, checkedCategories, categories]);
+
+    const filteredRows = useMemo(() => {
+        return sortedData.filter(row => {
+            const info = getModelInfo(row.model);
+            if (!info) {
+                return false;
+            }
+            if (!showReasoners && info.reasoner) {
+                return false;
+            }
+            if (showOpenWeights && !info.openweight) {
+                return false;
+            }
+            return true;
+        });
+    }, [sortedData, showReasoners, showOpenWeights]);
+
+    const displayedData = useMemo(() => {
+        if (showVariants) {
+            return filteredRows;
+        }
+        const bestByGroup = new Map();
+        filteredRows.forEach(row => {
+            const info = getModelInfo(row.model);
+            if (!info) {
+                return;
+            }
+            const group = getVariantGroup(row.model);
+            const groupKey = group?.baseName ?? row.model;
+            const score = computeVariantScore(row);
+            const current = bestByGroup.get(groupKey);
+            if (current === undefined || score > current.score) {
+                bestByGroup.set(groupKey, { row, score });
+            }
+        });
+        return Array.from(bestByGroup.values()).map(entry => entry.row);
+    }, [filteredRows, showVariants, computeVariantScore]);
 
     return (
         <div className="table-container">
@@ -371,15 +524,27 @@ const CSVTable = ({dateStr}) => {
                     ))}
             </div>
             <div className="other-controls">
-                <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
-                <label htmlFor="showProvider" style={{marginLeft: '0.5rem'}}>Show Organization</label>
-                <input type="checkbox" checked={showApiName} onChange={() => setShowApiName(!showApiName)} id="showApiName" style={{marginLeft: '1rem'}} />
-                <label htmlFor="showApiName" style={{marginLeft: '0.5rem'}}>Show API Name</label>
-                <input type="checkbox" checked={showReasoners} onChange={() => setShowReasoners(!showReasoners)} id="showReasoners" style={{marginLeft: '1rem'}} />
-                <label htmlFor="showReasoners" style={{marginLeft: '0.5rem'}}>Show Reasoning Models</label>
-                <input type="checkbox" checked={showOpenWeights} onChange={() => setShowOpenWeights(!showOpenWeights)} id="showOpenWeights" style={{marginLeft: '1rem'}} />
-                <label htmlFor="showOpenWeights" style={{marginLeft: '0.5rem'}}>Show Open Weight Models Only</label>
-                <button onClick={() => {setCheckedCategories(Object.keys(checkedCategories).reduce((acc, category) => {acc[category] = {average: true, allSubcategories: false}; return acc;}, {})); handleFilter({}); handleSearch(''); updateURL(checkedCategories, filter); handleSorting('ga', 'desc');}} className="clear-filters-button">Clear Filters</button>
+                <label style={{whiteSpace: 'nowrap'}}>
+                    <input type="checkbox" checked={showProvider} onChange={() => setShowProvider(!showProvider)} id="showProvider" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Organization</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showApiName} onChange={() => setShowApiName(!showApiName)} id="showApiName" />
+                    <span style={{marginLeft: '0.5rem'}}>Show API Name</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showReasoners} onChange={() => setShowReasoners(!showReasoners)} id="showReasoners" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Reasoning Models</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showOpenWeights} onChange={() => setShowOpenWeights(!showOpenWeights)} id="showOpenWeights" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Open Weight Models Only</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showVariants} onChange={() => setShowVariants(!showVariants)} id="showVariants" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Model Effort Variants</span>
+                </label>
+                <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
                 <input
@@ -447,36 +612,42 @@ const CSVTable = ({dateStr}) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedData.map((row, index) =>
-                                (showReasoners || !modelLinks[row.model]?.reasoner) && (!showOpenWeights || modelLinks[row.model]?.openweight) && <tr key={index}>
-                                    <td className="sticky-col model-col">
-                                        <a href={modelLinks[row.model]?.url ?? '#'} target={modelLinks[row.model]?.url ? "_blank" : ""} rel="noopener noreferrer">
-                                            {showApiName ? row.model : (() => {
-                                                const displayName = modelLinks[row.model]?.displayName ?? row.model;
-                                                const version = modelLinks[row.model]?.version;
-                                                // Show version in parentheses if there are multiple models with the same display name
-                                                // and this model has a version defined
-                                                if (!showApiName && displayNameCounts[displayName] > 1 && version !== undefined) {
-                                                    return `${displayName} (${version})`;
-                                                }
-                                                return displayName;
-                                            })()}
-                                        </a>
-                                    </td>
-                                    {showProvider && <td className="sticky-col organization-col">{modelLinks[row.model]?.organization ?? ''}</td>}
-                                    {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
-                                    {Object.entries(checkedCategories).flatMap(([category, checks]) => {
-                                        const res = [];
-                                        if (checks.average) {
-                                            res.push(calculateAverage(row, categories[category], 2));
-                                        }
-                                        if (checks.allSubcategories) {
-                                            categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat]));
-                                        }
-                                        return res;
-                                    }).map((cell, idx) => <td key={idx}>{cell}</td>)}
-                                </tr>
-                            )}
+                            {displayedData.map((row, index) => {
+                                const info = getModelInfo(row.model);
+                                if (!info) {
+                                    return null;
+                                }
+                                const displayName = showApiName ? row.model : (() => {
+                                    const name = info?.displayName ?? row.model;
+                                    const version = info?.version;
+                                    if (!showApiName && displayNameCounts[name] > 1 && version !== undefined) {
+                                        return `${name} (${version})`;
+                                    }
+                                    return name;
+                                })();
+
+                                return (
+                                    <tr key={index}>
+                                        <td className="sticky-col model-col">
+                                            <a href={info?.url ?? '#'} target={info?.url ? "_blank" : ""} rel="noopener noreferrer">
+                                                {displayName}
+                                            </a>
+                                        </td>
+                                        {showProvider && <td className="sticky-col organization-col">{info?.organization ?? ''}</td>}
+                                        {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
+                                        {Object.entries(checkedCategories).flatMap(([category, checks]) => {
+                                            const res = [];
+                                            if (checks.average) {
+                                                res.push(calculateAverage(row, categories[category], 2));
+                                            }
+                                            if (checks.allSubcategories) {
+                                                categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat]));
+                                            }
+                                            return res;
+                                        }).map((cell, idx) => <td key={idx}>{cell}</td>)}
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>

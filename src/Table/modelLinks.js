@@ -61,20 +61,44 @@ export const modelLinks = {
     "gpt-4o-2024-08-06": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o", version: "2024-08-06" },
     "gpt-4o-2024-11-20": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o", version: "2024-11-20" },
     "gpt-4o-mini-2024-07-18": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "GPT-4o Mini", version: "2024-07-18" },
-    "gpt-5": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Medium", version: "2025-08-07", reasoner: true },
-    "gpt-5-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 High", version: "2025-08-07", reasoner: true },
+    "gpt-5": {
+        url: "https://openai.com/index/introducing-gpt-5/",
+        organization: "OpenAI",
+        displayName: "GPT-5",
+        version: "2025-08-07",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5-high", displayName: "GPT-5 High" },
+            { rawName: "gpt-5-low", displayName: "GPT-5 Low" },
+            { rawName: "gpt-5-minimal", displayName: "GPT-5 Minimal" }
+        ]
+    },
     "gpt-5-pro-2025-10-06": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Pro", version: "2025-08-07", reasoner: true },
-    "gpt-5-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Minimal", version: "2025-08-07", reasoner: true },
-    "gpt-5-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Low", version: "2025-08-07", reasoner: true },
     "gpt-5-chat": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Chat", version: "2025-08-07"},
-    "gpt-5-mini": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini", version: "2025-08-07", reasoner: true },
-    "gpt-5-mini-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini High", version: "2025-08-07", reasoner: true },
-    "gpt-5-mini-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini Low", version: "2025-08-07", reasoner: true },
-    "gpt-5-mini-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Mini Minimal", version: "2025-08-07", reasoner: true },
-    "gpt-5-nano": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Nano", version: "2025-08-07", reasoner: true },
-    "gpt-5-nano-high": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Nano High", version: "2025-08-07", reasoner: true },
-    "gpt-5-nano-low": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Nano Low", version: "2025-08-07", reasoner: true },
-    "gpt-5-nano-minimal": { url: "https://openai.com/index/introducing-gpt-5/", organization: "OpenAI", displayName: "GPT-5 Nano Minimal", version: "2025-08-07", reasoner: true },
+    "gpt-5-mini": {
+        url: "https://openai.com/index/introducing-gpt-5/",
+        organization: "OpenAI",
+        displayName: "GPT-5 Mini",
+        version: "2025-08-07",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5-mini-high", displayName: "GPT-5 Mini High" },
+            { rawName: "gpt-5-mini-low", displayName: "GPT-5 Mini Low" },
+            { rawName: "gpt-5-mini-minimal", displayName: "GPT-5 Mini Minimal" }
+        ]
+    },
+    "gpt-5-nano": {
+        url: "https://openai.com/index/introducing-gpt-5/",
+        organization: "OpenAI",
+        displayName: "GPT-5 Nano",
+        version: "2025-08-07",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5-nano-high", displayName: "GPT-5 Nano High" },
+            { rawName: "gpt-5-nano-low", displayName: "GPT-5 Nano Low" },
+            { rawName: "gpt-5-nano-minimal", displayName: "GPT-5 Nano Minimal" }
+        ]
+    },
     "gpt-oss-120b": { url: "https://openai.com/index/introducing-gpt-oss/", organization: "OpenAI", displayName: "GPT OSS 120b", version: "2025-08-05", reasoner: true, openweight: true },
     "grok-2": { url: "https://x.ai/blog/grok-2", organization: "xAI", displayName: "Grok 2" },
     "grok-2-mini": { url: "https://x.ai/blog/grok-2", organization: "xAI", displayName: "Grok 2 Mini"},
@@ -92,13 +116,29 @@ export const modelLinks = {
     "mixtral-8x22b-instruct-v0.1": { url: "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1", organization: "Mistral AI", displayName: "Mixtral 8x22B Instruct", openweight: true  },
     "o1-mini-2024-09-12": { url: "https://platform.openai.com/docs/guides/reasoning", organization: "OpenAI", displayName: "o1-Mini", version: "2024-09-12", reasoner: true},
     "o1-preview-2024-09-12": { url: "https://platform.openai.com/docs/guides/reasoning", organization: "OpenAI", displayName: "o1 Preview", version: "2024-09-12", reasoner: true },
-    "o1-2024-12-17": { url: "https://openai.com/o1/", organization: "OpenAI", displayName: "o1", version: "2024-12-17", reasoner: true },
-    "o1-2024-12-17-high": { url: "https://openai.com/o1/", organization: "OpenAI", displayName: "o1 High", version: "2024-12-17", reasoner: true },
-    "o1-2024-12-17-low": { url: "https://openai.com/o1/", organization: "OpenAI", displayName: "o1 Low", version: "2024-12-17", reasoner: true },
-    "o3-mini-2025-01-31-high": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI", displayName: "o3-Mini High", version: "2025-01-31", reasoner: true },
-    "o3-mini-2025-01-31-low": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI", displayName: "o3-Mini Low", version: "2025-01-31", reasoner: true },
-    "o3-mini-2025-01-31-medium": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI", displayName: "o3-Mini Medium", version: "2025-01-31", reasoner: true },
-    "o3-mini-2025-01-31": { url: "https://openai.com/index/openai-o3-mini/", organization: "OpenAI", displayName: "o3-Mini", version: "2025-01-31", reasoner: true },
+    "o1-2024-12-17": {
+        url: "https://openai.com/o1/",
+        organization: "OpenAI",
+        displayName: "o1",
+        version: "2024-12-17",
+        reasoner: true,
+        variants: [
+            { rawName: "o1-2024-12-17-high", displayName: "o1 High" },
+            { rawName: "o1-2024-12-17-low", displayName: "o1 Low" }
+        ]
+    },
+    "o3-mini-2025-01-31": {
+        url: "https://openai.com/index/openai-o3-mini/",
+        organization: "OpenAI",
+        displayName: "o3-Mini",
+        version: "2025-01-31",
+        reasoner: true,
+        variants: [
+            { rawName: "o3-mini-2025-01-31-high", displayName: "o3-Mini High" },
+            { rawName: "o3-mini-2025-01-31-low", displayName: "o3-Mini Low" },
+            { rawName: "o3-mini-2025-01-31-medium", displayName: "o3-Mini Medium" }
+        ]
+    },
     "open-mistral-nemo": { url: "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407", organization: "Mistral AI", displayName: "Open Mistral Nemo", version: "2024-07", openweight: true },
     "phi-3-medium-128k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-medium-128k-instruct", organization: "Microsoft", displayName: "Phi-3 Medium 128K Instruct", openweight: true },
     "phi-3-medium-4k-instruct": { url: "https://huggingface.co/microsoft/Phi-3-medium-4k-instruct", organization: "Microsoft", displayName: "Phi-3 Medium 4K Instruct", openweight: true },
@@ -149,10 +189,28 @@ export const modelLinks = {
     "gpt-4.1-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1", version: "2025-04-14"},
     "gpt-4.1-mini-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Mini", version: "2025-04-14"},
     "gpt-4.1-nano-2025-04-14": {url: "https://openai.com/index/gpt-4-1/", organization: "OpenAI", displayName: "GPT-4.1 Nano", version: "2025-04-14"},
-    "o3-2025-04-16-high": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o3 High", version: "2025-04-16", reasoner: true},
-    "o3-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o3 Medium", version: "2025-04-16", reasoner: true},
-    "o4-mini-2025-04-16-high": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini High", version: "2025-04-16", reasoner: true},
-    "o4-mini-2025-04-16-medium": {url: "https://openai.com/index/introducing-o3-and-o4-mini/", organization: "OpenAI", displayName: "o4-Mini Medium", version: "2025-04-16", reasoner: true},
+    "o3-2025-04-16": {
+        url: "https://openai.com/index/introducing-o3-and-o4-mini/",
+        organization: "OpenAI",
+        displayName: "o3",
+        version: "2025-04-16",
+        reasoner: true,
+        variants: [
+            { rawName: "o3-2025-04-16-high", displayName: "o3 High" },
+            { rawName: "o3-2025-04-16-medium", displayName: "o3 Medium" }
+        ]
+    },
+    "o4-mini-2025-04-16": {
+        url: "https://openai.com/index/introducing-o3-and-o4-mini/",
+        organization: "OpenAI",
+        displayName: "o4-Mini",
+        version: "2025-04-16",
+        reasoner: true,
+        variants: [
+            { rawName: "o4-mini-2025-04-16-high", displayName: "o4-Mini High" },
+            { rawName: "o4-mini-2025-04-16-medium", displayName: "o4-Mini Medium" }
+        ]
+    },
     "gemini-2.5-flash-preview-04-17": {url: "https://blog.google/products/gemini/gemini-2-5-flash-preview/", organization: "Google", displayName: "Gemini 2.5 Flash Preview", version: "2025-04-17", reasoner: true},
     "qwen3-30b-a3b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 30B A3B", reasoner: true},
     "qwen3-32b-thinking": {url: "https://qwenlm.github.io/blog/qwen3/", organization: "Alibaba", displayName: "Qwen 3 32B", reasoner: true, openweight: true},
@@ -207,24 +265,140 @@ export const modelLinks = {
     "kimi-k2-thinking": {url: "https://huggingface.co/moonshotai/Kimi-K2-Thinking", organization: "Moonshot AI", displayName: "Kimi K2 Thinking", version: "2025-11-08", openweight: true, reasoner: true},
     "grok-4-fast-non-reasoning-2511": {url: "https://docs.x.ai/docs/models/grok-4-fast-non-reasoning", organization: "xAI", displayName: "Grok 4 Fast (Non-Reasoning)", reasoner: false, version: "2025-11-10"},
     "grok-4-fast-reasoning-2511": {url: "https://docs.x.ai/docs/models/grok-4-fast-reasoning", organization: "xAI", displayName: "Grok 4 Fast", reasoner: true, version: "2025-11-10"},
-    "gpt-5.1-2025-11-13-high": {url: "https://openai.com/index/gpt-5-1/", organization: "OpenAI", displayName: "GPT-5.1 High", version: "2025-11-13", reasoner: true},
+    "gpt-5.1-2025-11-13": {
+        url: "https://openai.com/index/gpt-5-1/",
+        organization: "OpenAI",
+        displayName: "GPT-5.1",
+        version: "2025-11-13",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.1-2025-11-13-high", displayName: "GPT-5.1 High" },
+            { rawName: "gpt-5.1-2025-11-13-low", displayName: "GPT-5.1 Low" },
+            { rawName: "gpt-5.1-2025-11-13-medium", displayName: "GPT-5.1 Medium" }
+        ]
+    },
     "gpt-5.1-2025-11-13-nothinking": {url: "https://openai.com/index/gpt-5-1/", organization: "OpenAI", displayName: "GPT-5.1 No Thinking", version: "2025-11-13", reasoner: false},
     "gpt-5.1-codex": {url: "https://platform.openai.com/docs/models/gpt-5.1-codex", organization: "OpenAI", displayName: "GPT-5.1 Codex", version: "2025-11-13", reasoner: true},
     "gpt-5.1-codex-mini": {url: "https://platform.openai.com/docs/models/gpt-5.1-codex-mini", organization: "OpenAI", displayName: "GPT-5.1 Codex Mini", version: "2025-11-13", reasoner: true},
-    "gemini-3-pro-preview-11-2025-high": {url: "https://blog.google/products/gemini/gemini-3/", organization: "Google", displayName: "Gemini 3 Pro Preview High", version: "2025-11-18", reasoner: true},
-    "gemini-3-pro-preview-11-2025-low": {url: "https://blog.google/products/gemini/gemini-3/", organization: "Google", displayName: "Gemini 3 Pro Preview Low", version: "2025-11-18", reasoner: true},
+    "gemini-3-pro-preview-11-2025": {
+        url: "https://blog.google/products/gemini/gemini-3/",
+        organization: "Google",
+        displayName: "Gemini 3 Pro Preview",
+        version: "2025-11-18",
+        reasoner: true,
+        variants: [
+            { rawName: "gemini-3-pro-preview-11-2025-high", displayName: "Gemini 3 Pro Preview High" },
+            { rawName: "gemini-3-pro-preview-11-2025-low", displayName: "Gemini 3 Pro Preview Low" }
+        ]
+    },
     "grok-4-1-fast-non-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-1-fast-non-reasoning", organization: "xAI", displayName: "Grok 4.1 Fast (Non-Reasoning)", reasoner: false, version: "2025-11-20"},
     "grok-4-1-fast-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-1-fast-reasoning", organization: "xAI", displayName: "Grok 4.1 Fast", reasoner: true, version: "2025-11-20"},
-    "claude-opus-4-5-20251101-high-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus High Effort", version: "2025-11-01"},
-    "claude-opus-4-5-20251101-low-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus Low Effort", version: "2025-11-01"},
-    "claude-opus-4-5-20251101-medium-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus Medium Effort", version: "2025-11-01"},
-    "claude-opus-4-5-20251101-thinking-64k-high-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus Thinking High Effort", version: "2025-11-01", reasoner: true},
-    "claude-opus-4-5-20251101-thinking-64k-low-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus Thinking Low Effort", version: "2025-11-01", reasoner: true},
-    "claude-opus-4-5-20251101-thinking-64k-medium-effort": {url: "https://www.anthropic.com/news/claude-opus-4-5", organization: "Anthropic", displayName: "Claude 4.5 Opus Thinking Medium Effort", version: "2025-11-01", reasoner: true},
+    "claude-opus-4-5-20251101": {
+        url: "https://www.anthropic.com/news/claude-opus-4-5",
+        organization: "Anthropic",
+        displayName: "Claude 4.5 Opus",
+        version: "2025-11-01",
+        reasoner: true,
+        variants: [
+            { rawName: "claude-opus-4-5-20251101-high-effort", displayName: "Claude 4.5 Opus High Effort" },
+            { rawName: "claude-opus-4-5-20251101-low-effort", displayName: "Claude 4.5 Opus Low Effort" },
+            { rawName: "claude-opus-4-5-20251101-medium-effort", displayName: "Claude 4.5 Opus Medium Effort" }
+        ]
+    },
+    "claude-opus-4-5-20251101-thinking-64k": {
+        url: "https://www.anthropic.com/news/claude-opus-4-5",
+        organization: "Anthropic",
+        displayName: "Claude 4.5 Opus Thinking",
+        version: "2025-11-01",
+        reasoner: true,
+        variants: [
+            { rawName: "claude-opus-4-5-20251101-thinking-64k-high-effort", displayName: "Claude 4.5 Opus Thinking High Effort" },
+            { rawName: "claude-opus-4-5-20251101-thinking-64k-low-effort", displayName: "Claude 4.5 Opus Thinking Low Effort" },
+            { rawName: "claude-opus-4-5-20251101-thinking-64k-medium-effort", displayName: "Claude 4.5 Opus Thinking Medium Effort" }
+        ]
+    },
     "deepseek-v3.2": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", organization: "DeepSeek", displayName: "DeepSeek V3.2", version: "2025-11-25", openweight: true},
     "deepseek-v3.2-speciale": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Speciale", organization: "DeepSeek", displayName: "DeepSeek V3.2 Speciale", version: "2025-11-25", openweight: true, reasoner: true},
     "deepseek-v3.2-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", organization: "DeepSeek", displayName: "DeepSeek V3.2 Thinking", version: "2025-11-25", openweight: true, reasoner: true},
-    "gpt-5.1-codex-max": {url: "https://platform.openai.com/docs/models/gpt-5.1-codex-max", organization: "OpenAI", displayName: "GPT-5.1 Codex Max", version: "2025-11-25", reasoner: true},
-    "gpt-5.1-codex-max-high": {url: "https://platform.openai.com/docs/models/gpt-5.1-codex-max", organization: "OpenAI", displayName: "GPT-5.1 Codex Max High", version: "2025-11-25", reasoner: true},
-    "gpt-5.1-codex-max-xhigh": {url: "https://platform.openai.com/docs/models/gpt-5.1-codex-max", organization: "OpenAI", displayName: "GPT-5.1 Codex Max XHigh", version: "2025-11-25", reasoner: true},
+    "gpt-5.1-codex-max": {
+        url: "https://platform.openai.com/docs/models/gpt-5.1-codex-max",
+        organization: "OpenAI",
+        displayName: "GPT-5.1 Codex Max",
+        version: "2025-11-25",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.1-codex-max-high", displayName: "GPT-5.1 Codex Max High" },
+            { rawName: "gpt-5.1-codex-max-xhigh", displayName: "GPT-5.1 Codex Max XHigh" }
+        ]
+    },
+    "devstral-2512": {url: "https://mistral.ai/news/devstral-2-vibe-cli", organization: "Mistral", displayName: "Devstral 2", version: "2025-12-08", openweight: true},
+    "glm-4.6v": {url: "https://z.ai/blog/glm-4.6v", organization: "Z.AI", displayName: "GLM 4.6V", version: "2025-12-08", openweight: true, reasoner: true},
+    "gpt-5.2-2025-12-11": {
+        url: "https://openai.com/index/introducing-gpt-5-2/", organization: "OpenAI", displayName: "GPT-5.2", version: "2025-12-11", reasoner: true,
+        variants: [
+            { rawName: "gpt-5.2-2025-12-11-high", displayName: "GPT-5.2 High" },
+            { rawName: "gpt-5.2-2025-12-11-medium", displayName: "GPT-5.2 Medium" },
+            { rawName: "gpt-5.2-2025-12-11-low", displayName: "GPT-5.2 Low" },
+        ]
+    },
+    "gpt-5.2-2025-12-11-nothinking": {url: "https://openai.com/index/introducing-gpt-5-2/", organization: "OpenAI", displayName: "GPT-5.2 No Thinking", version: "2025-12-11", reasoner: false},
+};
+
+const variantLookup = {};
+const variantGroups = {};
+
+Object.entries(modelLinks).forEach(([baseName, info]) => {
+    const members = [baseName];
+    if (info.variants) {
+        info.variants.forEach(variant => {
+            variantLookup[variant.rawName] = {
+                ...info,
+                displayName: variant.displayName ?? info.displayName,
+                url: variant.url ?? info.url,
+                version: variant.version ?? info.version,
+                reasoner: variant.reasoner ?? info.reasoner,
+                openweight: variant.openweight ?? info.openweight,
+                rawName: variant.rawName,
+                baseName
+            };
+            members.push(variant.rawName);
+        });
+    }
+    variantGroups[baseName] = members;
+});
+
+export const getVariantGroup = (modelName) => {
+    if (variantGroups[modelName]) {
+        return { baseName: modelName, members: variantGroups[modelName] };
+    }
+    const variantEntry = variantLookup[modelName];
+    if (variantEntry && variantGroups[variantEntry.baseName]) {
+        return { baseName: variantEntry.baseName, members: variantGroups[variantEntry.baseName] };
+    }
+    return null;
+};
+
+export const getModelInfo = (modelName) => {
+    if (modelLinks[modelName]) {
+        const baseInfo = modelLinks[modelName];
+        return {
+            ...baseInfo,
+            displayName: baseInfo.displayName ?? modelName,
+            baseName: modelName,
+            rawName: modelName,
+            isVariant: false,
+            variantGroup: getVariantGroup(modelName)
+        };
+    }
+    if (variantLookup[modelName]) {
+        const variantInfo = variantLookup[modelName];
+        return {
+            ...variantInfo,
+            baseName: variantInfo.baseName,
+            rawName: modelName,
+            isVariant: true,
+            variantGroup: getVariantGroup(modelName)
+        };
+    }
+    return undefined;
 };
