@@ -342,6 +342,17 @@ export const modelLinks = {
         ]
     },
     "gpt-5.2-2025-12-11-nothinking": {url: "https://openai.com/index/introducing-gpt-5-2/", organization: "OpenAI", displayName: "GPT-5.2 No Thinking", version: "2025-12-11", reasoner: false},
+    "gemini-3-flash-preview": {
+        url: "https://blog.google/products/gemini/gemini-3-flash/",
+        organization: "Google",
+        displayName: "Gemini 3 Flash Preview",
+        version: "2025-12-17",
+        reasoner: true,
+        variants: [
+            { rawName: "gemini-3-flash-preview-high", displayName: "Gemini 3 Flash Preview High" },
+            { rawName: "gemini-3-flash-preview-minimal", displayName: "Gemini 3 Flash Preview Minimal" }
+        ]
+    }
 };
 
 const variantLookup = {};
