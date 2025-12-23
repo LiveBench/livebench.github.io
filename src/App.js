@@ -8,9 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedDate, setSelectedDate] = useState('2025-11-25');
-    const [sliderPosition, setSliderPosition] = useState(7);
-    const maxSliderValue = 7;
+    const [selectedDate, setSelectedDate] = useState('2025-12-23');
+    const [sliderPosition, setSliderPosition] = useState(8);
+    const maxSliderValue = 8;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -30,8 +30,10 @@ function App() {
             setSelectedDate('2025-04-25');
         } else if (value === '6'){
             setSelectedDate('2025-05-30');
-        } else {
+        } else if (value === '7'){
             setSelectedDate('2025-11-25');
+        } else {
+            setSelectedDate('2025-12-23');
         }
     };
 
@@ -43,7 +45,8 @@ function App() {
         if (selectedDate === '2025-04-02') return '4';
         if (selectedDate === '2025-04-25') return '5';
         if (selectedDate === '2025-05-30') return '6';
-        return '7';
+        if (selectedDate === '2025-11-25') return '7';
+        return '8';
     };
 
     return (
@@ -154,7 +157,7 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-11-25</strong>. This version includes refreshed tasks for instruction following, mathematics, language, and reasoning, as well as a new reasoning task.
+                            The most recent version is <strong>LiveBench-2025-12-23</strong>. This version includes a new reasoning task.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
