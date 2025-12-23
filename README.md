@@ -20,7 +20,6 @@ Automatically reloads on file changes and serves at [http://localhost:3000](http
 
 ### Deploying
 ```bash
-npm run build
 npm run deploy
 ```
 
