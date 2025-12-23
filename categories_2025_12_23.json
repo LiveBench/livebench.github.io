@@ -1,0 +1,37 @@
+{
+    "Reasoning": [
+        "theory_of_mind",
+        "zebra_puzzle",
+        "spatial",
+        "logic_with_navigation"
+    ],
+    "Coding": [
+        "code_generation",
+        "code_completion"
+    ],
+    "Agentic Coding": [
+        "javascript",
+        "typescript",
+        "python"
+    ],
+    "Mathematics": [
+        "AMPS_Hard",
+        "math_comp",
+        "olympiad"
+    ],
+    "Data Analysis": [
+        "tablejoin",
+        "tablereformat"
+    ],
+    "Language": [
+        "connections",
+        "plot_unscrambling",
+        "typos"
+    ],
+    "IF": [
+        "paraphrase",
+        "simplify",
+        "story_generation",
+        "summarize"
+    ]
+}
