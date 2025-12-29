@@ -1,0 +1,36 @@
+{
+    "Reasoning": [
+        "theory_of_mind",
+        "logic_with_navigation",
+        "sudoku"
+    ],
+    "Coding": [
+        "code_generation",
+        "code_completion"
+    ],
+    "Agentic Coding": [
+        "javascript",
+        "typescript",
+        "python"
+    ],
+    "Mathematics": [
+        "AMPS_Hard",
+        "math_comp",
+        "olympiad"
+    ],
+    "Data Analysis": [
+        "tablejoin",
+        "tablereformat"
+    ],
+    "Language": [
+        "connections",
+        "plot_unscrambling",
+        "typos"
+    ],
+    "IF": [
+        "paraphrase",
+        "simplify",
+        "story_generation",
+        "summarize"
+    ]
+}
