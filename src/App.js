@@ -160,7 +160,7 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2026-01-08</strong>. This version includes a new math task which introduces a game theory problem integraded with integral calculations.
+                            The most recent version is <strong>LiveBench-2026-01-08</strong>. This version features a new mathematical task that integrates game theory with integral calculus.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
@@ -268,6 +268,9 @@ function App() {
                                     </span>
                                     <span className="author-block">
                                         <a href="https://khalidsaifullaah.github.io/" target="_blank" rel="noreferrer">Khalid Saifullah</a><sup>4</sup>,
+                                    </span>
+                                    <span className="author-block">
+                                        <a href="https://sites.google.com/view/sandeep-/home" target="_blank" rel="noreferrer">Sandeep Singh Sandha</a><sup>1</sup>,
                                     </span>
                                     <span className="author-block">
                                         <a href="." target="_blank" rel="noreferrer">Siddartha Naidu</a><sup>1</sup>,
