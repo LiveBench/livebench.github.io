@@ -1,8 +1,9 @@
 {
     "Reasoning": [
         "theory_of_mind",
-        "logic_with_navigation",
-        "sudoku"
+        "zebra_puzzle",
+        "spatial",
+        "logic_with_navigation"
     ],
     "Coding": [
         "code_generation",
@@ -15,6 +16,7 @@
     ],
     "Mathematics": [
         "AMPS_Hard",
+        "integrals_with_game",
         "math_comp",
         "olympiad"
     ],
