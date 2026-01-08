@@ -8,9 +8,9 @@ import CSVTable from './Table/CSVTable';
 
 
 function App() {
-    const [selectedDate, setSelectedDate] = useState('2025-12-23');
-    const [sliderPosition, setSliderPosition] = useState(8);
-    const maxSliderValue = 8;
+    const [selectedDate, setSelectedDate] = useState('2026-01-08');
+    const [sliderPosition, setSliderPosition] = useState(9);
+    const maxSliderValue = 9;
 
     const handleSliderChange = (event) => {
         const value = event.target.value;
@@ -32,8 +32,10 @@ function App() {
             setSelectedDate('2025-05-30');
         } else if (value === '7'){
             setSelectedDate('2025-11-25');
-        } else {
+        } else if (value === '8'){
             setSelectedDate('2025-12-23');
+        } else {
+            setSelectedDate('2026-01-08');
         }
     };
 
@@ -46,7 +48,8 @@ function App() {
         if (selectedDate === '2025-04-25') return '5';
         if (selectedDate === '2025-05-30') return '6';
         if (selectedDate === '2025-11-25') return '7';
-        return '8';
+        if (selectedDate === '2025-12-23') return '8';
+        return '9';
     };
 
     return (
@@ -139,7 +142,7 @@ function App() {
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, eliminating the need for an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 21 diverse tasks across 7 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 22 diverse tasks across 7 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c18"><span className="c9"><strong>We will evaluate your model on LiveBench!</strong> Open a <a href="https://github.com/LiveBench/LiveBench/issues" target="_blank" rel="noreferrer">github issue</a> or email us at <a href="mailto:livebench@livebench.ai" target="_blank" rel="noreferrer">livebench@livebench.ai</a>!</span>
@@ -157,7 +160,7 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2025-12-23</strong>. This version includes a new reasoning task.
+                            The most recent version is <strong>LiveBench-2026-01-08</strong>. This version includes a new math task which introduces a game theory problem integraded with integral calculations.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
