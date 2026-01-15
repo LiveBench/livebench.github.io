@@ -343,6 +343,7 @@ export const modelLinks = {
         ]
     },
     "gpt-5.2-2025-12-11-nothinking": {url: "https://openai.com/index/introducing-gpt-5-2/", organization: "OpenAI", displayName: "GPT-5.2 No Thinking", version: "2025-12-11", reasoner: false},
+    "gpt-5.2-codex": {url: "https://platform.openai.com/docs/models/gpt-5.2-codex", organization: "OpenAI", displayName: "GPT-5.2 Codex", version: "2026-01-14", reasoner: true},
     "gemini-3-flash-preview": {
         url: "https://blog.google/products/gemini/gemini-3-flash/",
         organization: "Google",
