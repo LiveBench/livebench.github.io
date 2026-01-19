@@ -21,6 +21,7 @@
         "olympiad"
     ],
     "Data Analysis": [
+        "consecutive_events",
         "tablejoin",
         "tablereformat"
     ],
