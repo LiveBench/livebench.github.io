@@ -142,7 +142,7 @@ function App() {
                                     </li>
                                     <li className="c18 c29 li-bullet-0"><span className="c0">Each question has verifiable, objective ground-truth answers, eliminating the need for an LLM judge.</span>
                                     </li>
-                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 22 diverse tasks across 7 categories, and we will release new, harder tasks over time.</span>
+                                    <li className="c18 c29 li-bullet-0"><span className="c0">LiveBench currently contains a set of 23 diverse tasks across 7 categories, and we will release new, harder tasks over time.</span>
                                     </li>
                                 </ul>
                                 <p className="c18"><span className="c9"><strong>We will evaluate your model on LiveBench!</strong> Open a <a href="https://github.com/LiveBench/LiveBench/issues" target="_blank" rel="noreferrer">github issue</a> or email us at <a href="mailto:livebench@livebench.ai" target="_blank" rel="noreferrer">livebench@livebench.ai</a>!</span>
@@ -160,7 +160,7 @@ function App() {
                         <span>
                             We update questions regularly so that the benchmark completely refreshes every 6 months. 
                             Some questions for previous releases are available <a href="https://huggingface.co/livebench" target="_blank" rel="noreferrer">here</a>.
-                            The most recent version is <strong>LiveBench-2026-01-08</strong>. This version features a new mathematical task that integrates game theory with integral calculus.
+                            The most recent version is <strong>LiveBench-2026-01-08</strong>. This version features a new mathematical task and a new data analysis task.
                         <br></br><br></br><strong>To further reduce contamination, we delay publicly releasing the questions from the most-recent updates.</strong>
                         <br></br><br></br>
                         <span className="link-block mt-1">
