@@ -1,4 +1,5 @@
 export const modelLinks = {
+    "arcee-trinity-large-preview": {url: "https://openrouter.ai/arcee-ai/trinity-large-preview:free", organization: "Arcee", displayName: "Trinity Large Preview", openweight: true, reasoner: true},
     "chatgpt-4o-latest": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "ChatGPT-4o" },
     "chatgpt-4o-latest-0903": { url: "https://openai.com/index/hello-gpt-4o/", organization: "OpenAI", displayName: "ChatGPT-4o", version: "2024-09-03" },
     "chatgpt-4o-latest-2025-01-29": { url: "https://help.openai.com/en/articles/9624314-model-release-notes", organization: "OpenAI", displayName: "ChatGPT-4o", version: "2025-01-29" },
