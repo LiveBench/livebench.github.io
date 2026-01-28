@@ -1,4 +1,5 @@
 model,AMPS_Hard,code_completion,code_generation,connections,consecutive_events,integrals_with_game,javascript,logic_with_navigation,math_comp,olympiad,paraphrase,plot_unscrambling,python,simplify,spatial,story_generation,summarize,tablejoin,tablereformat,theory_of_mind,typescript,typos,zebra_puzzle
+arcee-trinity-large-preview,61.0,60.87,70.423,34.833,6.556,8.0,0.0,2.0,47.059,63.669,12.55,31.617,10.0,11.0,46.0,10.6,14.617,20.308,94.118,26.923,0.0,60.0,7.5
 claude-4-1-opus-20250805-base,89.0,76.087,76.056,86.0,2.223,10.0,45.0,42.0,65.686,86.619,19.15,60.257,75.0,25.583,62.0,31.017,27.917,37.827,96.078,48.077,40.0,84.0,11.5
 claude-4-1-opus-20250805-thinking-32k,93.0,76.087,73.239,93.833,4.641,26.0,45.0,70.0,85.294,88.483,35.35,60.458,70.0,44.4,90.0,44.683,45.183,44.25,98.039,67.308,30.0,64.0,62.0
 claude-4-sonnet-20250514-base,84.0,82.609,78.873,74.833,2.833,6.0,25.0,28.0,70.588,80.841,16.983,54.209,65.0,22.183,60.0,24.75,26.8,35.25,94.118,57.692,25.0,84.0,13.0
