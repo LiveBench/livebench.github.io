@@ -320,7 +320,7 @@ export const modelLinks = {
             { rawName: "claude-opus-4-5-20251101-thinking-64k-medium-effort", displayName: "Claude 4.5 Opus Thinking Medium Effort" }
         ]
     },
-    "claude-fudge-eap-auto-thinking-high-effort": {
+    "claude-opus-4-6-thinking-auto-high-effort": {
         url: "https://www.anthropic.com/news/claude-opus-4-6",
         organization: "Anthropic",
         displayName: "Claude 4.6 Opus Thinking High Effort",
