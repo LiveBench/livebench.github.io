@@ -243,6 +243,7 @@ export const modelLinks = {
     "glm-4.5": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5", reasoner: true, openweight: true},
     "glm-4.6": {url: "https://z.ai/blog/glm-4.6", organization: "Z.AI", displayName: "GLM 4.6", reasoner: true, openweight: true},
     "glm-4.7": {url: "https://z.ai/blog/glm-4.7", organization: "Z.AI", displayName: "GLM 4.7", reasoner: true, openweight: true},
+    "glm-5": {url: "https://z.ai/blog/glm-5", organization: "Z.AI", displayName: "GLM 5", reasoner: true, openweight: true},
     "glm-4.5-air": {url: "https://z.ai/blog/glm-4.5", organization: "Z.AI", displayName: "GLM 4.5 Air", reasoner: true, openweight: true},
     "deepseek-v3.1": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1", version: "2025-08-20", openweight: true},
     "deepseek-v3.1-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.1", organization: "DeepSeek", displayName: "DeepSeek V3.1 Thinking", version: "2025-08-20", openweight: true, reasoner: true},
