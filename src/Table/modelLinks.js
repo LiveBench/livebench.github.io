@@ -265,6 +265,7 @@ export const modelLinks = {
     "deepseek-v3.2-exp": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp", organization: "DeepSeek", displayName: "DeepSeek V3.2 Exp", version: "2025-10-17", openweight: true},
     "deepseek-v3.2-exp-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp", organization: "DeepSeek", displayName: "DeepSeek V3.2 Exp Thinking", version: "2025-10-17", openweight: true, reasoner: true},
     "minimax-m2": {url: "https://huggingface.co/MiniMaxAI/MiniMax-M2", organization: "Minimax", displayName: "Minimax M2", version: "2025-10-29", openweight: true, reasoner: true},
+    "minimax-m2.5": {url: "https://www.minimax.io/news/minimax-m25", organization: "Minimax", displayName: "Minimax M2.5", reasoner: true, openweight: true},
     "kimi-k2-thinking": {url: "https://huggingface.co/moonshotai/Kimi-K2-Thinking", organization: "Moonshot AI", displayName: "Kimi K2 Thinking", version: "2025-11-08", openweight: true, reasoner: true},
     "kimi-k2.5-thinking": {url: "https://www.kimi.com/blog/kimi-k2-5.html", organization: "Moonshot AI", displayName: "Kimi K2.5 Thinking",  openweight: true, reasoner: true},
     "grok-4-fast-non-reasoning-2511": {url: "https://docs.x.ai/docs/models/grok-4-fast-non-reasoning", organization: "xAI", displayName: "Grok 4 Fast (Non-Reasoning)", reasoner: false, version: "2025-11-10"},
