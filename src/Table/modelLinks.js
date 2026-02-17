@@ -329,7 +329,7 @@ export const modelLinks = {
         version: "2026-02-05",
         reasoner: true
     },
-    "claude-sonnet-4-6-thinking-128k-high-effort": {
+    "claude-sonnet-4-6-thinking-auto-high-effort": {
         url: "https://www.anthropic.com/news/claude-sonnet-4-6",
         organization: "Anthropic",
         displayName: "Claude 4.6 Sonnet Thinking High Effort",
