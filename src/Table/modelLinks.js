@@ -334,7 +334,11 @@ export const modelLinks = {
         organization: "Anthropic",
         displayName: "Claude 4.6 Sonnet Thinking High Effort",
         version: "2026-02-17",
-        reasoner: true
+        reasoner: true,
+        variants: [
+            { rawName: "claude-sonnet-4-6-thinking-auto-medium-effort", displayName: "Claude 4.6 Sonnet Thinking Medium Effort" },
+            { rawName: "claude-sonnet-4-6-thinking-auto-low-effort", displayName: "Claude 4.6 Sonnet Thinking Low Effort" },
+        ]
     },
     "deepseek-v3.2": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", organization: "DeepSeek", displayName: "DeepSeek V3.2", version: "2025-11-25", openweight: true},
     "deepseek-v3.2-speciale": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Speciale", organization: "DeepSeek", displayName: "DeepSeek V3.2 Speciale", version: "2025-11-25", openweight: true, reasoner: true},
