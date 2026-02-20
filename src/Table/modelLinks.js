@@ -376,8 +376,7 @@ export const modelLinks = {
             { rawName: "gemini-3-flash-preview-high", displayName: "Gemini 3 Flash Preview High" },
             { rawName: "gemini-3-flash-preview-minimal", displayName: "Gemini 3 Flash Preview Minimal" }
         ]
-    },
-    "gemini-3.1-pro-preview-high": {url: "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview/", organization: "Google", displayName: "Gemini 3.1 Pro Preview High", reasoner: true}
+    }
 };
 
 const variantLookup = {};
