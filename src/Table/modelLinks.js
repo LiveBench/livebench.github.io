@@ -376,6 +376,16 @@ export const modelLinks = {
             { rawName: "gemini-3-flash-preview-high", displayName: "Gemini 3 Flash Preview High" },
             { rawName: "gemini-3-flash-preview-minimal", displayName: "Gemini 3 Flash Preview Minimal" }
         ]
+    },
+    "gpt-5.3-codex": {
+        url: "https://platform.openai.com/docs/models/gpt-5.3-codex",
+        organization: "OpenAI",
+        displayName: "GPT-5.3 Codex",
+        version: "2026-02-24",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.3-codex-high", displayName: "GPT-5.3 Codex High" }
+        ]
     }
 };
 
