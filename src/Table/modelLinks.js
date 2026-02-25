@@ -384,7 +384,8 @@ export const modelLinks = {
         version: "2026-02-24",
         reasoner: true,
         variants: [
-            { rawName: "gpt-5.3-codex-high", displayName: "GPT-5.3 Codex High" }
+            { rawName: "gpt-5.3-codex-high", displayName: "GPT-5.3 Codex High" },
+            { rawName: "gpt-5.3-codex-xhigh", displayName: "GPT-5.3 Codex xHigh" }
         ]
     }
 };
