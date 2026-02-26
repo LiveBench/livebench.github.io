@@ -632,6 +632,7 @@ const CSVTable = ({dateStr}) => {
                                             <a href={info?.url ?? '#'} target={info?.url ? "_blank" : ""} rel="noopener noreferrer">
                                                 {displayName}
                                             </a>
+                                            {info.note && <><br/><small>{info.note}</small></>}
                                         </td>
                                         {showProvider && <td className="sticky-col organization-col">{info?.organization ?? ''}</td>}
                                         {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
