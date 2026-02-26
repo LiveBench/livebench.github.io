@@ -22,8 +22,9 @@ const CSVTable = ({dateStr}) => {
     const [showReasoners, setShowReasoners] = useState(true);
     const [showOpenWeights, setShowOpenWeights] = useState(false);
     const [showVariants, setShowVariants] = useState(false);
+    const [showHighUnseenBias, setShowHighUnseenBias] = useState(false);
 
-    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newSearchQuery = null) => {
+    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
         const params = new URLSearchParams();
 
         let allAverages = true;
@@ -70,12 +71,14 @@ const CSVTable = ({dateStr}) => {
         const effectiveShowReasoners = newShowReasoners !== null ? newShowReasoners : showReasoners;
         const effectiveShowOpenWeights = newShowOpenWeights !== null ? newShowOpenWeights : showOpenWeights;
         const effectiveShowVariants = newShowVariants !== null ? newShowVariants : showVariants;
-        
+        const effectiveShowHighUnseenBias = newShowHighUnseenBias !== null ? newShowHighUnseenBias : showHighUnseenBias;
+
         if (!effectiveShowProvider) params.set('provider', 'false');
         if (effectiveShowApiName) params.set('api', 'true');
         if (!effectiveShowReasoners) params.set('reasoners', 'false');
         if (effectiveShowOpenWeights) params.set('openweight', 'true');
         if (effectiveShowVariants) params.set('variants', 'true');
+        if (effectiveShowHighUnseenBias) params.set('highunseenbias', 'true');
 
         if (allAverages && !anySubcategories) {
             const newParams = new URLSearchParams();
@@ -100,6 +103,7 @@ const CSVTable = ({dateStr}) => {
             if (!effectiveShowReasoners) newParams.set('reasoners', 'false');
             if (effectiveShowOpenWeights) newParams.set('openweight', 'true');
             if (effectiveShowVariants) newParams.set('variants', 'true');
+            if (effectiveShowHighUnseenBias) newParams.set('highunseenbias', 'true');
             setSearchParams(newParams);
             return;
         }
@@ -232,6 +236,9 @@ const CSVTable = ({dateStr}) => {
             } else if (key === 'variants') {
                 setShowVariants(value === 'true');
                 return;
+            } else if (key === 'highunseenbias') {
+                setShowHighUnseenBias(value === 'true');
+                return;
             } else if (Object.keys(categories).includes(key)) {
                 if (value.includes('a')) {
                     updatedCategories[key].average = true;
@@ -278,7 +285,7 @@ const CSVTable = ({dateStr}) => {
             return;
         }
         updateURL(checkedCategories, filter);
-    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants]);
+    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants, showHighUnseenBias]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
 
@@ -413,9 +420,10 @@ const CSVTable = ({dateStr}) => {
         setShowReasoners(true);
         setShowOpenWeights(false);
         setShowVariants(false);
-        
+        setShowHighUnseenBias(false);
+
         // Update URL with default values (including empty search)
-        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, '');
+        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '');
     }
 
     // Utility to compute class for sorting
@@ -470,9 +478,12 @@ const CSVTable = ({dateStr}) => {
             if (showOpenWeights && !info.openweight) {
                 return false;
             }
+            if (!showHighUnseenBias && info.highUnseenBias) {
+                return false;
+            }
             return true;
         });
-    }, [sortedData, showReasoners, showOpenWeights]);
+    }, [sortedData, showReasoners, showOpenWeights, showHighUnseenBias]);
 
     const displayedData = useMemo(() => {
         if (showVariants) {
@@ -543,6 +554,10 @@ const CSVTable = ({dateStr}) => {
                 <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
                     <input type="checkbox" checked={showVariants} onChange={() => setShowVariants(!showVariants)} id="showVariants" />
                     <span style={{marginLeft: '0.5rem'}}>Show Model Effort Variants</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showHighUnseenBias} onChange={() => setShowHighUnseenBias(!showHighUnseenBias)} id="showHighUnseenBias" />
+                    <span style={{marginLeft: '0.5rem'}}>Show High Unseen Question Bias Models</span>
                 </label>
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
