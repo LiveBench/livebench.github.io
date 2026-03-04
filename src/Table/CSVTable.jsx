@@ -22,7 +22,7 @@ const CSVTable = ({dateStr}) => {
     const [showReasoners, setShowReasoners] = useState(true);
     const [showOpenWeights, setShowOpenWeights] = useState(false);
     const [showVariants, setShowVariants] = useState(false);
-    const [showHighUnseenBias, setShowHighUnseenBias] = useState(false);
+    const [showHighUnseenBias, setShowHighUnseenBias] = useState(true);
 
     const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
         const params = new URLSearchParams();
@@ -420,7 +420,7 @@ const CSVTable = ({dateStr}) => {
         setShowReasoners(true);
         setShowOpenWeights(false);
         setShowVariants(false);
-        setShowHighUnseenBias(false);
+        setShowHighUnseenBias(true);
 
         // Update URL with default values (including empty search)
         updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '');
