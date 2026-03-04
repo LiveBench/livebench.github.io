@@ -378,6 +378,8 @@ export const modelLinks = {
         ]
     },
     "gemini-3.1-pro-preview-high": {url: "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview/", organization: "Google", displayName: "Gemini 3.1 Pro Preview High*", note: "*5th rank in unseen questions across all categories", reasoner: true, highUnseenBias: true},
+    "gemini-3.1-flash-lite-preview-high": {url: "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview", organization: "Google", displayName: "Gemini 3.1 Flash Lite Preview High", reasoner: true},
+    "gpt-5.3-instant": {url: "https://openai.com/index/gpt-5-3-instant/", organization: "OpenAI", displayName: "GPT-5.3 Instant", version: "2026-02-24"},
     "gpt-5.3-codex": {
         url: "https://platform.openai.com/docs/models/gpt-5.3-codex",
         organization: "OpenAI",
