@@ -390,6 +390,16 @@ export const modelLinks = {
             { rawName: "gpt-5.3-codex-high", displayName: "GPT-5.3 Codex High" },
             { rawName: "gpt-5.3-codex-xhigh", displayName: "GPT-5.3 Codex xHigh" }
         ]
+    },
+    "gpt-5.4": {
+        url: "https://platform.openai.com/docs/models/gpt-5.4",
+        organization: "OpenAI",
+        displayName: "GPT-5.4",
+        version: "2026-03-05",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.4-high", displayName: "GPT-5.4 Thinking High Effort" }
+        ]
     }
 };
 
