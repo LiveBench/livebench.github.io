@@ -398,7 +398,8 @@ export const modelLinks = {
         version: "2026-03-05",
         reasoner: true,
         variants: [
-            { rawName: "gpt-5.4-high", displayName: "GPT-5.4 Thinking High Effort" }
+            { rawName: "gpt-5.4-high", displayName: "GPT-5.4 Thinking High Effort" },
+            { rawName: "gpt-5.4-xhigh", displayName: "GPT-5.4 Thinking xHigh Effort" }
         ]
     }
 };
