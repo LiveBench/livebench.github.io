@@ -298,6 +298,8 @@ export const modelLinks = {
     },
     "grok-4-1-fast-non-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-1-fast-non-reasoning", organization: "xAI", displayName: "Grok 4.1 Fast (Non-Reasoning)", reasoner: false, version: "2025-11-20"},
     "grok-4-1-fast-reasoning": {url: "https://docs.x.ai/docs/models/grok-4-1-fast-reasoning", organization: "xAI", displayName: "Grok 4.1 Fast", reasoner: true, version: "2025-11-20"},
+    "grok-4.20-beta-0309-non-reasoning": {url: "https://docs.x.ai/developers/models/grok-4.20-beta-0309-non-reasoning", organization: "xAI", displayName: "Grok 4.20 Beta (Non-Reasoning)", reasoner: false, version: "2026-03-09"},
+    "grok-4.20-beta-0309-reasoning": {url: "https://docs.x.ai/developers/models/grok-4.20-beta-0309-reasoning", organization: "xAI", displayName: "Grok 4.20 Beta", reasoner: true, version: "2026-03-09"},
     "claude-opus-4-5-20251101": {
         url: "https://www.anthropic.com/news/claude-opus-4-5",
         organization: "Anthropic",
