@@ -403,6 +403,32 @@ export const modelLinks = {
             { rawName: "gpt-5.4-high", displayName: "GPT-5.4 Thinking High Effort" },
             { rawName: "gpt-5.4-xhigh", displayName: "GPT-5.4 Thinking xHigh Effort" }
         ]
+    },
+    "gpt-5.4-mini": {
+        url: "https://platform.openai.com/docs/models/gpt-5.4-mini",
+        organization: "OpenAI",
+        displayName: "GPT-5.4 Mini",
+        version: "2026-03-17",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.4-mini-low", displayName: "GPT-5.4 Mini Low" },
+            { rawName: "gpt-5.4-mini-medium", displayName: "GPT-5.4 Mini Medium" },
+            { rawName: "gpt-5.4-mini-high", displayName: "GPT-5.4 Mini High" },
+            { rawName: "gpt-5.4-mini-xhigh", displayName: "GPT-5.4 Mini xHigh" }
+        ]
+    },
+    "gpt-5.4-nano": {
+        url: "https://platform.openai.com/docs/models/gpt-5.4-nano",
+        organization: "OpenAI",
+        displayName: "GPT-5.4 Nano",
+        version: "2026-03-17",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.4-nano-low", displayName: "GPT-5.4 Nano Low" },
+            { rawName: "gpt-5.4-nano-medium", displayName: "GPT-5.4 Nano Medium" },
+            { rawName: "gpt-5.4-nano-high", displayName: "GPT-5.4 Nano High" },
+            { rawName: "gpt-5.4-nano-xhigh", displayName: "GPT-5.4 Nano xHigh" }
+        ]
     }
 };
 
