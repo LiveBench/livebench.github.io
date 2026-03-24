@@ -429,7 +429,9 @@ export const modelLinks = {
             { rawName: "gpt-5.4-nano-high", displayName: "GPT-5.4 Nano High" },
             { rawName: "gpt-5.4-nano-xhigh", displayName: "GPT-5.4 Nano xHigh" }
         ]
-    }
+    },
+    "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
+    "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true}
 };
 
 const variantLookup = {};
