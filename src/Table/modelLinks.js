@@ -235,6 +235,7 @@ export const modelLinks = {
     "gemini-2.5-flash-lite-preview-09-2025-highthinking": {url: "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/", organization: "Google", displayName: "Gemini 2.5 Flash Lite (Max Thinking)", version: "2025-09-25", reasoner: true},
     "gemma-3n-e2b-it": {url: "https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/", organization: "Google", displayName: "Gemma 3n E2B IT", openweight: true},
     "gemma-3n-e4b-it": {url: "https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/", organization: "Google", displayName: "Gemma 3n E4B IT", openweight: true},
+    "gemma-4-31b-it": { url: "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/", organization: "Google", displayName: "Gemma 4 31B", openweight: true, reasoner: true },
     "grok-4-0709": {url: "https://docs.x.ai/docs/models/grok-4-0709", organization: "xAI", displayName: "Grok 4", reasoner: true, version: "2025-07-09"},
     "kimi-k2-instruct": {url: "https://huggingface.co/moonshotai/Kimi-K2-Instruct", organization: "Moonshot AI", displayName: "Kimi K2 Instruct", openweight: true},
     "qwen3-235b-a22b-instruct-2507": {url: "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507", organization: "Alibaba", displayName: "Qwen 3 235B A22B Instruct 2507", openweight: true},
