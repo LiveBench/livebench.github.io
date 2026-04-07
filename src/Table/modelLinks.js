@@ -432,7 +432,9 @@ export const modelLinks = {
         ]
     },
     "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
-    "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true}
+    "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true},
+    "qwen3.6-plus": {url: "https://qwen.ai/blog?id=qwen3.6/", organization: "Alibaba", displayName: "Qwen 3.6 Plus", version: "2026-04-02", reasoner: true},
+    "nemotron-3-super-120b-a12b": {url: "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b:free", organization: "NVIDIA", displayName: "Nemotron 3 Super 120B A12B", version: "2026-03-11", reasoner: true, openweight: true}
 };
 
 const variantLookup = {};
