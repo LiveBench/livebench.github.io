@@ -435,7 +435,18 @@ export const modelLinks = {
     "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
     "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true},
     "qwen3.6-plus": {url: "https://qwen.ai/blog?id=qwen3.6/", organization: "Alibaba", displayName: "Qwen 3.6 Plus", version: "2026-04-02", reasoner: true},
-    "nemotron-3-super-120b-a12b": {url: "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b:free", organization: "NVIDIA", displayName: "Nemotron 3 Super 120B A12B", version: "2026-03-11", reasoner: true, openweight: true}
+    "nemotron-3-super-120b-a12b": {url: "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b:free", organization: "NVIDIA", displayName: "Nemotron 3 Super 120B A12B", version: "2026-03-11", reasoner: true, openweight: true},
+    "elephant-alpha": {url: "https://openrouter.ai/openrouter/elephant-alpha", organization: "OpenRouter", displayName: "Elephant Alpha", reasoner: true},
+    "claude-opus-4-7-high-effort": {
+        url: "https://www.anthropic.com/news/claude-opus-4-7",
+        organization: "Anthropic",
+        displayName: "Claude 4.7 Opus Thinking High Effort",
+        version: "2026-04-16",
+        reasoner: true,
+        variants: [
+            { rawName: "claude-opus-4-7-xhigh-effort", displayName: "Claude 4.7 Opus Thinking xHigh Effort" }
+        ]
+    }
 };
 
 const variantLookup = {};
