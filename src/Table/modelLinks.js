@@ -270,6 +270,7 @@ export const modelLinks = {
     "minimax-m2.5": {url: "https://www.minimax.io/news/minimax-m25", organization: "Minimax", displayName: "Minimax M2.5", reasoner: true, openweight: true},
     "kimi-k2-thinking": {url: "https://huggingface.co/moonshotai/Kimi-K2-Thinking", organization: "Moonshot AI", displayName: "Kimi K2 Thinking", version: "2025-11-08", openweight: true, reasoner: true},
     "kimi-k2.5-thinking": {url: "https://www.kimi.com/blog/kimi-k2-5.html", organization: "Moonshot AI", displayName: "Kimi K2.5 Thinking",  openweight: true, reasoner: true},
+    "kimi-k2.6-thinking": {url: "https://www.kimi.com/blog/kimi-k2-6", organization: "Moonshot AI", displayName: "Kimi K2.6 Thinking",  openweight: true, reasoner: true},
     "grok-4-fast-non-reasoning-2511": {url: "https://docs.x.ai/docs/models/grok-4-fast-non-reasoning", organization: "xAI", displayName: "Grok 4 Fast (Non-Reasoning)", reasoner: false, version: "2025-11-10"},
     "grok-4-fast-reasoning-2511": {url: "https://docs.x.ai/docs/models/grok-4-fast-reasoning", organization: "xAI", displayName: "Grok 4 Fast", reasoner: true, version: "2025-11-10"},
     "gpt-5.1-2025-11-13": {
