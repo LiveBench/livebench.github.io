@@ -433,6 +433,17 @@ export const modelLinks = {
             { rawName: "gpt-5.4-nano-xhigh", displayName: "GPT-5.4 Nano xHigh" }
         ]
     },
+    "gpt-5.5": {
+        url: "https://platform.openai.com/docs/models/gpt-5.5",
+        organization: "OpenAI",
+        displayName: "GPT-5.5",
+        version: "2026-04-23",
+        reasoner: true,
+        variants: [
+            { rawName: "gpt-5.5-high", displayName: "GPT-5.5 Thinking High Effort" },
+            { rawName: "gpt-5.5-xhigh", displayName: "GPT-5.5 Thinking xHigh Effort" }
+        ]
+    },
     "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
     "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true},
     "qwen3.6-plus": {url: "https://qwen.ai/blog?id=qwen3.6/", organization: "Alibaba", displayName: "Qwen 3.6 Plus", version: "2026-04-02", reasoner: true},
