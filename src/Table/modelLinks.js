@@ -349,6 +349,7 @@ export const modelLinks = {
     "deepseek-v3.2-speciale": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Speciale", organization: "DeepSeek", displayName: "DeepSeek V3.2 Speciale", version: "2025-11-25", openweight: true, reasoner: true},
     "deepseek-v3.2-thinking": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", organization: "DeepSeek", displayName: "DeepSeek V3.2 Thinking", version: "2025-11-25", openweight: true, reasoner: true},
     "deepseek-v4-pro": {url: "https://api-docs.deepseek.com/news/news260424", organization: "DeepSeek", displayName: "DeepSeek V4 Pro", openweight: true, reasoner: true},
+    "deepseek-v4-flash": {url: "https://api-docs.deepseek.com/news/news260424", organization: "DeepSeek", displayName: "DeepSeek V4 Flash", openweight: true, reasoner: true},
     "gpt-5.1-codex-max": {
         url: "https://platform.openai.com/docs/models/gpt-5.1-codex-max",
         organization: "OpenAI",
