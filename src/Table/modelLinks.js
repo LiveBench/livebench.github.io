@@ -444,7 +444,8 @@ export const modelLinks = {
         reasoner: true,
         variants: [
             { rawName: "gpt-5.5-high", displayName: "GPT-5.5 Thinking High Effort" },
-            { rawName: "gpt-5.5-xhigh", displayName: "GPT-5.5 Thinking xHigh Effort" }
+            { rawName: "gpt-5.5-xhigh", displayName: "GPT-5.5 Thinking xHigh Effort" },
+            { rawName: "gpt-5.5-medium", displayName: "GPT-5.5 Thinking Medium Effort" }
         ]
     },
     "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
