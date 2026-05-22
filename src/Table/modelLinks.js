@@ -464,6 +464,7 @@ export const modelLinks = {
     "qwen3.6-plus": {url: "https://qwen.ai/blog?id=qwen3.6/", organization: "Alibaba", displayName: "Qwen 3.6 Plus", version: "2026-04-02", reasoner: true},
     "qwen3.6-27b": {url: "https://qwen.ai/blog?id=qwen3.6-27b", organization: "Alibaba", displayName: "Qwen 3.6 27B", reasoner: true, openweight: true},
     "qwen3.6-flash": {url: "https://openrouter.ai/qwen/qwen3.6-flash/", organization: "Alibaba", displayName: "Qwen 3.6 Flash", reasoner: true, openweight: true},
+    "qwen3.7-max": {url: "https://qwen.ai/blog?id=qwen3.7", organization: "Alibaba", displayName: "Qwen 3.7 Max", reasoner: true},
     "nemotron-3-super-120b-a12b": {url: "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b:free", organization: "NVIDIA", displayName: "Nemotron 3 Super 120B A12B", version: "2026-03-11", reasoner: true, openweight: true},
     "elephant-alpha": {url: "https://openrouter.ai/openrouter/elephant-alpha", organization: "OpenRouter", displayName: "Elephant Alpha", reasoner: true},
     "claude-opus-4-7-high-effort": {
