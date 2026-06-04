@@ -486,9 +486,9 @@ export const modelLinks = {
         version: "2026-04-16",
         reasoner: true,
         variants: [
-            { rawName: "claude-opus-4-7-low-effort", displayName: "Claude 4.8 Opus Thinking Low Effort" },
-            { rawName: "claude-opus-4-7-medium-effort", displayName: "Claude 4.8 Opus Thinking Medium Effort" },
-            { rawName: "claude-opus-4-7-high-effort", displayName: "Claude 4.8 Opus Thinking High Effort" }
+            { rawName: "claude-opus-4-8-low-effort", displayName: "Claude 4.8 Opus Thinking Low Effort" },
+            { rawName: "claude-opus-4-8-medium-effort", displayName: "Claude 4.8 Opus Thinking Medium Effort" },
+            { rawName: "claude-opus-4-8-high-effort", displayName: "Claude 4.8 Opus Thinking High Effort" }
         ]
     }
 };
