@@ -462,6 +462,7 @@ export const modelLinks = {
     "mimo-v2-pro": {url: "https://mimo.xiaomi.com/mimo-v2-pro", organization: "Xiaomi", displayName: "MiMo V2 Pro", reasoner: true},
     "minimax-m2.7": {url: "https://www.minimax.io/news/minimax-m27-en", organization: "Minimax", displayName: "Minimax M2.7", reasoner: true},
     "minimax-m3": {url: "https://www.minimax.io/blog/minimax-m3", organization: "Minimax", displayName: "Minimax M3", reasoner: true},
+    "grok-build-0.1": {url: "https://x.ai/news/grok-build-0-1", organization: "xAI", displayName: "Grok Build 0.1", reasoner: false},
     "nemotron-3-ultra-550b-a55b": {url: "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b", organization: "NVIDIA", displayName: "Nemotron 3 Ultra 550B A55B", reasoner: true},
     "qwen3.6-plus": {url: "https://qwen.ai/blog?id=qwen3.6/", organization: "Alibaba", displayName: "Qwen 3.6 Plus", version: "2026-04-02", reasoner: true},
     "qwen3.6-27b": {url: "https://qwen.ai/blog?id=qwen3.6-27b", organization: "Alibaba", displayName: "Qwen 3.6 27B", reasoner: true, openweight: true},
