@@ -1,0 +1,15 @@
+model,avg_input_tokens,avg_output_tokens,cost_per_question
+gpt-5.5-xhigh,722,7826,0.2384
+gpt-5.4-xhigh,745,12723,0.1927
+gemini-3.1-pro-preview-high,795,12756,0.1547
+gemini-3.5-flash-high,796,14961,0.1358
+gpt-5.2-2025-12-11-high,751,7597,0.1077
+gpt-5.2-codex,693,8056,0.114
+gpt-5.1-codex-max-high,760,18663,0.1876
+gpt-5.3-codex-high,694,4229,0.0604
+gpt-5.1-2025-11-13-high,670,13388,0.1347
+gemini-3-pro-preview-11-2025-high,725,10678,0.1296
+gemini-3-flash-preview-high,848,21635,0.0653
+qwen3.7-max,785,12193,0.0934
+deepseek-v4-pro,715,33261,0.0292
+kimi-k2.6-thinking,706,21184,0.0854
