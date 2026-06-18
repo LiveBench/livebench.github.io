@@ -604,6 +604,8 @@ const CSVTable = ({dateStr}) => {
                     <input type="checkbox" checked={showCost} onChange={() => setShowCost(!showCost)} id="showCost" />
                     <span style={{marginLeft: '0.5rem'}}>Show Cost (USD)</span>
                 </label>}
+            </div>
+            <div className="clear-filters-row">
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">

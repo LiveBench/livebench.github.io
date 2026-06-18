@@ -249,7 +249,14 @@ td {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   row-gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clear-filters-row {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -259,7 +266,6 @@ td {
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  margin-left: 1rem;
 }
 
 .section {
