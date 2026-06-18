@@ -1,7 +1,7 @@
 // src/Table/CSVTable.jsx
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Papa from 'papaparse';
-import { calculateAverage, getGlobalAverage } from './Averaging';
+import { calculateAverage, getGlobalAverage, getGlobalAverageColumns, sumColumns } from './Averaging';
 import { useTable } from "./SortTable";
 import { getModelInfo, getVariantGroup } from './modelLinks';
 import { useSearchParams } from 'react-router-dom';
@@ -11,6 +11,7 @@ import Select from 'react-select';
 const CSVTable = ({dateStr}) => {
     const date = new Date(dateStr).toISOString().split('T')[0].replaceAll('-', '_');
     const [data, setData] = useState([]);
+    const [cost, setCost] = useState({});
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -23,8 +24,9 @@ const CSVTable = ({dateStr}) => {
     const [showOpenWeights, setShowOpenWeights] = useState(false);
     const [showVariants, setShowVariants] = useState(false);
     const [showHighUnseenBias, setShowHighUnseenBias] = useState(true);
+    const [showCost, setShowCost] = useState(false);
 
-    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
+    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null, newShowCost = null) => {
         const params = new URLSearchParams();
 
         let allAverages = true;
@@ -72,6 +74,7 @@ const CSVTable = ({dateStr}) => {
         const effectiveShowOpenWeights = newShowOpenWeights !== null ? newShowOpenWeights : showOpenWeights;
         const effectiveShowVariants = newShowVariants !== null ? newShowVariants : showVariants;
         const effectiveShowHighUnseenBias = newShowHighUnseenBias !== null ? newShowHighUnseenBias : showHighUnseenBias;
+        const effectiveShowCost = newShowCost !== null ? newShowCost : showCost;
 
         if (!effectiveShowProvider) params.set('provider', 'false');
         if (effectiveShowApiName) params.set('api', 'true');
@@ -79,6 +82,7 @@ const CSVTable = ({dateStr}) => {
         if (effectiveShowOpenWeights) params.set('openweight', 'true');
         if (effectiveShowVariants) params.set('variants', 'true');
         if (effectiveShowHighUnseenBias) params.set('highunseenbias', 'true');
+        if (effectiveShowCost) params.set('cost', 'true');
 
         if (allAverages && !anySubcategories) {
             const newParams = new URLSearchParams();
@@ -104,6 +108,7 @@ const CSVTable = ({dateStr}) => {
             if (effectiveShowOpenWeights) newParams.set('openweight', 'true');
             if (effectiveShowVariants) newParams.set('variants', 'true');
             if (effectiveShowHighUnseenBias) newParams.set('highunseenbias', 'true');
+            if (effectiveShowCost) newParams.set('cost', 'true');
             setSearchParams(newParams);
             return;
         }
@@ -170,6 +175,29 @@ const CSVTable = ({dateStr}) => {
                     }
                 });
             });
+
+        // Optional per-date cost file (USD totals, same columns as the table).
+        fetch(process.env.PUBLIC_URL + `/cost_${date}.csv`)
+            .then(response => (response.ok ? response.text() : null))
+            .then(text => {
+                if (!text || !text.startsWith('model,')) {
+                    setCost({});
+                    return;
+                }
+                Papa.parse(text, {
+                    header: true,
+                    dynamicTyping: true,
+                    skipEmptyLines: true,
+                    complete: (result) => {
+                        const map = {};
+                        result.data.forEach(r => {
+                            if (r && r.model != null) map[String(r.model).toLowerCase()] = r;
+                        });
+                        setCost(map);
+                    }
+                });
+            })
+            .catch(() => setCost({}));
 
         fetch(process.env.PUBLIC_URL + `/categories_${date}.json`)
             .then(response => response.json())
@@ -239,6 +267,9 @@ const CSVTable = ({dateStr}) => {
             } else if (key === 'highunseenbias') {
                 setShowHighUnseenBias(value === 'true');
                 return;
+            } else if (key === 'cost') {
+                setShowCost(value === 'true');
+                return;
             } else if (Object.keys(categories).includes(key)) {
                 if (value.includes('a')) {
                     updatedCategories[key].average = true;
@@ -285,7 +316,7 @@ const CSVTable = ({dateStr}) => {
             return;
         }
         updateURL(checkedCategories, filter);
-    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants, showHighUnseenBias]);
+    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants, showHighUnseenBias, showCost]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
 
@@ -421,9 +452,10 @@ const CSVTable = ({dateStr}) => {
         setShowOpenWeights(false);
         setShowVariants(false);
         setShowHighUnseenBias(true);
+        setShowCost(false);
 
         // Update URL with default values (including empty search)
-        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '');
+        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '', false);
     }
 
     // Utility to compute class for sorting
@@ -432,6 +464,15 @@ const CSVTable = ({dateStr}) => {
     };
 
     const numCheckedCategories = Object.values(checkedCategories).filter(cat => cat.average || cat.allSubcategories).length;
+
+    const hasCost = Object.keys(cost).length > 0;
+    const costOn = showCost && hasCost;
+    const fmtCost = (v) => {
+        if (v == null || isNaN(v)) return '—';
+        if (v >= 0.1) return `$${v.toFixed(2)}`;
+        if (v >= 0.01) return `$${v.toFixed(3)}`;
+        return `$${v.toFixed(4)}`;
+    };
 
     const modelProviders = Array.from(new Set(data.map(row => getModelInfo(row.model)?.organization ?? 'Unknown'))).sort();
 
@@ -559,6 +600,10 @@ const CSVTable = ({dateStr}) => {
                     <input type="checkbox" checked={showHighUnseenBias} onChange={() => setShowHighUnseenBias(!showHighUnseenBias)} id="showHighUnseenBias" />
                     <span style={{marginLeft: '0.5rem'}}>Show High Unseen Question Bias Models</span>
                 </label>
+                {hasCost && <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                    <input type="checkbox" checked={showCost} onChange={() => setShowCost(!showCost)} id="showCost" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Cost (USD)</span>
+                </label>}
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -641,6 +686,9 @@ const CSVTable = ({dateStr}) => {
                                     return name;
                                 })();
 
+                                const costRow = cost[String(row.model ?? '').toLowerCase()];
+                                const covered = !!costRow;
+
                                 return (
                                     <tr key={index}>
                                         <td className="sticky-col model-col">
@@ -650,17 +698,27 @@ const CSVTable = ({dateStr}) => {
                                             {info.note && <><br/><small>{info.note}</small></>}
                                         </td>
                                         {showProvider && <td className="sticky-col organization-col">{info?.organization ?? ''}</td>}
-                                        {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">{getGlobalAverage(row, checkedCategories, categories)}</td>}
+                                        {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">
+                                            {getGlobalAverage(row, checkedCategories, categories)}
+                                            {costOn && <span className="cost">{covered ? fmtCost(sumColumns(costRow, getGlobalAverageColumns(checkedCategories, categories))) : 'n/a'}</span>}
+                                        </td>}
                                         {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                             const res = [];
                                             if (checks.average) {
-                                                res.push(calculateAverage(row, categories[category], 2));
+                                                res.push({ value: calculateAverage(row, categories[category], 2), columns: categories[category] });
                                             }
                                             if (checks.allSubcategories) {
-                                                categories[category].forEach(subCat => res.push(row[subCat] == null ? '-' : parseInt(row[subCat]) === row[subCat] ? row[subCat] : row[subCat]));
+                                                categories[category].forEach(subCat => res.push({ value: row[subCat] == null ? '-' : row[subCat], columns: [subCat] }));
                                             }
                                             return res;
-                                        }).map((cell, idx) => <td key={idx}>{cell}</td>)}
+                                        }).map((cell, idx) => (
+                                            <td key={idx}>
+                                                {cell.value}
+                                                {costOn && (covered
+                                                    ? <span className="cost">{fmtCost(sumColumns(costRow, cell.columns))}</span>
+                                                    : (numCheckedCategories > 1 ? null : (idx === 0 ? <span className="cost">n/a</span> : null)))}
+                                            </td>
+                                        ))}
                                     </tr>
                                 );
                             })}

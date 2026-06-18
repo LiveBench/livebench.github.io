@@ -208,6 +208,10 @@ td {
   td {
     padding: 6px;
   }
+
+  .cost {
+    display: none;
+  }
 }
 
 /* Style adjustments for medium screens */
@@ -302,4 +306,13 @@ thead th:first-child {
 
 .liveswebench-callout:hover {
   background-color: rgb(122, 220, 233);
+}
+
+.cost {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78em;
+  color: #888;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
