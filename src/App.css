@@ -250,6 +250,7 @@ td {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
   row-gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -257,6 +258,7 @@ td {
 .clear-filters-row {
   display: flex;
   justify-content: center;
+  align-self: stretch;
   margin-bottom: 1rem;
 }
 
