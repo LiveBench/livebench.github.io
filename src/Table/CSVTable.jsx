@@ -163,6 +163,7 @@ const CSVTable = ({dateStr}) => {
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', getModelInfo);
 
     useEffect(() => {
+        setCost({});  // clear last date's cost so a model never shows stale cost while the new file loads
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())
             .then(text => {
@@ -690,6 +691,13 @@ const CSVTable = ({dateStr}) => {
 
                                 const costRow = cost[String(row.model ?? '').toLowerCase()];
                                 const covered = !!costRow;
+                                // Cost line for a cell: the USD total for `columns` if this model has
+                                // cost, else a single "n/a" shown only on the row's anchor cell.
+                                const costCell = (columns, isAnchor) =>
+                                    !costOn ? null
+                                    : covered ? <span className="cost">{fmtCost(sumColumns(costRow, columns))}</span>
+                                    : isAnchor ? <span className="cost">n/a</span>
+                                    : null;
 
                                 return (
                                     <tr key={index}>
@@ -702,7 +710,7 @@ const CSVTable = ({dateStr}) => {
                                         {showProvider && <td className="sticky-col organization-col">{info?.organization ?? ''}</td>}
                                         {numCheckedCategories > 1 && <td className="sticky-col globalAverage-col">
                                             {getGlobalAverage(row, checkedCategories, categories)}
-                                            {costOn && <span className="cost">{covered ? fmtCost(sumColumns(costRow, getGlobalAverageColumns(checkedCategories, categories))) : 'n/a'}</span>}
+                                            {costCell(getGlobalAverageColumns(checkedCategories, categories), true)}
                                         </td>}
                                         {Object.entries(checkedCategories).flatMap(([category, checks]) => {
                                             const res = [];
@@ -716,9 +724,7 @@ const CSVTable = ({dateStr}) => {
                                         }).map((cell, idx) => (
                                             <td key={idx}>
                                                 {cell.value}
-                                                {costOn && (covered
-                                                    ? <span className="cost">{fmtCost(sumColumns(costRow, cell.columns))}</span>
-                                                    : (numCheckedCategories > 1 ? null : (idx === 0 ? <span className="cost">n/a</span> : null)))}
+                                                {costCell(cell.columns, numCheckedCategories <= 1 && idx === 0)}
                                             </td>
                                         ))}
                                     </tr>
