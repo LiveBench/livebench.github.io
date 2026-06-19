@@ -163,7 +163,7 @@ const CSVTable = ({dateStr}) => {
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', getModelInfo);
 
     useEffect(() => {
-        setCost({});  // clear last date's cost so a model never shows stale cost while the new file loads
+        setCost({});
         fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
             .then(response => response.text())
             .then(text => {
@@ -177,7 +177,6 @@ const CSVTable = ({dateStr}) => {
                 });
             });
 
-        // Optional per-date cost file (USD totals, same columns as the table).
         fetch(process.env.PUBLIC_URL + `/cost_${date}.csv`)
             .then(response => (response.ok ? response.text() : null))
             .then(text => {
@@ -691,8 +690,6 @@ const CSVTable = ({dateStr}) => {
 
                                 const costRow = cost[String(row.model ?? '').toLowerCase()];
                                 const covered = !!costRow;
-                                // Cost line for a cell: the USD total for `columns` if this model has
-                                // cost, else a single "n/a" shown only on the row's anchor cell.
                                 const costCell = (columns, isAnchor) =>
                                     !costOn ? null
                                     : covered ? <span className="cost">{fmtCost(sumColumns(costRow, columns))}</span>
