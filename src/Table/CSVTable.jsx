@@ -78,7 +78,7 @@ const CSVTable = ({dateStr}) => {
         if (!effectiveShowReasoners) params.set('reasoners', 'false');
         if (effectiveShowOpenWeights) params.set('openweight', 'true');
         if (effectiveShowVariants) params.set('variants', 'true');
-        if (effectiveShowHighUnseenBias) params.set('highunseenbias', 'true');
+        // if (effectiveShowHighUnseenBias) params.set('highunseenbias', 'true');
 
         if (allAverages && !anySubcategories) {
             const newParams = new URLSearchParams();
@@ -103,7 +103,7 @@ const CSVTable = ({dateStr}) => {
             if (!effectiveShowReasoners) newParams.set('reasoners', 'false');
             if (effectiveShowOpenWeights) newParams.set('openweight', 'true');
             if (effectiveShowVariants) newParams.set('variants', 'true');
-            if (effectiveShowHighUnseenBias) newParams.set('highunseenbias', 'true');
+            // if (effectiveShowHighUnseenBias) newParams.set('highunseenbias', 'true');
             setSearchParams(newParams);
             return;
         }
@@ -555,10 +555,10 @@ const CSVTable = ({dateStr}) => {
                     <input type="checkbox" checked={showVariants} onChange={() => setShowVariants(!showVariants)} id="showVariants" />
                     <span style={{marginLeft: '0.5rem'}}>Show Model Effort Variants</span>
                 </label>
-                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
+                {/* <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}}>
                     <input type="checkbox" checked={showHighUnseenBias} onChange={() => setShowHighUnseenBias(!showHighUnseenBias)} id="showHighUnseenBias" />
                     <span style={{marginLeft: '0.5rem'}}>Show High Unseen Question Bias Models</span>
-                </label>
+                </label> */}
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
