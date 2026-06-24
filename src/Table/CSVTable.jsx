@@ -1,11 +1,12 @@
 // src/Table/CSVTable.jsx
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import Papa from 'papaparse';
 import { calculateAverage, getGlobalAverage } from './Averaging';
 import { useTable } from "./SortTable";
 import { getModelInfo, getVariantGroup } from './modelLinks';
 import { useSearchParams } from 'react-router-dom';
 import Select from 'react-select';
+import { buildCurrentViewData, buildFullData, downloadCSV, downloadJSON, downloadExcel } from './downloadTable';
 
 
 const CSVTable = ({dateStr}) => {
@@ -24,7 +25,25 @@ const CSVTable = ({dateStr}) => {
     const [showVariants, setShowVariants] = useState(false);
     const [showHighUnseenBias, setShowHighUnseenBias] = useState(true);
 
-    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
+    const [showDownloadMenu, setShowDownloadMenu] = useState(false);
+    const [downloadScope, setDownloadScope] = useState('current');
+    const [downloadFormats, setDownloadFormats] = useState({ csv: false, json: false, xlsx: false });
+    const [panelPos, setPanelPos] = useState({ top: 0, left: 0 });
+    const downloadMenuRef = useRef(null);
+    const downloadBtnRef = useRef(null);
+
+    useEffect(() => {
+        if (!showDownloadMenu) return;
+        const handleClickOutside = (e) => {
+            if (downloadMenuRef.current && !downloadMenuRef.current.contains(e.target)) {
+                setShowDownloadMenu(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [showDownloadMenu]);
+
+    const updateURL =(checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
         const params = new URLSearchParams();
 
         let allAverages = true;
@@ -426,6 +445,18 @@ const CSVTable = ({dateStr}) => {
         updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '');
     }
 
+    const handleDownload = () => {
+        const rows = downloadScope === 'current'
+            ? buildCurrentViewData(displayedData, checkedCategories, categories, { showProvider, showApiName, displayNameCounts })
+            : buildFullData(data, categories);
+        const filename = `livebench_${downloadScope === 'current' ? 'current_view' : 'full_data'}`;
+        if (downloadFormats.csv) downloadCSV(rows, `${filename}.csv`);
+        if (downloadFormats.json) downloadJSON(rows, `${filename}.json`);
+        if (downloadFormats.xlsx) downloadExcel(rows, `${filename}.xlsx`);
+        setDownloadFormats({ csv: false, json: false, xlsx: false });
+        setShowDownloadMenu(false);
+    };
+
     // Utility to compute class for sorting
     const getSortClass = (accessor) => {
         return sortField === accessor ? (sortOrder === "asc" ? "up" : "down") : "default";
@@ -559,7 +590,58 @@ const CSVTable = ({dateStr}) => {
                     <input type="checkbox" checked={showHighUnseenBias} onChange={() => setShowHighUnseenBias(!showHighUnseenBias)} id="showHighUnseenBias" />
                     <span style={{marginLeft: '0.5rem'}}>Show High Unseen Question Bias Models</span>
                 </label>
+            </div>
+            <div className="action-buttons">
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
+                <div className="download-dropdown" ref={downloadMenuRef}>
+                    <button ref={downloadBtnRef} onClick={() => {
+                        if (!showDownloadMenu && downloadBtnRef.current) {
+                            const rect = downloadBtnRef.current.getBoundingClientRect();
+                            setPanelPos({ top: rect.bottom + 4, left: rect.left });
+                        }
+                        setShowDownloadMenu(!showDownloadMenu);
+                    }} className="download-button">
+                        <i className="fa fa-download" style={{marginRight: '0.4rem'}}></i>Download
+                    </button>
+                    {showDownloadMenu && (
+                        <div className="download-panel" style={{ top: panelPos.top, left: panelPos.left }}>
+                            <div className="download-panel-body">
+                                <div className="download-panel-scope">
+                                    <div className="download-panel-heading">Data</div>
+                                    <label>
+                                        <input type="radio" name="downloadScope" checked={downloadScope === 'current'} onChange={() => setDownloadScope('current')} />
+                                        <span>Current View</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="downloadScope" checked={downloadScope === 'full'} onChange={() => setDownloadScope('full')} />
+                                        <span>Full Data</span>
+                                    </label>
+                                </div>
+                                <div className="download-panel-formats">
+                                    <div className="download-panel-heading">Format</div>
+                                    <label>
+                                        <input type="checkbox" checked={downloadFormats.csv} onChange={() => setDownloadFormats(f => ({...f, csv: !f.csv}))} />
+                                        <span>CSV</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked={downloadFormats.json} onChange={() => setDownloadFormats(f => ({...f, json: !f.json}))} />
+                                        <span>JSON</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked={downloadFormats.xlsx} onChange={() => setDownloadFormats(f => ({...f, xlsx: !f.xlsx}))} />
+                                        <span>Excel (.xlsx)</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button
+                                className="download-panel-action"
+                                disabled={!downloadFormats.csv && !downloadFormats.json && !downloadFormats.xlsx}
+                                onClick={handleDownload}>
+                                Download
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
             <div className="search-bar">
                 <input
