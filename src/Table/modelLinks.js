@@ -264,6 +264,7 @@ export const modelLinks = {
     "qwen3-max-2025-09-23": {url: "https://qwen.ai/blog?id=241398b9cd6353de490b0f82806c7848c5d2777d&from=research.latest-advancements-list", organization: "Alibaba", displayName: "Qwen 3 Max", version: "2025-09-23", openweight: true},
     "claude-sonnet-4-5-20250929": {url: "https://www.anthropic.com/news/claude-sonnet-4-5", organization: "Anthropic", displayName: "Claude Sonnet 4.5", version: "2025-09-29", reasoner: false},
     "claude-sonnet-4-5-20250929-thinking-64k": {url: "https://www.anthropic.com/news/claude-sonnet-4-5", organization: "Anthropic", displayName: "Claude Sonnet 4.5 Thinking", version: "2025-09-29", reasoner: true},
+    "claude-sonnet-5-xhigh-effort": {url: "https://www.anthropic.com/news/claude-sonnet-5", organization: "Anthropic", displayName: "Claude Sonnet 5 xHigh Effort", reasoner: true},
     "claude-haiku-4-5-20251001": {url: "https://www.anthropic.com/news/claude-haiku-4-5", organization: "Anthropic", displayName: "Claude Haiku 4.5", version: "2025-10-01", reasoner: false},
     "claude-haiku-4-5-20251001-thinking-64k": {url: "https://www.anthropic.com/news/claude-haiku-4-5", organization: "Anthropic", displayName: "Claude Haiku 4.5 Thinking", version: "2025-10-01", reasoner: true},
     "deepseek-v3.2-exp": {url: "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp", organization: "DeepSeek", displayName: "DeepSeek V3.2 Exp", version: "2025-10-17", openweight: true},
