@@ -27,3 +27,9 @@ export const calculateAverage = (row, columns, fixedSize) => {
     const average = validValues.length > 0 ? validValues.reduce((a, b) => a + b, 0) / validValues.length : NaN;
     return isNaN(average) ? '-' : fixedSize ? average.toFixed(fixedSize) : average;
 };
+
+export const sumColumns = (row, columns) => {
+    if (!row || !columns) return null;
+    const validValues = columns.map(col => parseFloat(row[col])).filter(val => !isNaN(val));
+    return validValues.length > 0 ? validValues.reduce((a, b) => a + b, 0) : null;
+};
