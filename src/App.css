@@ -303,3 +303,6 @@ thead th:first-child {
 .liveswebench-callout:hover {
   background-color: rgb(122, 220, 233);
 }
+/* Cost / token-efficiency columns (optional, top-models-only) */
+.cost-na { color: #b0b0b0; }
+th.cost-col, td.cost-col { white-space: nowrap; border-left: 1px solid #ececec; }

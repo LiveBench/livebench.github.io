@@ -10,7 +10,8 @@ import Select from 'react-select';
 
 const CSVTable = ({dateStr}) => {
     const date = new Date(dateStr).toISOString().split('T')[0].replaceAll('-', '_');
-    const [data, setData] = useState([]);
+    const [rawData, setRawData] = useState([]);
+    const [costMap, setCostMap] = useState({});
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -23,8 +24,14 @@ const CSVTable = ({dateStr}) => {
     const [showOpenWeights, setShowOpenWeights] = useState(false);
     const [showVariants, setShowVariants] = useState(false);
     const [showHighUnseenBias, setShowHighUnseenBias] = useState(true);
+    // Cost / token-efficiency metrics are published only for the top set of models;
+    // models without an entry render as "—" and a separate toggle can filter to those with data.
+    const [showCost, setShowCost] = useState(false);
+    const [showCostOnly, setShowCostOnly] = useState(false);
 
-    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null) => {
+    const COST_NA_TITLE = "Token & cost metrics are published for the top models only";
+
+    const updateURL = (checkedCategories, newFilter, newSortField = null, newSortOrder = null, newShowProvider = null, newShowApiName = null, newShowReasoners = null, newShowOpenWeights = null, newShowVariants = null, newShowHighUnseenBias = null, newSearchQuery = null, newShowCost = null, newShowCostOnly = null) => {
         const params = new URLSearchParams();
 
         let allAverages = true;
@@ -72,6 +79,8 @@ const CSVTable = ({dateStr}) => {
         const effectiveShowOpenWeights = newShowOpenWeights !== null ? newShowOpenWeights : showOpenWeights;
         const effectiveShowVariants = newShowVariants !== null ? newShowVariants : showVariants;
         const effectiveShowHighUnseenBias = newShowHighUnseenBias !== null ? newShowHighUnseenBias : showHighUnseenBias;
+        const effectiveShowCost = newShowCost !== null ? newShowCost : showCost;
+        const effectiveShowCostOnly = newShowCostOnly !== null ? newShowCostOnly : showCostOnly;
 
         if (!effectiveShowProvider) params.set('provider', 'false');
         if (effectiveShowApiName) params.set('api', 'true');
@@ -79,6 +88,8 @@ const CSVTable = ({dateStr}) => {
         if (effectiveShowOpenWeights) params.set('openweight', 'true');
         if (effectiveShowVariants) params.set('variants', 'true');
         if (effectiveShowHighUnseenBias) params.set('highunseenbias', 'true');
+        if (effectiveShowCost) params.set('cost', 'true');
+        if (effectiveShowCostOnly) params.set('costonly', 'true');
 
         if (allAverages && !anySubcategories) {
             const newParams = new URLSearchParams();
@@ -104,6 +115,8 @@ const CSVTable = ({dateStr}) => {
             if (effectiveShowOpenWeights) newParams.set('openweight', 'true');
             if (effectiveShowVariants) newParams.set('variants', 'true');
             if (effectiveShowHighUnseenBias) newParams.set('highunseenbias', 'true');
+            if (effectiveShowCost) newParams.set('cost', 'true');
+            if (effectiveShowCostOnly) newParams.set('costonly', 'true');
             setSearchParams(newParams);
             return;
         }
@@ -155,6 +168,15 @@ const CSVTable = ({dateStr}) => {
         return res;
     }, [dateStr]);
 
+    // Merge cost metrics into each row so they sort with the existing machinery.
+    // Missing cost is set to null (not undefined) so SortTable's null-handling pushes
+    // those rows to the bottom regardless of sort order.
+    const data = useMemo(() => rawData.map(row => ({
+        ...row,
+        avg_output_tokens: costMap[row.model]?.avg_output_tokens ?? null,
+        cost_per_question: costMap[row.model]?.cost_per_question ?? null,
+    })), [rawData, costMap]);
+
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', getModelInfo);
 
     useEffect(() => {
@@ -166,10 +188,37 @@ const CSVTable = ({dateStr}) => {
                     dynamicTyping: true,
                     skipEmptyLines: true,
                     complete: (result) => {
-                        setData(result.data);
+                        setRawData(result.data);
                     }
                 });
             });
+
+        // Optional cost dataset (published only for the top models). Absence is fine:
+        // costMap stays empty and every model renders "—" in the cost columns.
+        fetch(process.env.PUBLIC_URL + `/cost_${date}.csv`)
+            .then(response => response.ok ? response.text() : null)
+            .then(text => {
+                if (!text) { setCostMap({}); return; }
+                Papa.parse(text, {
+                    header: true,
+                    dynamicTyping: true,
+                    skipEmptyLines: true,
+                    complete: (result) => {
+                        const map = {};
+                        result.data.forEach(r => {
+                            if (r && r.model) {
+                                map[r.model] = {
+                                    avg_output_tokens: r.avg_output_tokens,
+                                    avg_input_tokens: r.avg_input_tokens,
+                                    cost_per_question: r.cost_per_question,
+                                };
+                            }
+                        });
+                        setCostMap(map);
+                    }
+                });
+            })
+            .catch(() => setCostMap({}));
 
         fetch(process.env.PUBLIC_URL + `/categories_${date}.json`)
             .then(response => response.json())
@@ -239,6 +288,12 @@ const CSVTable = ({dateStr}) => {
             } else if (key === 'highunseenbias') {
                 setShowHighUnseenBias(value === 'true');
                 return;
+            } else if (key === 'cost') {
+                setShowCost(value === 'true');
+                return;
+            } else if (key === 'costonly') {
+                setShowCostOnly(value === 'true');
+                return;
             } else if (Object.keys(categories).includes(key)) {
                 if (value.includes('a')) {
                     updatedCategories[key].average = true;
@@ -285,7 +340,7 @@ const CSVTable = ({dateStr}) => {
             return;
         }
         updateURL(checkedCategories, filter);
-    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants, showHighUnseenBias]);
+    }, [showProvider, showApiName, showReasoners, showOpenWeights, showVariants, showHighUnseenBias, showCost, showCostOnly]);
 
     const handleCheckboxChange = (clickedCategory, type) => {
 
@@ -421,9 +476,11 @@ const CSVTable = ({dateStr}) => {
         setShowOpenWeights(false);
         setShowVariants(false);
         setShowHighUnseenBias(true);
+        setShowCost(false);
+        setShowCostOnly(false);
 
         // Update URL with default values (including empty search)
-        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '');
+        updateURL(defaultCategories, {}, 'ga', 'desc', true, false, true, false, false, false, '', false, false);
     }
 
     // Utility to compute class for sorting
@@ -481,9 +538,12 @@ const CSVTable = ({dateStr}) => {
             if (!showHighUnseenBias && info.highUnseenBias) {
                 return false;
             }
+            if (showCostOnly && !costMap[row.model]) {
+                return false;
+            }
             return true;
         });
-    }, [sortedData, showReasoners, showOpenWeights, showHighUnseenBias]);
+    }, [sortedData, showReasoners, showOpenWeights, showHighUnseenBias, showCostOnly, costMap]);
 
     const displayedData = useMemo(() => {
         if (showVariants) {
@@ -559,6 +619,14 @@ const CSVTable = ({dateStr}) => {
                     <input type="checkbox" checked={showHighUnseenBias} onChange={() => setShowHighUnseenBias(!showHighUnseenBias)} id="showHighUnseenBias" />
                     <span style={{marginLeft: '0.5rem'}}>Show High Unseen Question Bias Models</span>
                 </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem'}} title={COST_NA_TITLE}>
+                    <input type="checkbox" checked={showCost} onChange={() => setShowCost(!showCost)} id="showCost" />
+                    <span style={{marginLeft: '0.5rem'}}>Show Cost &amp; Tokens</span>
+                </label>
+                <label style={{whiteSpace: 'nowrap', marginLeft: '1rem', opacity: showCost ? 1 : 0.5}} title="Limit the table to models that have published cost data">
+                    <input type="checkbox" checked={showCostOnly} disabled={!showCost} onChange={() => setShowCostOnly(!showCostOnly)} id="showCostOnly" />
+                    <span style={{marginLeft: '0.5rem'}}>Only Models With Cost Data</span>
+                </label>
                 <button onClick={handleResetFilters} className="clear-filters-button">Clear Filters</button>
             </div>
             <div className="search-bar">
@@ -624,6 +692,16 @@ const CSVTable = ({dateStr}) => {
                                         className={getSortClass(header)}>
                                         {header}</th>
                                 ))}
+                                {showCost && <th
+                                    className={`cost-col ${getSortClass("avg_output_tokens")}`}
+                                    title="Average output tokens generated per question (includes reasoning tokens)"
+                                    onClick={() => handleSortingChange("avg_output_tokens")}>
+                                    Output Tokens</th>}
+                                {showCost && <th
+                                    className={`cost-col ${getSortClass("cost_per_question")}`}
+                                    title="Estimated USD cost per question = input·price_in + output·price_out"
+                                    onClick={() => handleSortingChange("cost_per_question")}>
+                                    Cost / Question</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -661,6 +739,16 @@ const CSVTable = ({dateStr}) => {
                                             }
                                             return res;
                                         }).map((cell, idx) => <td key={idx}>{cell}</td>)}
+                                        {showCost && (() => {
+                                            const c = costMap[row.model];
+                                            const na = <span className="cost-na" title={COST_NA_TITLE}>—</span>;
+                                            return (
+                                                <>
+                                                    <td className="cost-col">{c && c.avg_output_tokens != null ? Math.round(c.avg_output_tokens).toLocaleString() : na}</td>
+                                                    <td className="cost-col">{c && c.cost_per_question != null ? `$${Number(c.cost_per_question).toFixed(3)}` : na}</td>
+                                                </>
+                                            );
+                                        })()}
                                     </tr>
                                 );
                             })}
