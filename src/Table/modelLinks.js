@@ -503,7 +503,7 @@ export const modelLinks = {
         displayName: "Claude Fable 5 Thinking xHigh Effort",
         version: "2026-06-09",
         reasoner: true,
-        note: "*losing out due to stricter content moderation",
+        note: "*refusals fall back to Opus 4.8 (server-side)",
         variants: [
             { rawName: "claude-fable-5-high-effort", displayName: "Claude Fable 5 Thinking High Effort" }
         ]
