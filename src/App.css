@@ -208,6 +208,10 @@ td {
   td {
     padding: 6px;
   }
+
+  .cost {
+    display: none;
+  }
 }
 
 /* Style adjustments for medium screens */
@@ -242,6 +246,19 @@ td {
 }
 
 .other-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  row-gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clear-filters-row {
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
   margin-bottom: 1rem;
 }
 
@@ -251,7 +268,6 @@ td {
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  margin-left: 1rem;
 }
 
 .section {
@@ -302,4 +318,13 @@ thead th:first-child {
 
 .liveswebench-callout:hover {
   background-color: rgb(122, 220, 233);
+}
+
+.cost {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78em;
+  color: #888;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
