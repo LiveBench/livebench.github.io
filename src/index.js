@@ -6,6 +6,9 @@ import App from './App';
 import Blog from './Blog';
 import reportWebVitals from './reportWebVitals';
 
+if (window.location.hash.startsWith('#/')) {
+    window.location.replace(window.location.toString().replace('#/', ''));
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
