@@ -5,6 +5,3 @@ export const bibtexEntry = `
   booktitle={The Thirteenth International Conference on Learning Representations},
   year={2025},
 }`;
-
-
-export const tagline = `LiveBench is a continuously updated benchmark with questions based on brand new data.`

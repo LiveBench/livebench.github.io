@@ -2,41 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .publication-links {
   display: flex;
   width: 100%;
@@ -176,15 +141,7 @@ td {
   /* Add space between checkbox and text */
 }
 
-.App-header {
-  font-size: calc(10px + 2vmin);
-}
-
 @media (max-width: 600px) {
-  .App-header {
-    font-size: calc(8px + 2vmin);
-  }
-
   .table-container {
     max-width: 100%;
     margin: 10px;
@@ -212,10 +169,6 @@ td {
 
 /* Style adjustments for medium screens */
 @media (min-width: 601px) and (max-width: 1024px) {
-  .App-header {
-    font-size: calc(9px + 2vmin);
-  }
-
   .table-container {
     max-width: 90%;
   }
@@ -233,12 +186,6 @@ td {
 
 .category-group {
   margin: 5px 0;
-}
-
-.month-text {
-  font-weight: bold;
-  color: #1d7b13; /* Change this to your preferred color */
-  font-size: 1.2em; /* Adjust size as needed */
 }
 
 .other-controls {
@@ -274,32 +221,4 @@ td:first-child, th:first-child {
 thead th:first-child {
   z-index: 3;
   box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1), 0 2px 5px -2px rgba(0, 0, 0, 0.1), inset -1px 0 0 #ccc, inset 1px 0 0 #ccc;
-}
-
-.o1-row * {
-  background-color: lightcoral !important;
-}
-
-.o1-row.not-coding {
-  display: none;
-}
-
-.liveswebench-callout {
-  background-color: rgb(128, 201, 240);
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 1.25rem;
-  color: black;
-  word-wrap: break-word;
-  display: inline-block;
-  text-decoration: none;
-  width: fit-content;
-}
-
-.liveswebench-callout span {
-  display: block;
-}
-
-.liveswebench-callout:hover {
-  background-color: rgb(122, 220, 233);
 }
