@@ -13,7 +13,6 @@ const CSVTable = ({dateStr}) => {
     const [data, setData] = useState([]);
     const [categories, setCategories] = useState({});
     const [checkedCategories, setCheckedCategories] = useState({});
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -158,7 +157,7 @@ const CSVTable = ({dateStr}) => {
     const [sortedData, handleSorting, handleSearch, handleFilter, sortField, sortOrder, searchQuery, filter] = useTable(data, columns, checkedCategories, categories, 'model', getModelInfo);
 
     useEffect(() => {
-        fetch(process.env.PUBLIC_URL + `/table_${date}.csv`)
+        fetch(`${import.meta.env.BASE_URL}table_${date}.csv`)
             .then(response => response.text())
             .then(text => {
                 Papa.parse(text, {
@@ -171,7 +170,7 @@ const CSVTable = ({dateStr}) => {
                 });
             });
 
-        fetch(process.env.PUBLIC_URL + `/categories_${date}.json`)
+        fetch(`${import.meta.env.BASE_URL}categories_${date}.json`)
             .then(response => response.json())
             .then(json => {
                 setCategories(json);
@@ -182,16 +181,6 @@ const CSVTable = ({dateStr}) => {
                 setCheckedCategories(checked);
 
             });
-
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, [date]);
 
     useEffect(() => {
@@ -393,7 +382,7 @@ const CSVTable = ({dateStr}) => {
         } else {
             newParams.delete('q');
         }
-        setSearchParams(prev => newParams);
+        setSearchParams(newParams);
     }
 
     const handleFilterChange = (filter) => {

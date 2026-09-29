@@ -1,11 +1,4 @@
 
-export const getGlobalAverageColumns = (checkedCategories, categories) => {
-    return Object.entries(checkedCategories).flatMap(([category, checks]) =>
-        checks.average ? categories[category] :
-            checks.allSubcategories ? categories[category] : []
-    );
-};
-
 export const getGlobalAverage = (row, checkedCategories, categories) => {
     if (row['model'] === 'grok-3-thinking') {
         return 72;

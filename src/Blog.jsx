@@ -6,14 +6,10 @@ import livebench_results from './images/livebench_results.png';
 import livebench_vs_chatbot_arena from './images/livebench_vs_chatbot_arena.png';
 import livebench_vs_arena_hard from './images/livebench_vs_arena_hard.png';
 
-import { Helmet } from 'react-helmet';
-
 function Blog() {
     return (
         <div className="Blog">
-            <Helmet>
-                <title>LiveBench Blog</title>
-            </Helmet>
+            <title>LiveBench Blog</title>
             <section className="hero">
                 <div className="hero-body">
                     <div className="container is-max-desktop">
